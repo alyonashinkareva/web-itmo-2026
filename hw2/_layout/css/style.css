@@ -107,6 +107,73 @@ header nav {
     background-color: #F5F5F5;
 }
 
+article{
+    padding-bottom: 8px;
+}
+article .title{
+    font-size: 20px;
+    font-weight: bold;
+    color: #465e98;
+}
+
+article .information{
+    font-size: 12px;
+    color: #9a9189;
+}
+
+article .body{
+    border-left: 4px solid var(--border-color);
+    padding-left: 12px;
+    font-size: 14px;
+}
+
+article .attachment {
+    padding-left: 0;
+    margin-top: 8px;
+}
+
+article .attachment li{
+    font-size: 12px;
+    color: #9a9189;
+    list-style-type: none;
+    padding-left: 20px;
+    background-image: url("../img/paperclip-16x16.png");
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    margin-bottom: 5px;
+}
+
+article .footer{
+    align-items: center;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    position: relative;
+    height: 40px;
+}
+
+article .footer .right,
+article .footer .left{
+    gap: 8px;
+    align-items: center;
+    display: flex;
+    position: absolute;
+}
+
+article .footer .left{
+    top: 25%;
+    left: 4px;
+}
+
+article .footer .left .positive-score{
+    font-weight: bold;
+    color: #068000;
+}
+article .footer .right{
+    top: 30%;
+    font-size: 13px;
+    right: 8px;
+}
+
 header nav ul {
     margin: 0;
     padding: 0;
