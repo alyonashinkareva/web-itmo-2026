@@ -10,7 +10,7 @@
 
 html {
     padding: 1rem;
-    min-width: 600px;
+    min-width: 800px;
     max-width: 1280px;
     margin: 0 auto;
 }
@@ -172,6 +172,89 @@ article .footer .right{
     top: 30%;
     font-size: 13px;
     right: 8px;
+}
+
+.login-form-box{
+    width: 480px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.login-form-box .header{
+    font-size: 18px;
+    font-weight: 550;
+    color: #465e98;
+    padding-top: 4px;
+    padding-left: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+.login-form-box .body{
+    padding-top: 20px;
+}
+
+.login-form-box .footer{
+    border-top: 1px solid var(--border-color);
+}
+
+.login-form-box .field {
+    display: flex;
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.login-form-box .field .name {
+    width: 180px;
+    text-align: right;
+    margin-right: 16px;
+}
+
+.login-form-box .error {
+    position: absolute;
+    left: 196px;
+    top: 24px;
+    color: red;
+    font-size: 12px;
+}
+
+.login-form-box .checkbox-field {
+    margin-top: 40px;
+    margin-left: 196px;
+    margin-bottom: 26px;
+    font-size: 13px;
+}
+
+.login-form-box .button-field {
+    margin-right: 230px;
+    margin-left: 196px;
+    margin-bottom: 4px;
+}
+
+.login-form-box .button-field input {
+    width: 95px;
+    height: 26px;
+    background-color: #F5F5F5;
+    border: 1px solid #919191;
+}
+
+.login-form-box .field .value input {
+    width: 240px;
+    height: 20px;
+    background-color: white;
+    border: 1px solid var(--border-color);
+}
+
+.login-form-box .links,
+.login-form-box .footer{
+    text-align: right;
+    font-size: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-right: 4px;
+    flex-direction: row-reverse;
+    display: flex;
+    gap: 12px;
 }
 
 header nav ul {
