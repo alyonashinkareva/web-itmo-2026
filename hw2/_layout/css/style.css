@@ -77,6 +77,36 @@ header nav {
     box-shadow: 0 0 0.5px 1px rgba(80, 140, 255, 0.25);
 }
 
+.datatable .caption {
+    font-size: 13px;
+    background-color: #DDD;
+    padding: 4px 7px;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.datatable table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.datatable th, td {
+    border: 1px solid #DDD;
+    padding: 4px;
+    text-align: center;
+}
+
+.datatable th {
+    font-size: 13px;
+}
+
+.datatable td {
+    font-size: 12px;
+}
+
+.datatable tbody tr:nth-child(odd) {
+    background-color: #F5F5F5;
+}
+
 header nav ul {
     margin: 0;
     padding: 0;
