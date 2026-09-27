@@ -51,14 +51,14 @@ header nav {
     margin-top: 1rem;
 }
 
-.search {
+header .search {
     position: absolute;
     right: 0.25rem;
     top: 0.75rem;
     padding-right: 5px;
 }
 
-.search input {
+header .search input {
        width: 160px;
        height: 16px;
        padding-left: 20px;
@@ -71,7 +71,7 @@ header nav {
        font-size: 12px;
 }
 
-.search input:focus {
+header .search input:focus {
     outline: none;
     border-color: #96A6ED;
     box-shadow: 0 0 0.5px 1px rgba(80, 140, 255, 0.25);
