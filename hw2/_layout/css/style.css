@@ -1,8 +1,12 @@
 :root {
+    --small-font-size: 0.75rem;
     --border-color: rgb(185, 185, 185);
     --border-radius: 6px;
     --black-color: #333;
     --caption-color: #3B5998;
+    --table-color: rgb(225, 225, 225);
+    --table-row-color: rgb(248, 248, 248);
+    --positive-color: rgb(50,123, 0);
     color: var(--black-color);
     font-family: Verdana, sans-serif;
     font-size: 16px;
@@ -53,6 +57,7 @@ header nav {
 header nav ul {
     margin: 0;
     padding: 0;
+    display: inline;
 }
 
 header nav ul li {
@@ -68,6 +73,18 @@ header nav ul li a {
     text-transform: uppercase;
 }
 
+header nav form.search {
+    float: right;
+    margin-right: 0.3rem;
+}
+
+header nav form input {
+    background-image: url("../img/search-16x16.png");
+    background-repeat: no-repeat;
+    background-position: 3px center;
+    padding-left: 22px;
+}
+
 .middle {
     margin-top: 1rem;
     overflow: auto;
@@ -80,6 +97,173 @@ aside {
 
 main {
     margin-right: 21rem;
+}
+
+main .datatable {
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    border-collapse: collapse;
+    border: 1px solid var(--table-color);
+}
+
+main .datatable .caption {
+    background-color: var(--table-color);
+    padding: 0.5rem;
+}
+
+main .datatable table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+main .datatable table td, 
+main .datatable table th {
+    border: 1px solid var(--table-color);
+    padding: 0.3rem 1rem;
+}
+
+main .datatable table thead {
+    font-size: 0.9rem;
+}
+
+main .datatable table tbody {
+    font-size: 0.8rem;
+}
+
+main .datatable table tbody tr:nth-child(odd){
+    background-color: var(--table-row-color);
+}
+
+main article .title {
+    color: var(--caption-color);
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+}
+
+main article .information {
+    color: var(--border-color);
+}
+
+main article .body {
+    border-left: 3px solid var(--border-color);
+    padding-left: 1rem;
+}
+
+main article ul.attachment {
+    padding: 0;
+}
+
+
+main article ul.attachment li {
+    background-image: url("../img/paperclip-16x16.png");
+    background-position: 0 center;
+    background-repeat: no-repeat;
+    padding-left: 19px;
+    line-height: 16px;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+main article ul.attachment li:last-child {
+    margin-bottom: 0;
+}
+
+main article .footer {
+    padding: 0.5rem;
+    overflow: auto;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+main article .footer .left {
+    float: left;
+}
+
+main article .footer .left img,
+main article .footer .left .positive-score {
+    vertical-align: middle;
+}
+
+main article .footer .left .positive-score {
+    color: var(--positive-color);
+    font-weight: bold;
+}
+
+main article .footer .right {
+    float: right;
+}
+
+main .login-form-box {
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    border-collapse: collapse;
+    width: 50%;
+    margin: 0 auto;
+}
+
+main .login-form-box .header,
+main .login-form-box .body,
+main .login-form-box .footer
+{
+    border: 1px solid var(--border-color);
+}
+
+main .login-form-box .header{
+    color: var(--caption-color);
+    font-weight: bold;
+    padding: 0.3rem;
+}
+
+main .login-form-box .body .field .name {
+    float: left;
+    text-align: right;
+    width: calc(40% - 1rem);
+}
+
+main .login-form-box .body .field .value,
+main .login-form-box .body .field .error,
+main .login-form-box .body .checkbox-field  {
+    margin-left: 40%;
+}
+
+main .login-form-box .body .checkbox-field  {
+    font-size: 0.8rem;
+}
+
+main .login-form-box .body .field,
+main .login-form-box .body .checkbox-field,
+main .login-form-box .body .button-field  {
+    margin-top: 1.5rem;
+}
+
+main .login-form-box .body .button-field input {
+    width: 20%;
+    margin-left: 40%;
+}
+
+main .login-form-box .body .field .error {
+    color: red;
+    font-size: var(--small-font-size);
+}
+
+main .login-form-box .body .links {
+    text-align: right;
+    font-size: var(--small-font-size);
+    margin: 0.2rem 0.3rem;
+}
+
+main .login-form-box .footer {
+    overflow: auto;
+    font-size: var(--small-font-size);
+    padding: 0.2rem 0;
+}
+
+main .login-form-box .footer a {
+    margin-right: 0.3rem;
+    float: right;
 }
 
 footer {
@@ -118,7 +302,7 @@ aside section .footer {
 
 aside section .footer a {
     float: right;
-    font-size: 0.75rem;
+    font-size: var(--small-font-size);
 }
 
 aside section .footer a:after {
