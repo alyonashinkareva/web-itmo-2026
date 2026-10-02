@@ -3,6 +3,8 @@
     --border-radius: 6px;
     --black-color: #333;
     --caption-color: #3B5998;
+    --search-focus-color: cornflowerblue;
+    --table-border-color: #E1E1E1;
     color: var(--black-color);
     font-family: Verdana, sans-serif;
     font-size: 16px;
@@ -48,6 +50,7 @@ header nav {
     border-radius: var(--border-radius);
     padding: 0.75rem 0.25rem;
     margin-top: 1rem;
+    position: relative;
 }
 
 header nav ul {
@@ -68,6 +71,29 @@ header nav ul li a {
     text-transform: uppercase;
 }
 
+header nav .search {
+    position: absolute;
+    right: 0;
+    top: 0.75rem;
+}
+
+header nav .search input {
+    border: 1px solid #d4d4d4;
+    font-size: 0.75rem;
+    padding: 1px 1px 1px 20px;
+    margin: 0 1em 0 0;
+    background: #f4f4f4 url(../img/search-16x16.png) 2px 2px no-repeat;
+    width: 11em;
+    height: 16px;
+}
+
+header nav .search input:focus {
+    outline: none;
+    border: 1px solid var(--search-focus-color);
+    box-shadow: 0 0 0 1px var(--search-focus-color);
+    border-radius: 2px;
+}
+
 .middle {
     margin-top: 1rem;
     overflow: auto;
@@ -80,6 +106,47 @@ aside {
 
 main {
     margin-right: 21rem;
+}
+
+.datatable {
+    background-color: var(--table-border-color);
+    border: 1px var(--table-border-color) solid;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+
+}
+.datatable .caption {
+    padding: 4px 0 0 6px;
+    font-size: 0.8rem;
+}
+
+.datatable table {
+    width: 100%;
+    margin: 4px 0 0 0;
+}
+
+table, th, td {
+    border-collapse: collapse;
+    border: 1px var(--table-border-color) solid;
+}
+
+.datatable tbody tr:nth-child(even),
+.datatable thead tr {
+    background-color: white;
+}
+
+.datatable tbody tr:nth-child(odd) {
+    background-color: #f8f8f8;
+}
+
+.datatable tr {
+    text-align: center;
+    font-size: 0.75rem;
+}
+
+.datatable th,
+.datatable td {
+    padding: 0.4em;
 }
 
 footer {
