@@ -124,3 +124,223 @@ aside section .footer a {
 aside section .footer a:after {
     content: " →";
 }
+
+/*Task 1*/
+
+.search {
+    float: right;
+    margin-top: -21px;
+}
+
+.search input {
+    border: 1px solid #ccc;
+    background: #f4f4f4 url(../img/search-16x16.png) 2px 2px no-repeat;
+    padding: 1px 1px 1px 20px;
+}
+
+/*Task 2*/
+
+.datatable {
+    background: #e1e1e1;
+    border-radius: 6px 6px 0 0;
+}
+
+.caption {
+    padding: 4px 0 0 6px;
+}
+
+.datatable table {
+    background-color: white;
+    border: 1px solid #e1e1e1;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.datatable tbody tr:nth-child(2n-1) {
+    background-color: #f8f8f8;
+}
+
+.datatable td {
+    text-align: center;
+}
+
+.datatable td,th {
+    border: 1px solid #e1e1e1;
+    padding: 6px;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Task3 */
+
+article .title {
+    color: var(--caption-color);
+    font-size: 16pt;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+article .information{
+    color: #888;
+}
+
+article .body {
+    padding-left: 10px;
+    border-left: 4px solid var(--border-color);
+}
+
+article ul.attachment {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+article ul.attachment li {
+    padding-left: 18px;
+    background: url(../img/paperclip-16x16.png) no-repeat;
+    color: #888;
+}
+
+article .body p:last-child {
+    margin-bottom: 10px;
+}
+
+article .footer {
+    margin-top: 6px;
+    height: 35px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color)
+}
+
+article .left {
+    margin: 6px 0 0 10px;
+    float: left;
+}
+
+article .left img {
+    vertical-align: middle;
+}
+
+article .positive-score {
+    vertical-align: middle;
+    color: forestgreen;
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+article .right {
+    margin: 9px 10px 0 0;
+    float: right;
+}
+
+/* Task 4 */
+
+.login-form-box {
+    border: 1px solid var(--border-color);
+    margin-left: 200px;
+    width: 600px;
+    border-radius: 6px 6px 0 0;
+}
+
+.login-form-box .header {
+    color: var(--caption-color);
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 3pt;
+    margin-bottom: 3pt;
+    margin-left: 6pt;
+}
+
+.login-form-box .body {
+    border-top: 1px solid var(--border-color);
+    padding-left: 100px;
+}
+
+.login-form-box .body form {
+    text-align: center;
+}
+
+.login-form-box .body .field,
+.login-form-box .body .checkbox-field,
+.login-form-box .body .button-field  {
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.login-form-box .body .checkbox-field::before,
+.login-form-box .body .button-field::before{
+    content: "";
+    flex: 1;
+    padding-right: 15px;
+}
+
+.login-form-box .body .checkbox-field label {
+    margin-left: 8px;
+    width: 192px;
+    text-align: left;
+}
+
+.login-form-box .body .button-field input {
+    margin-left: -94px;
+    width: 120px;
+    font-size: 16pt;
+    margin-bottom: 10px;
+}
+
+.login-form-box .body .checkbox-field::after,
+.login-form-box .body .button-field::after {
+    content: "";
+    flex: 1;
+}
+
+.login-form-box .body .field .name {
+    flex: 1;
+    text-align: right;
+    padding-right: 15px;
+}
+
+.login-form-box .body .field::after {
+    content: "";
+    flex: 1;
+    padding-left: 15px;
+}
+
+.login-form-box .body .field {
+    position: relative;
+}
+
+.login-form-box .body .field .error {
+    position: absolute;
+    left: 48%;
+    transform: translateX(-50%);
+    top: 100%;
+    color: red;
+    font-size: 10pt;
+}
+
+.login-form-box .links {
+    text-align: right;
+    font-size: 10pt;
+    margin-right: 4pt;
+}
+
+.login-form-box .footer {
+    border-top: 1px solid var(--border-color);
+    font-size: 10pt;
+    text-align: right;
+    padding-right: 4pt;
+    height: 18pt;
+}
+
+.login-form-box .footer a {
+    margin-left: 14pt;
+    float: right;
+    margin-top: 4pt;
+}
