@@ -68,6 +68,21 @@ header nav ul li a {
     text-transform: uppercase;
 }
 
+header nav .search {
+    position: absolute;
+    top: 77px;
+    right: 0;
+
+}
+
+
+header nav .search input {
+    width: 11rem;
+    background: #f3f3f3 url("../img/search-16x16.png") 0.25rem center no-repeat;
+    border: 1px solid var(--border-color);
+    padding-left: 1.5rem;
+}
+
 .middle {
     margin-top: 1rem;
     overflow: auto;
@@ -123,4 +138,168 @@ aside section .footer a {
 
 aside section .footer a:after {
     content: " →";
+}
+
+.datatable {
+    margin-bottom: 1rem;
+}
+
+.datatable .caption {
+    background: #ddd;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    color: var(--black-color);
+    padding: 0.25rem 0.5rem;
+}
+
+.datatable table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.datatable th,
+.datatable td {
+    border: 1px solid #ddd;
+    padding: 0.3rem;
+    text-align: center;
+}
+
+.datatable tbody tr:nth-child(2n-1) {
+    background: #f5f5f5;
+}
+
+
+article {
+    margin-bottom: 1rem;
+}
+
+article .title,
+.login-form-box .header {
+    color: var(--caption-color);
+    font-family: Verdana, sans-serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+article .information,
+.attachment {
+    color: #888;
+    font-size: 0.85rem;
+}
+
+article .body {
+    border-left: 4px solid var(--border-color);
+    margin-top: 0.75rem;
+    padding-left: 0.75rem;
+}
+
+article .body p {
+    margin: 0 0 0.75rem;
+}
+
+article .body p:last-child {
+    margin-bottom: 0;
+}
+
+.attachment {
+    list-style: none;
+    margin: 0.75rem 0;
+    padding: 0;
+}
+
+.attachment li {
+    background: url("../img/paperclip-16x16.png") left center no-repeat;
+    padding-left: 1.25rem;
+}
+
+article .footer {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    overflow: auto;
+    padding: 0.4rem 0.75rem;
+}
+
+article .footer .left {
+    float: left;
+}
+
+article .footer .right {
+    float: right;
+}
+
+article .footer img {
+    vertical-align: middle;
+}
+
+.positive-score {
+    color: green;
+    font-weight: bold;
+}
+
+.login-form-box {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    margin: 1.5rem auto;
+    width: 30rem;
+}
+
+.login-form-box .header {
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1.1rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.login-form-box .body {
+    padding: 1.5rem 2.5rem 0;
+}
+
+.login-form-box .field {
+    margin-bottom: 1rem;
+    overflow: auto;
+}
+
+.login-form-box .name {
+    float: left;
+    text-align: right;
+    width: 9rem;
+}
+
+.login-form-box .value {
+    margin-left: 10rem;
+}
+
+.login-form-box .value input {
+    width: 10rem;
+}
+
+.login-form-box .error {
+    color: red;
+    font-size: 0.7rem;
+    margin-left: 10rem;
+}
+
+.checkbox-field,
+.button-field,
+.links {
+    margin-left: 10rem;
+    margin-bottom: 1rem;
+}
+
+.button-field input {
+    width: 6rem;
+}
+
+.links {
+    text-align: right;
+}
+
+.login-form-box > .footer {
+    border-top: 1px solid var(--border-color);
+    margin-top: 0;
+    padding: 0.25rem;
+    text-align: right;
+}
+
+.login-form-box > .footer a {
+    font-size: 0.75rem;
+    margin-left: 0.75rem;
 }
