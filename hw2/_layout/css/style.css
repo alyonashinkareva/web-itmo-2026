@@ -142,7 +142,7 @@ aside section .footer a:after {
 
 .datatable {
     background: #e1e1e1;
-    border-radius: 6px 6px 0 0;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
 .caption {
@@ -214,7 +214,7 @@ article .body p:last-child {
 article .footer {
     margin-top: 6px;
     height: 35px;
-    border-radius: 6px;
+    border-radius: var(--border-radius);
     border: 1px solid var(--border-color)
 }
 
@@ -245,7 +245,9 @@ article .right {
     border: 1px solid var(--border-color);
     margin-left: 200px;
     width: 600px;
-    border-radius: 6px 6px 0 0;
+    max-width: calc(100% - 200px);
+    box-sizing: border-box;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
 .login-form-box .header {
@@ -259,67 +261,61 @@ article .right {
 
 .login-form-box .body {
     border-top: 1px solid var(--border-color);
-    padding-left: 100px;
 }
 
 .login-form-box .body form {
-    text-align: center;
-}
-
-.login-form-box .body .field,
-.login-form-box .body .checkbox-field,
-.login-form-box .body .button-field  {
-    display: flex;
-    align-items: center;
-    margin-top: 25px;
-}
-
-.login-form-box .body .checkbox-field::before,
-.login-form-box .body .button-field::before{
-    content: "";
-    flex: 1;
-    padding-right: 15px;
+    text-align: left;
 }
 
 .login-form-box .body .checkbox-field label {
-    margin-left: 8px;
-    width: 192px;
     text-align: left;
 }
 
 .login-form-box .body .button-field input {
-    margin-left: -94px;
     width: 120px;
     font-size: 16pt;
     margin-bottom: 10px;
 }
 
-.login-form-box .body .checkbox-field::after,
-.login-form-box .body .button-field::after {
-    content: "";
-    flex: 1;
+.login-form-box .body .field {
+    display: grid;
+    grid-template-columns: minmax(0, 130px) minmax(0, 200px);
+    column-gap: 15px;
+    align-items: center;
+    margin-top: 25px;
+    position: relative;
+
+    width: 345px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
 }
 
 .login-form-box .body .field .name {
-    flex: 1;
     text-align: right;
-    padding-right: 15px;
 }
 
-.login-form-box .body .field::after {
-    content: "";
-    flex: 1;
-    padding-left: 15px;
+.login-form-box .body .field .value input {
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.login-form-box .body .field {
-    position: relative;
+.login-form-box .body .checkbox-field,
+.login-form-box .body .button-field {
+    width: 345px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 145px;
+    box-sizing: border-box;
+    margin-top: 25px;
 }
 
 .login-form-box .body .field .error {
     position: absolute;
-    left: 48%;
-    transform: translateX(-50%);
+    left: 145px;
+    margin-bottom: 10px;
     top: 100%;
     color: red;
     font-size: 10pt;

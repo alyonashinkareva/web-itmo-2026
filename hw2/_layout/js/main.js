@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const links = document.querySelectorAll("nav a[data-target]");
+    const links = document.querySelectorAll("a[data-target]");
     const pages = document.querySelectorAll(".page");
 
     links.forEach(link => {
