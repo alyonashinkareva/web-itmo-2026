@@ -197,6 +197,81 @@ main article .footer img {
 }
 
 
+main .login-form-box { 
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);  
+    width: 50%;
+    margin: 0 auto;
+}
+
+main .login-form-box .header { 
+    border-bottom: 1px solid var(--border-color); 
+    font-weight: bold;
+    color: var(--caption-color);
+    padding: 0.25rem 0.5rem;
+}
+
+main .login-form-box .field { 
+    position: relative;
+    height: 3rem;
+}
+main .login-form-box .body { 
+    padding: 1.5rem 0.25rem 0.25rem 1.5rem;
+}
+
+main .login-form-box .field .name { 
+    position: absolute;
+    width: 9rem;
+    top: 0;
+    left: 0;
+    text-align: right;
+}
+
+main .login-form-box .field .value { 
+    position: absolute;
+    top: 0;
+    left: 10rem;
+}
+main .login-form-box .field .error { 
+    position: absolute;
+    top: 1.5rem;
+    left: 10rem;
+    font-size: 0.7rem;
+    color:red;
+}
+
+main .login-form-box .checkbox-field { 
+    margin: 0.5rem 0 0 10rem;
+    font-size: 0.8rem;
+}
+
+main .login-form-box .button-field { 
+    margin: 1.75rem 0 0 10rem;
+}
+main .login-form-box .button-field input { 
+    width: 6rem;
+}
+
+
+main .login-form-box .links { 
+    text-align: right;
+    font-size: 0.7rem;
+}
+
+main .login-form-box .footer { 
+    font-size: 0.7rem;
+    border-top: 1px solid var(--border-color); 
+    padding: 0.25rem;
+    height: 1rem;
+}
+
+main .login-form-box .footer a { 
+    float: right;
+    margin: 0.25rem 0 0.25rem 1rem;
+}
+
+
+
 footer {
     margin-top: 2rem;
     border-top: 1px solid var(--border-color);
