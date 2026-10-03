@@ -48,6 +48,7 @@ header nav {
     border-radius: var(--border-radius);
     padding: 0.75rem 0.25rem;
     margin-top: 1rem;
+    position: relative;
 }
 
 header nav ul {
@@ -68,6 +69,25 @@ header nav ul li a {
     text-transform: uppercase;
 }
 
+header nav .search {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+}
+
+header nav .search input {
+    padding: 0.2rem 0.25rem 0.2rem 1.5rem;
+    font-size: 12px;
+    background: rgb(241, 246, 245) url(../img/search-16x16.png) no-repeat 0.25rem center;
+    outline: none;
+
+    border: 1px solid var(--border-color);
+}
+
+header nav .search input:focus {
+    border-color: #0051ff;
+}
+
 .middle {
     margin-top: 1rem;
     overflow: auto;
@@ -81,6 +101,101 @@ aside {
 main {
     margin-right: 21rem;
 }
+
+
+main .datatable {
+    border-radius: var(--border-radius);    
+    border: 0;
+    overflow: hidden;
+}
+
+main .caption {
+    padding: 0.25rem 0rem 0.25rem 0.75rem;
+    background-color: rgba(205, 205, 198, 0.693);
+}
+
+main .datatable table {  
+    border-collapse: collapse;
+    width: 100%;
+}
+
+main .datatable td, main .datatable th {  
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+
+main .datatable tbody tr:nth-child(2n-1) {  
+    background-color: rgba(238, 243, 244, 0.693);
+}
+
+
+
+main article .title {
+    font-size: 1.3rem;
+    color: var(--caption-color);
+    font-weight: bold;
+}
+
+main article .information {
+    color: gray;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+main article .body {
+    font-size: 0.85rem;
+    border-left: 5px solid var(--border-color);
+    margin-top: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 1.5rem;
+}
+
+main article .body p:last-child {
+    margin-bottom: 0rem;
+}
+
+main article .attachment {
+    color: gray;
+    font-size: 0.8rem;
+    list-style: none;
+    padding: 0;   
+    margin: 0.5rem 0;
+
+}
+
+main article .attachment li {
+    background: url(../img/paperclip-16x16.png) no-repeat 0rem center;    
+    padding-left: 1.25rem;    
+    padding-top: 0.3rem;
+}
+
+main article .footer { 
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);   
+    position: relative;
+    height: 2.2rem;
+}
+
+main article .footer .positive-score { 
+    font-weight: bold;
+    color:green;
+}   
+
+main article .footer .left { 
+    position: absolute;
+    left: 0.5rem;
+    top: 0.5rem;
+}
+main article .footer .right { 
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+}
+main article .footer img { 
+    vertical-align: middle;
+}
+
 
 footer {
     margin-top: 2rem;
