@@ -44,6 +44,7 @@ header .enter-or-register-box {
 }
 
 header nav {
+    position: relative;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     padding: 0.75rem 0.25rem;
@@ -66,6 +67,119 @@ header nav ul li a {
     font-family: "Arial Narrow", sans-serif;
     font-weight: bold;
     text-transform: uppercase;
+}
+
+header nav .search {
+    position: absolute;
+    right: 0.5rem;
+    top: 25%;
+}
+
+header nav .search input{
+    border: 1px solid #d4d4d4;
+    color: black;
+    font-size: 0.8rem;
+    height: 16px;
+    width: 9em;
+    line-height: 16px;
+    padding: 1px 1px 1px 20px;
+    background: #f4f4f4 url(../img/search-16x16.png) 2px 2px no-repeat;
+}
+
+header nav .search input:focus{
+    outline: none;
+    border: 2px solid #7aa7ff;
+    border-radius: 3px;
+}
+
+.datatable {
+    font-size: 0.95rem;
+}
+
+.datatable .caption{
+    padding: 4px 0 0 6px;
+    font-size: 1.05rem;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    background-color: rgb(220, 220, 220);
+}
+
+.datatable table{
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.datatable table th {
+    font-weight: bold;
+}
+
+.datatable table th, td {
+    font-size: 0.85rem;
+    border: 1px solid rgb(220, 220, 220);
+    padding: 0.34rem;
+}
+
+.datatable table tbody tr:nth-child(odd) {
+    background-color: #f8f8f8;
+}
+
+article .title{
+    font-size: 1.35rem;
+    font-weight: bold;
+    color: #3B5998;
+}
+
+article .information {
+    font-size: 0.9rem;
+    color: rgb(150, 147, 147);
+    margin-top: 0.2rem;
+}
+
+article .body{
+    border-left: 5px solid var(--border-color);
+    padding-left: 0.7rem;
+    margin-top: 0.8rem;
+    font-family: "Arial Narrow", sans-serif;
+    font-size: 1.23rem;
+}
+
+article .attachment{
+    font-size: 0.85rem;
+    padding-left: 0;
+    margin: 0;
+}
+
+article .attachment li{
+    color: rgb(150, 147, 147);
+    padding-left: 1rem;
+    background-image: url(../img/paperclip-16x16.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+article .footer{
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    height: 1.5rem;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+article .footer .left{
+    float: left;
+    display: flex;
+    align-items: center;
+}
+article .footer .right {
+    float: right;
+    display: flex;
+    align-items: center;
+}
+
+article .footer .left .positive-score{
+    color: green;
+    font-weight: bold;
 }
 
 .middle {
