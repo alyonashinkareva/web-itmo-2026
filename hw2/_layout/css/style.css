@@ -10,7 +10,7 @@
 
 html {
     padding: 1rem;
-    min-width: 600px;
+    min-width: 800px;
     max-width: 1280px;
     margin: 0 auto;
 }
@@ -44,10 +44,217 @@ header .enter-or-register-box {
 }
 
 header nav {
+    position: relative;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     padding: 0.75rem 0.25rem;
     margin-top: 1rem;
+}
+
+header .search {
+    position: absolute;
+    right: 0.25rem;
+    top: 0.75rem;
+    padding-right: 5px;
+}
+
+header .search input {
+       width: 160px;
+       height: 16px;
+       padding-left: 20px;
+       border: 1px solid #d4d4d4;
+       background-image: url("../img/search-16x16.png");
+       background-repeat: no-repeat;
+       background-size: 16px 16px;
+       background-color: #F5F5F5;
+       font-family: inherit;
+       font-size: 12px;
+}
+
+header .search input:focus {
+    outline: none;
+    border-color: #96A6ED;
+    box-shadow: 0 0 0.5px 1px rgba(80, 140, 255, 0.25);
+}
+
+.datatable .caption {
+    font-size: 13px;
+    background-color: #DDD;
+    padding: 4px 7px;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.datatable table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.datatable th, td {
+    border: 1px solid #DDD;
+    padding: 4px;
+    text-align: center;
+}
+
+.datatable th {
+    font-size: 13px;
+}
+
+.datatable td {
+    font-size: 12px;
+}
+
+.datatable tbody tr:nth-child(odd) {
+    background-color: #F5F5F5;
+}
+
+article{
+    padding-bottom: 8px;
+}
+article .title{
+    font-size: 20px;
+    font-weight: bold;
+    color: #465e98;
+}
+
+article .information{
+    font-size: 12px;
+    color: #9a9189;
+}
+
+article .body{
+    border-left: 4px solid var(--border-color);
+    padding-left: 12px;
+    font-size: 14px;
+}
+
+article .attachment {
+    padding-left: 0;
+    margin-top: 8px;
+}
+
+article .attachment li{
+    font-size: 12px;
+    color: #9a9189;
+    list-style-type: none;
+    padding-left: 20px;
+    background-image: url("../img/paperclip-16x16.png");
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    margin-bottom: 5px;
+}
+
+article .footer{
+    align-items: center;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    position: relative;
+    height: 40px;
+}
+
+article .footer .right,
+article .footer .left{
+    gap: 8px;
+    align-items: center;
+    display: flex;
+    position: absolute;
+}
+
+article .footer .left{
+    top: 25%;
+    left: 4px;
+}
+
+article .footer .left .positive-score{
+    font-weight: bold;
+    color: #068000;
+}
+article .footer .right{
+    top: 30%;
+    font-size: 13px;
+    right: 8px;
+}
+
+.login-form-box{
+    width: 480px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.login-form-box .header{
+    font-size: 18px;
+    font-weight: 550;
+    color: #465e98;
+    padding-top: 4px;
+    padding-left: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+.login-form-box .body{
+    padding-top: 20px;
+}
+
+.login-form-box .footer{
+    border-top: 1px solid var(--border-color);
+}
+
+.login-form-box .field {
+    display: flex;
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.login-form-box .field .name {
+    width: 180px;
+    text-align: right;
+    margin-right: 16px;
+}
+
+.login-form-box .error {
+    position: absolute;
+    left: 196px;
+    top: 24px;
+    color: red;
+    font-size: 12px;
+}
+
+.login-form-box .checkbox-field {
+    margin-top: 40px;
+    margin-left: 196px;
+    margin-bottom: 26px;
+    font-size: 13px;
+}
+
+.login-form-box .button-field {
+    margin-right: 230px;
+    margin-left: 196px;
+    margin-bottom: 4px;
+}
+
+.login-form-box .button-field input {
+    width: 95px;
+    height: 26px;
+    background-color: #F5F5F5;
+    border: 1px solid #919191;
+}
+
+.login-form-box .field .value input {
+    width: 240px;
+    height: 20px;
+    background-color: white;
+    border: 1px solid var(--border-color);
+}
+
+.login-form-box .links,
+.login-form-box .footer{
+    text-align: right;
+    font-size: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-right: 4px;
+    flex-direction: row-reverse;
+    display: flex;
+    gap: 12px;
 }
 
 header nav ul {
