@@ -4,7 +4,10 @@
     --black-color: #333;
     --caption-color: #3B5998;
     --search-focus-color: cornflowerblue;
+    --search-box-border-color: #d4d4d4;
+    --search-background-color: #f4f4f4;
     --table-border-color: #E1E1E1;
+    --table-odd-row-color: #f8f8f8;
     color: var(--black-color);
     font-family: Verdana, sans-serif;
     font-size: 16px;
@@ -78,11 +81,11 @@ header nav .search {
 }
 
 header nav .search input {
-    border: 1px solid #d4d4d4;
+    border: 1px solid var(--search-box-border-color);
     font-size: 0.75rem;
     padding: 1px 1px 1px 20px;
     margin: 0 1em 0 0;
-    background: #f4f4f4 url(../img/search-16x16.png) 2px 2px no-repeat;
+    background: var(--search-background-color) url(../img/search-16x16.png) 2px 2px no-repeat;
     width: 11em;
     height: 16px;
 }
@@ -122,7 +125,7 @@ main {
 
 .datatable table {
     width: 100%;
-    margin: 4px 0 0 0;
+    margin-top: 4px;
 }
 
 table, th, td {
@@ -136,7 +139,7 @@ table, th, td {
 }
 
 .datatable tbody tr:nth-child(odd) {
-    background-color: #f8f8f8;
+    background-color: var(--table-odd-row-color);
 }
 
 .datatable tr {
