@@ -13,7 +13,7 @@
         <h1>Posts by <@c.userlink u/></h1>
 
         <#if userPosts?size gt 0>
-            <#list userPosts?reverse as p>
+            <#list userPosts?sort_by(post_id) as p>
                 <@c.renderPost p users/>
             </#list>
         <#else>

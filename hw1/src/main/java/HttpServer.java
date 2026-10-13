@@ -6,6 +6,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 
 class HttpServer {
     private final File root;
@@ -107,13 +108,18 @@ class HttpServer {
         }
     }
 
+    private final Map<String, String> MAP_CONTENT_TYPES = Map.of(
+            "html", "text/html",
+            "htm", "text/html",
+            "png", "image/png",
+            "json", "application/json"
+    );
+
     private String getContentType(File file) {
         String path = file.getAbsolutePath();
-        if (path.endsWith(".html") || path.endsWith(".htm")) {
-            return "text/html";
-        }
-        if (path.endsWith(".png")) {
-            return "image/png";
+        String end = path.substring(path.lastIndexOf('.') + 1);
+        if (MAP_CONTENT_TYPES.containsKey(end)) {
+            return MAP_CONTENT_TYPES.get(end);
         }
         throw new IllegalArgumentException();
     }

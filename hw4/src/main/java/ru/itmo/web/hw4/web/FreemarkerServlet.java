@@ -89,7 +89,8 @@ public class FreemarkerServlet extends HttpServlet {
                         data.put(name, Long.parseLong(value));
                         continue;
                     } catch (final NumberFormatException ignored) {
-                        // ignored
+                        data.put(name, -1L);
+                        continue;
                     }
                 }
 
