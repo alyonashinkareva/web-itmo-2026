@@ -4,6 +4,7 @@ import ru.itmo.wp.util.ImageUtils;
 import ru.itmo.wp.util.ServletUtils;
 
 import javax.servlet.FilterChain;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -22,29 +23,48 @@ public class CaptchaFilter extends HttpFilter {
 
     @Override
     protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
-        if (!request.getRequestURI().endsWith(".css") &&
-                !request.getRequestURI().endsWith(".png")&&
-                !request.getRequestURI().endsWith(".js")){
-            HttpSession session = request.getSession();
-            String result = session.getAttribute("result") == null ? null : session.getAttribute("result").toString();
-            String userResult = session.getAttribute("userResult") == null ? null : session.getAttribute("userResult").toString();
-            if (result == null || !result.equals(userResult)){
-                if (request.getRequestURI().endsWith("/captcha") && request.getParameter("userResult") != null){
-                    userResult = request.getParameter("userResult").strip();
-                    session.setAttribute("userResult", userResult);
-                    if (userResult.equals(result)){
-                        response.sendRedirect("/index.html");
-                        return;
-                    }
-                }
-                result = Integer.toString(100 + new Random().nextInt(900));
-                session.setAttribute("result", result);
-                writeResponse(response, result, session.getId());
-                return;
-            }
+        String uri = request.getRequestURI();
+
+        if (uri.endsWith(".css")
+                || uri.endsWith(".png")
+                || uri.endsWith(".js")) {
+            chain.doFilter(request, response);
+            return;
         }
 
-        super.doFilter(request, response, chain);
+        HttpSession session = request.getSession();
+
+        if (Boolean.TRUE.equals(session.getAttribute("captcha_accepted"))) {
+            chain.doFilter(request, response);
+            return;
+        }
+
+        String result = (String) session.getAttribute("result");
+        String userResult = request.getParameter("userResult");
+
+        if ("POST".equals(request.getMethod())
+                && result != null
+                && userResult != null
+                && result.equals(userResult.strip())) {
+            session.setAttribute("captcha_accepted", true);
+            session.removeAttribute("result");
+
+            String target = uri;
+            String query = request.getQueryString();
+
+            if (query != null) {
+                target += "?" + query;
+            }
+
+            response.setStatus(HttpServletResponse.SC_SEE_OTHER);
+            response.setHeader("Location", target);
+            return;
+        }
+
+        result = Integer.toString(100 + new Random().nextInt(900));
+        session.setAttribute("result", result);
+
+        writeResponse(response, result, session.getId());
     }
 
     private void writeResponse(HttpServletResponse response, String captchaNumber, String id) throws IOException {
