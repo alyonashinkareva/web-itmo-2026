@@ -43,6 +43,10 @@ public class FreemarkerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        if (request.getRequestURI().isEmpty() || request.getRequestURI().equals("/")){
+            response.sendRedirect("/index");
+            return;
+        }
         request.setCharacterEncoding(UTF_8);
         response.setCharacterEncoding(UTF_8);
 
@@ -51,11 +55,10 @@ public class FreemarkerServlet extends HttpServlet {
             template = freemarkerConfiguration.getTemplate(URLDecoder.decode(request.getRequestURI(), UTF_8) + ".ftlh");
         } catch (TemplateNotFoundException ignored) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            return;
+            template = freemarkerConfiguration.getTemplate("/not_found.ftlh");
         }
 
         Map<String, Object> data = getData(request);
-
         response.setContentType("text/html");
         try {
             template.process(data, response.getWriter());
@@ -70,11 +73,31 @@ public class FreemarkerServlet extends HttpServlet {
 
         for (Map.Entry<String, String[]> e : request.getParameterMap().entrySet()) {
             if (e.getValue() != null && e.getValue().length == 1) {
-                data.put(e.getKey(), e.getValue()[0]);
+                String key = e.getKey();
+                String value = e.getValue()[0];
+                if (key.endsWith("_id") && isCorrectId(value)){
+                    data.put(key, Long.valueOf(value));
+                }else{
+                    data.put(key, value);
+                }
             }
         }
 
+        data.put("uri", request.getRequestURI());
+
         DataUtil.addData(request, data);
         return data;
+    }
+
+    private boolean isCorrectId(String value) {
+        if (value == null) {
+            return false;
+        }
+
+        try {
+            return Long.parseLong(value) >= 0;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }

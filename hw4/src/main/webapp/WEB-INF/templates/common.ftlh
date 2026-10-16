@@ -23,17 +23,17 @@
 
 <#macro header>
     <header>
-        <a href="#" class="logo"><img alt="Codeforces" title="Codeforces"
+        <a <@logged_href ""/> class="logo"><img alt="Codeforces" title="Codeforces"
                                       src="/img/codeforces-logo-with-telegram.png"></a>
         <div class="languages">
-            <a href="#"><img alt="In English" title="In English"
+            <a <@logged_href ""/>><img alt="In English" title="In English"
                              src="/img/gb.png"></a>
-            <a href="#"><img alt="In Russian" title="In Russian"
+            <a <@logged_href ""/>><img alt="In Russian" title="In Russian"
                              src="/img/ru.png"></a>
         </div>
         <div class="enter-or-register-box">
-            <#if user??>
-                <@userlink user/>
+            <#if logged_user??>
+                <@userlink logged_user true/>
                 |
                 <a href="/logout">Logout</a>
             <#else>
@@ -46,12 +46,14 @@
             <#assign items=[
             {"href": "/index", "name": "Home"},
             {"href": "/misc/help", "name": "Help"},
-            {"href": "/contests", "name": "Contests"}
-            ]/>
+            {"href": "/contests", "name": "Contests"},
+            {"href": "/users", "name": "Users"}]/>
             <ul>
                 <#list items as item>
                     <li>
-                        <a href="${item.href}">${item.name}</a>
+                        <a <#if item.href == uri>
+                        class="active"
+                        </#if><@logged_href "${item.href}"/>>${item.name}</a>
                     </li>
                 </#list>
             </ul>
@@ -61,33 +63,7 @@
 
 <#macro sidebar>
     <aside>
-        <section>
-            <div class="header">Information</div>
-            <div class="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores enim expedita facilis
-                fugiat ipsum iste nobis reprehenderit tempore ut voluptatibus?
-            </div>
-            <div class="footer">
-                <a href="#">View all</a>
-            </div>
-        </section>
-        <section>
-            <div class="header">Information</div>
-            <div class="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores enim expedita facilis
-                fugiat ipsum iste nobis reprehenderit tempore ut voluptatibus?
-            </div>
-            <div class="footer">
-                <a href="#">View all</a>
-            </div>
-        </section>
-        <section>
-            <div class="header">Information</div>
-            <div class="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores enim expedita facilis
-                fugiat ipsum iste nobis reprehenderit tempore ut voluptatibus?
-            </div>
-            <div class="footer">
-                <a href="#">View all</a>
-            </div>
-        </section>
+       <@show_aside_posts posts/>
     </aside>
 </#macro>
 
@@ -97,9 +73,14 @@
     </footer>
 </#macro>
 
-<#macro userlink user>
+<#function hrefuser user>
+    <#return "/user?handle=${user.handle}"/>
+</#function>
+
+<#macro userlink user nameOnly=false>
 <#-- @ftlvariable name="user" type="ru.itmo.web.hw4.model.User" -->
-    <a href="/user?handle=${user.handle}">${user.name}</a>
+    
+    <a <@logged_href hrefuser(user)/> <#if !nameOnly>class="userlink" style="color: ${user.color?lower_case};"</#if>><#if nameOnly>${user.name}<#else>${user.handle}</#if></a>
 </#macro>
 
 <#function findBy items key value>
@@ -109,3 +90,101 @@
         </#if>
     </#list>
 </#function>
+
+<#function findNextBy items key value>
+    <#assign saw = false/>
+    <#list items as item>
+        <#if saw>
+            <#return item/>
+        </#if>
+        <#if item[key] == value>
+            <#assign saw = true/>
+        </#if>
+    </#list>
+</#function>
+
+<#function findPrevBy items key value>
+    <#assign u = ""/>
+    <#list items as item>
+        <#if item[key] == value>
+            <#return u/>
+        </#if>
+        <#assign u = item/>
+    </#list>
+</#function>
+
+<#macro arrow content user>
+    <div class="arrow">
+        <a <#if user?has_content>class="active" <@logged_href hrefuser(user)/><#else>class="disable"</#if>>
+            ${content}
+        </a>
+    </div>
+</#macro>
+
+<#macro to_short text length active>
+    <#if active && text?length gt length>
+                    ${text?substring(0, length)}...
+                <#else>
+                    ${text}
+                </#if>
+</#macro>
+
+<#macro show_post post users is_short=false is_short_title=false>
+    <article>
+            <div class="title"><@to_short post.title 100 is_short_title/></div>
+            <div class="information">By <@userlink findBy(users "id" post.user_id)/></div>
+            <div class="body">
+                <@to_short post.text 350 is_short/>
+            </div>
+        </article>
+</#macro>
+
+<#macro show_posts posts users>
+    <#list posts?reverse as post>
+    <@show_post post, users true false/>
+    </#list>
+</#macro>
+
+<#macro show_aside_post post>
+    <section>
+            <div class="header"><@to_short post.title 100 true/></div>
+            <div class="body"><@to_short post.text 350 true/></div>
+            <div class="footer">
+                <a <@logged_href "/posts?post_id=${post.id}"/>>View all</a>
+            </div>
+        </section>
+</#macro>
+
+<#macro show_aside_posts posts>
+    <#list posts?reverse as post>
+    <@show_aside_post post/>
+    </#list>
+</#macro>
+
+<#macro table_users users>
+    <div class="datatable">
+            <div class="caption">Users</div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Handle</th>
+                    <th>Name</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <#list users as user>
+                        <tr>
+                            <td>${user.id}</td>
+                            <td><@userlink user/></td>
+                            <td>${user.name}</td>
+                        </tr>
+                    </#list>
+                </tbody>
+            </table>
+        </div>
+</#macro>
+
+<#macro logged_href uri>
+    href="${uri}<#if logged_user??><#if uri?contains("?")>&amp;<#else>?</#if>logged_user_id=${logged_user.id}</#if>"
+</#macro>
