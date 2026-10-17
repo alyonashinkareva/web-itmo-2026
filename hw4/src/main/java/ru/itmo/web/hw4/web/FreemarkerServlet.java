@@ -43,22 +43,24 @@ public class FreemarkerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String path = request.getRequestURI();
+        if (path.isEmpty() || path.equals("/")){
+            response.sendRedirect(path +    "index");
+            return;
+        }
         request.setCharacterEncoding(UTF_8);
         response.setCharacterEncoding(UTF_8);
 
         Template template;
         try {
-            template = freemarkerConfiguration.getTemplate(URLDecoder.decode(request.getRequestURI(), UTF_8) + ".ftlh");
+            template = freemarkerConfiguration.getTemplate(URLDecoder.decode(path, UTF_8) + ".ftlh");
         } catch (TemplateNotFoundException ignored) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            return;
+            template = freemarkerConfiguration.getTemplate("not_found.ftlh");
         }
-
-        Map<String, Object> data = getData(request);
-
         response.setContentType("text/html");
         try {
-            template.process(data, response.getWriter());
+            template.process(getData(request), response.getWriter());
         } catch (TemplateException e) {
             e.printStackTrace();
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
@@ -70,11 +72,35 @@ public class FreemarkerServlet extends HttpServlet {
 
         for (Map.Entry<String, String[]> e : request.getParameterMap().entrySet()) {
             if (e.getValue() != null && e.getValue().length == 1) {
-                data.put(e.getKey(), e.getValue()[0]);
+                String key = e.getKey();
+                String value = e.getValue()[0];
+                if (key.endsWith("_id")){
+                    try {
+                        data.put(key, Long.parseLong(value));
+                    } catch (NumberFormatException ignored){
+                        data.put(key, value);
+                    }
+                } else {
+                    data.put(e.getKey(), e.getValue()[0]);
+                }
             }
         }
-
         DataUtil.addData(request, data);
+        String uri = request.getRequestURI();
+        switch (uri){
+            case "/post":
+                DataUtil.addPost(request, data);
+                break;
+            case "/posts":
+                DataUtil.addUserPosts(request, data);
+                break;
+            case "/user":
+                DataUtil.addNeighbors(request, data);
+                break;
+            default:
+                break;
+        }
+        data.put("currPage", request.getRequestURI());
         return data;
     }
 }

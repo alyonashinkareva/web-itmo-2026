@@ -5,8 +5,10 @@
 
     --border-color: rgb(185, 185, 185);
     --boder: 1px solid var(--border-color);
+    --second-plan-color: rgb(150, 147, 147);
     --border-radius: 6px;
     --caption-color: #3B5998;
+    --table-border-color: rgb(220, 220, 220);
 }
 
 html {
@@ -110,4 +112,113 @@ footer {
     padding-top: 1rem;
     border-top: var(--boder);
     text-align: center;
+}
+
+.user-info {
+    padding-left: 1rem;
+    display: flex;
+    border: var(--boder);
+    border-color: var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+.user-info img {
+    width: 120px;
+    height: 120px;
+    margin-left: auto;
+}
+
+.user-nav {
+    margin-top: 0.5rem;
+    font-size: 2rem;
+}
+
+.user-nav a {
+    text-decoration: none;
+    margin-right: 0.5rem;
+}
+
+.user-nav .unwork {
+    color: #878686;
+    margin-right: 0.5rem;
+}
+
+header nav ul li a.active {
+    border-bottom: 4px solid #3c649c;
+}
+
+article .title {
+    font-size: 1.35rem;
+    font-weight: bold;
+    color: var(--caption-color);
+}
+
+article .information {
+    font-size: 0.9rem;
+    color: var(--second-plan-color);
+    margin-top: 0.2rem;
+}
+
+article .body {
+    border-left: 5px solid var(--border-color);
+    padding-left: 0.7rem;
+    margin-top: 0.8rem;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+}
+
+article {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    margin-bottom: 3rem;
+}
+
+.datatable {
+    font-size: 0.95rem;
+}
+
+.datatable .caption {
+    padding: 4px 0 0 6px;
+    font-size: 1.05rem;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    background-color: var(--table-border-color);
+}
+
+.datatable table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.datatable table th {
+    font-weight: bold;
+}
+
+.datatable table th, td {
+    font-size: 0.85rem;
+    border: 1px solid var(--table-border-color);
+    padding: 0.34rem;
+}
+
+.datatable table tbody tr:nth-child(odd) {
+    background-color: #f8f8f8;
+}
+
+.user-link {
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+}
+
+.user-link .RED {
+    color: red;
+}
+
+.user-link .BLUE {
+    color: blue;
+}
+
+.user-link .GREEN {
+    color: green;
 }
