@@ -55,7 +55,7 @@ public class FreemarkerServlet extends HttpServlet {
         Template template;
         try {
             template = freemarkerConfiguration.getTemplate(URLDecoder.decode(request.getRequestURI(), UTF_8) + ".ftlh");
-        } catch (TemplateNotFoundException ignored) {
+        } catch (TemplateNotFoundException | IllegalArgumentException ignored) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             template = freemarkerConfiguration.getTemplate("notFound.ftlh");
         }

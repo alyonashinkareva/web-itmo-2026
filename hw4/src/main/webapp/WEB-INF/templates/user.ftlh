@@ -10,14 +10,15 @@
         <#assign u = ""/>
     </#if>
 
-    <#assign postCount = 0/>
-    <#list posts as post>
-        <#if post.user_id == u.id>
-            <#assign postCount = postCount + 1/>
-        </#if>
-    </#list>
+
 
     <#if u?has_content>
+        <#assign postCount = 0/>
+        <#list posts as post>
+            <#if post.user_id == u.id>
+                <#assign postCount = postCount + 1/>
+            </#if>
+        </#list>
         <div class="profile">
             <img class="avatar" src="/img/avatar.png" alt="User avatar">
 
