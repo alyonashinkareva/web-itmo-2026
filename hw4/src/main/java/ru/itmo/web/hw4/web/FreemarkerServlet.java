@@ -46,12 +46,18 @@ public class FreemarkerServlet extends HttpServlet {
         request.setCharacterEncoding(UTF_8);
         response.setCharacterEncoding(UTF_8);
 
+        String currentItem = URLDecoder.decode(request.getRequestURI(), UTF_8);
+        if("/".equals(currentItem)) {
+            response.sendRedirect("/index");
+            return;
+        }
+
         Template template;
         try {
-            template = freemarkerConfiguration.getTemplate(URLDecoder.decode(request.getRequestURI(), UTF_8) + ".ftlh");
+            template = freemarkerConfiguration.getTemplate(currentItem + ".ftlh");
         } catch (TemplateNotFoundException ignored) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            return;
+            template = freemarkerConfiguration.getTemplate("/status_404.ftlh");
         }
 
         Map<String, Object> data = getData(request);
@@ -65,15 +71,27 @@ public class FreemarkerServlet extends HttpServlet {
         }
     }
 
-    private Map<String, Object> getData(HttpServletRequest request) {
+    private Map<String, Object> getData(HttpServletRequest request) throws IOException {
         Map<String, Object> data = new HashMap<>();
 
         for (Map.Entry<String, String[]> e : request.getParameterMap().entrySet()) {
-            if (e.getValue() != null && e.getValue().length == 1) {
-                data.put(e.getKey(), e.getValue()[0]);
+            String key = e.getKey();
+            if (key != null && e.getValue().length == 1) {
+                String value = e.getValue()[0];
+                if(key.endsWith("_id")) {
+                    try {
+                        Long valueLong = Long.parseLong(value);
+                        data.put(key, valueLong);
+                    } catch (NumberFormatException exception) {
+                        data.put(key, value);
+                    }
+                }  else {
+                    data.put(key, value);
+                }
             }
         }
 
+        data.put("currentItem", URLDecoder.decode(request.getRequestURI(), UTF_8));
         DataUtil.addData(request, data);
         return data;
     }
