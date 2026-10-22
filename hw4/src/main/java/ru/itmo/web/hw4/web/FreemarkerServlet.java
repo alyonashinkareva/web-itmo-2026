@@ -47,7 +47,7 @@ public class FreemarkerServlet extends HttpServlet {
         response.setCharacterEncoding(UTF_8);
 
         String currentItem = URLDecoder.decode(request.getRequestURI(), UTF_8);
-        if("/".equals(currentItem)) {
+        if(currentItem.matches("/+")) {
             response.sendRedirect("/index");
             return;
         }

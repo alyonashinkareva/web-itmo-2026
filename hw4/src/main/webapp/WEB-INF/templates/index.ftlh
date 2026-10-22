@@ -1,7 +1,7 @@
 <#import "./common.ftlh" as c>
 
 <@c.page>
-    <#list posts?reverse as post>
+    <#list posts?sort_by("id")?reverse  as post>
        <@c.post currentPost=post isFull=false/>
     </#list>
 </@c.page>
