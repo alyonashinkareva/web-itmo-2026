@@ -21,6 +21,7 @@
     </html>
 </#macro>
 
+<#-- @ftlvariable name="currPage" type="ru.itmo.web.hw4.model.User" -->
 <#macro header>
     <header>
         <a href="#" class="logo"><img alt="Codeforces" title="Codeforces"
@@ -33,7 +34,7 @@
         </div>
         <div class="enter-or-register-box">
             <#if user??>
-                <@userlink user/>
+                <@userlink user true/>
                 |
                 <a href="/logout">Logout</a>
             <#else>
@@ -46,12 +47,17 @@
             <#assign items=[
             {"href": "/index", "name": "Home"},
             {"href": "/misc/help", "name": "Help"},
-            {"href": "/contests", "name": "Contests"}
+            {"href": "/contests", "name": "Contests"},
+            {"href": "/users", "name": "Users"}
             ]/>
             <ul>
                 <#list items as item>
                     <li>
-                        <a href="${item.href}">${item.name}</a>
+                        <a href="${item.href}" <#if currPage == item.href>
+                            class="active"
+                                </#if>>
+                            ${item.name}
+                        </a>
                     </li>
                 </#list>
             </ul>
@@ -61,33 +67,17 @@
 
 <#macro sidebar>
     <aside>
-        <section>
-            <div class="header">Information</div>
-            <div class="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores enim expedita facilis
-                fugiat ipsum iste nobis reprehenderit tempore ut voluptatibus?
-            </div>
-            <div class="footer">
-                <a href="#">View all</a>
-            </div>
-        </section>
-        <section>
-            <div class="header">Information</div>
-            <div class="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores enim expedita facilis
-                fugiat ipsum iste nobis reprehenderit tempore ut voluptatibus?
-            </div>
-            <div class="footer">
-                <a href="#">View all</a>
-            </div>
-        </section>
-        <section>
-            <div class="header">Information</div>
-            <div class="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores enim expedita facilis
-                fugiat ipsum iste nobis reprehenderit tempore ut voluptatibus?
-            </div>
-            <div class="footer">
-                <a href="#">View all</a>
-            </div>
-        </section>
+        <#list posts as post>
+            <section>
+                <div class="header">Post #${post.id}</div>
+                <div class="body">
+                    ${post.clippedText}
+                </div>
+                <div class="footer">
+                    <a href="/post?post_id=${post.id}">View all</a>
+                </div>
+            </section>
+        </#list>
     </aside>
 </#macro>
 
@@ -97,9 +87,50 @@
     </footer>
 </#macro>
 
-<#macro userlink user>
+<#macro userlink user nameOnly=false>
 <#-- @ftlvariable name="user" type="ru.itmo.web.hw4.model.User" -->
-    <a href="/user?handle=${user.handle}">${user.name}</a>
+    <a href="/user?handle=${user.handle}" class="user-link">
+        ${user.name}
+        <#if !nameOnly>
+            <span class="${user.color}"> ${user.handle} </span>
+        </#if>
+    </a>
+</#macro>
+
+<#macro handlelink user>
+    <a href="/user?handle=${user.handle}">${user.handle}</a>
+</#macro>
+
+<#macro post p fulltext = false>
+    <article>
+        <div class="title">${p.title}</div>
+        <div class="information">
+            <#assign found = false>
+            By
+            <#list users as u>
+                <#if u.id == p.user_id>
+                    <@userlink u/>
+                    <#assign found = true>
+                    <#break>
+                </#if>
+            </#list>
+        <#if !found>
+            ${p.user_id?c}
+        </#if>
+        </div>
+        <div class="body">
+            <p>
+                <#if !fulltext>
+                    ${p.clippedText}
+                    <#if p.text?length gt 350>
+                        <a href="post?post_id=${p.id}">View all</a>
+                    </#if>
+                <#else>
+                    ${p.text}
+                </#if>
+            </p>
+        </div>
+    </article>
 </#macro>
 
 <#function findBy items key value>
@@ -109,3 +140,4 @@
         </#if>
     </#list>
 </#function>
+

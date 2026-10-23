@@ -11,15 +11,57 @@ import java.nio.file.Files;
 public class StaticServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String uri = request.getRequestURI();
-        File file = new File(getServletContext().getRealPath("/static" + uri));
-        if (file.isFile()) {
-            response.setContentType(getServletContext().getMimeType(file.getName()));
-            try (OutputStream outputStream = response.getOutputStream()) {
+        final String uri = request.getRequestURI();
+        final String[] uriArray = uri.split("\\+");
+        File source = getSourceDirectory();
+        final File[] files = new File[uriArray.length];
+        for (int i = 0; i < uriArray.length; i++){
+            String root = source != null ? source.getPath() : null;
+            File file = root != null ? new File(root, uriArray[i]) : null;
+            if (file != null && isUnLegalPath(root, file)){
+                response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                return;
+            }
+            if (file == null || !file.isFile()) {
+                root = getServletContext().getRealPath("/static");
+                if (root == null) {
+                    response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                    return;
+                }
+                file = new File(root, uriArray[i]);
+                if (isUnLegalPath(root, file)) {
+                    response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                    return;
+                }
+            }
+            if (!file.isFile()) {
+                response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                return;
+            }
+            files[i] = file;
+        }
+        response.setContentType(getServletContext().getMimeType(files[0].getName()));
+        try (OutputStream outputStream = response.getOutputStream()) {
+            for (File file : files) {
                 Files.copy(file.toPath(), outputStream);
             }
-        } else {
-            response.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
+    }
+    private File getSourceDirectory() {
+        String path = getServletContext().getRealPath("/static");
+        if (path == null){
+            return null;
+        }
+        File dir = new File(path);
+        while (dir != null) {
+            File source = new File(dir, "src/main/webapp/static");
+            if (source.isDirectory()) return source;
+            dir = dir.getParentFile();
+        }
+        return null;
+    }
+
+    private boolean isUnLegalPath(final String root, File file) throws IOException {
+        return !file.getCanonicalFile().toPath().startsWith(new File(root).getCanonicalFile().toPath());
     }
 }
