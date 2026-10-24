@@ -1,4 +1,9 @@
 package ru.itmo.wp.web.page;
 
-public class DemoActions {
+import java.util.Map;
+
+public interface DemoActions {
+    default void fromInterface(Map<String, Object> view) {
+        view.put("message", "Method from interface");
+    }
 }

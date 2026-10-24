@@ -73,6 +73,12 @@ public class FrontServlet extends HttpServlet {
 
     private void process(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String lang = request.getParameter("lang");
+
+        if (lang != null && lang.matches("[a-z]{2}")) {
+            request.getSession().setAttribute("lang", lang);
+        }
+
         Route route = Route.newRoute(request);
         try {
             process(route, request, response);
@@ -95,11 +101,24 @@ public class FrontServlet extends HttpServlet {
         }
 
         Method method = null;
-        for (Class<?> clazz = pageClass; method == null && clazz != null; clazz = clazz.getSuperclass()) {
-            try {
-                method = clazz.getDeclaredMethod(route.getAction(), HttpServletRequest.class, Map.class);
-            } catch (NoSuchMethodException ignored) {
-                // No operations.
+        for (Class<?> clazz = pageClass;
+            method == null && clazz != null && clazz != Object.class;
+            clazz = clazz.getSuperclass()) {
+            for (Method candidate : clazz.getDeclaredMethods()) {
+                if (candidate.getName().equals(route.getAction())) {
+                    method = candidate;
+                    break;
+                }
+            }
+        }
+
+        if (method == null) {
+            for (Method candidate : pageClass.getMethods()) {
+                if (candidate.getDeclaringClass() != Object.class
+                        && candidate.getName().equals(route.getAction())) {
+                    method = candidate;
+                    break;
+                }
             }
         }
 
@@ -117,9 +136,21 @@ public class FrontServlet extends HttpServlet {
         }
 
         Map<String, Object> view = new HashMap<>();
+        Class<?>[] types = method.getParameterTypes();
+        Object[] arguments = new Object[types.length];
+
+        for (int i = 0; i < types.length; i++) {
+            if (types[i] == HttpServletRequest.class) {
+                arguments[i] = request;
+            } else if (types[i] == Map.class) {
+                arguments[i] = view;
+            } else {
+                throw new ServletException("Unsupported parameter type");
+            }
+        }
         method.setAccessible(true);
         try {
-            method.invoke(page, request, view);
+            method.invoke(page, arguments);
         } catch (IllegalAccessException e) {
             throw new ServletException("Can't invoke action method [pageClass="
                     + pageClass + ", method=" + method + "]");
@@ -135,7 +166,24 @@ public class FrontServlet extends HttpServlet {
             }
         }
 
-        Template template = newTemplate(pageClass.getSimpleName() + ".ftlh");
+        String templateName = pageClass.getSimpleName();
+        String lang = (String) request.getSession().getAttribute("lang");
+        view.put("lang", lang == null ? "en" : lang);
+
+        Template template = null;
+
+        if (lang != null && !lang.equals("en")) {
+            template = newTemplate(templateName + "_" + lang + ".ftlh");
+        }
+
+        if (template == null) {
+            template = newTemplate(templateName + ".ftlh");
+        }
+
+        if (template == null) {
+            throw new ServletException("Can't find template: " + templateName);
+        }
+
         response.setContentType("text/html");
         response.setCharacterEncoding(StandardCharsets.UTF_8.name());
         try {
@@ -170,11 +218,6 @@ public class FrontServlet extends HttpServlet {
                 throw new ServletException("Can't load template [templateName=" + templateName + "]", e);
             }
         }
-
-        if (template == null) {
-            throw new ServletException("Can't find template [templateName=" + templateName + "]");
-        }
-
         return template;
     }
 
