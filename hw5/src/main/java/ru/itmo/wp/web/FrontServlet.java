@@ -47,6 +47,7 @@ public class FrontServlet extends HttpServlet {
                 TemplateExceptionHandler.RETHROW_HANDLER);
         configuration.setLogTemplateExceptions(false);
         configuration.setWrapUncheckedExceptions(true);
+        configuration.setLocalizedLookup(false);
 
         return configuration;
     }
@@ -87,6 +88,11 @@ public class FrontServlet extends HttpServlet {
 
     private void process(Route route, HttpServletRequest request, HttpServletResponse response)
             throws NotFoundException, ServletException, IOException {
+        String lang = request.getParameter("lang");
+        if (lang != null && lang.matches("[a-z]{2}")) {
+            request.getSession().setAttribute("lang", lang);
+        }
+
         Class<?> pageClass;
         try {
             pageClass = Class.forName(route.getClassName());
@@ -94,14 +100,7 @@ public class FrontServlet extends HttpServlet {
             throw new NotFoundException();
         }
 
-        Method method = null;
-        for (Class<?> clazz = pageClass; method == null && clazz != null; clazz = clazz.getSuperclass()) {
-            try {
-                method = clazz.getDeclaredMethod(route.getAction(), HttpServletRequest.class, Map.class);
-            } catch (NoSuchMethodException ignored) {
-                // No operations.
-            }
-        }
+        Method method = findMethod(pageClass, route.getAction());
 
         if (method == null) {
             throw new NotFoundException();
@@ -116,10 +115,23 @@ public class FrontServlet extends HttpServlet {
                     + pageClass + "]");
         }
 
+        Class<?>[] parameterTypes = method.getParameterTypes();
+        Object[] parameters = new Object[parameterTypes.length];
         Map<String, Object> view = new HashMap<>();
+
+        for (int i = 0; i < parameterTypes.length; i++) {
+            if (parameterTypes[i] == HttpServletRequest.class) {
+                parameters[i] = request;
+            } else if (parameterTypes[i] == Map.class) {
+                parameters[i] = view;
+            } else {
+                throw new  ServletException("Unsupported parameter type [" + parameterTypes[i] + "]");
+            }
+        }
+
         method.setAccessible(true);
         try {
-            method.invoke(page, request, view);
+            method.invoke(page, parameters);
         } catch (IllegalAccessException e) {
             throw new ServletException("Can't invoke action method [pageClass="
                     + pageClass + ", method=" + method + "]");
@@ -135,7 +147,12 @@ public class FrontServlet extends HttpServlet {
             }
         }
 
-        Template template = newTemplate(pageClass.getSimpleName() + ".ftlh");
+        Template template;
+        try {
+            template = newTemplate(pageClass.getSimpleName() + getLangName(request) + ".ftlh");
+        } catch (TemplateNotFoundException ignored) {
+            template = newTemplate(pageClass.getSimpleName() + ".ftlh");
+        }
         response.setContentType("text/html");
         response.setCharacterEncoding(StandardCharsets.UTF_8.name());
         try {
@@ -148,7 +165,47 @@ public class FrontServlet extends HttpServlet {
         }
     }
 
-    private Template newTemplate(String templateName) throws ServletException {
+    private String getLangName(HttpServletRequest request) {
+        String lang = (String) request.getSession().getAttribute("lang");
+        if (lang == null || lang.equals("en")) {
+            return "";
+        }
+        return "_" + lang;
+    }
+
+    private Method findMethod(Class<?> pageClass, String methodName) {
+        for (Class<?> clazz = pageClass; clazz != null; clazz = clazz.getSuperclass()) {
+            for (Method method : clazz.getDeclaredMethods()) {
+                if (method.getName().equals(methodName)) {
+                    return method;
+                }
+            }
+
+            Method method = findInterfaceMethod(clazz.getInterfaces(), methodName);
+            if (method != null) {
+                return method;
+            }
+        }
+        return null;
+    }
+
+    private Method findInterfaceMethod(Class<?>[] interfaces, String methodName) {
+        for (Class<?> interfaceClass : interfaces) {
+            for (Method method : interfaceClass.getDeclaredMethods()) {
+                if (method.getName().equals(methodName)) {
+                    return method;
+                }
+            }
+
+            Method method = findInterfaceMethod(interfaceClass.getInterfaces(), methodName);
+            if (method != null) {
+                return method;
+            }
+        }
+        return null;
+    }
+
+    private Template newTemplate(String templateName) throws ServletException, TemplateNotFoundException {
         Template template = null;
 
         if (sourceConfiguration != null) {
@@ -172,7 +229,7 @@ public class FrontServlet extends HttpServlet {
         }
 
         if (template == null) {
-            throw new ServletException("Can't find template [templateName=" + templateName + "]");
+            throw new TemplateNotFoundException("Can't find template [templateName=" + templateName + "]", null, null);
         }
 
         return template;
