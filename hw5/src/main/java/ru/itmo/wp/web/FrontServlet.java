@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -36,6 +37,7 @@ public class FrontServlet extends HttpServlet {
         }
 
         Configuration configuration = new Configuration(Configuration.VERSION_2_3_31);
+        configuration.setLocalizedLookup(false);
         try {
             configuration.setDirectoryForTemplateLoading(templateDir);
         } catch (IOException e) {
@@ -75,6 +77,11 @@ public class FrontServlet extends HttpServlet {
             throws ServletException, IOException {
         Route route = Route.newRoute(request);
         try {
+            HttpSession session = request.getSession();
+            String lang = request.getParameter("lang");
+            if (lang != null && lang.matches("[a-z]{2}")) {
+                session.setAttribute("lang", lang);
+            }
             process(route, request, response);
         } catch (NotFoundException e) {
             try {
@@ -96,10 +103,20 @@ public class FrontServlet extends HttpServlet {
 
         Method method = null;
         for (Class<?> clazz = pageClass; method == null && clazz != null; clazz = clazz.getSuperclass()) {
-            try {
-                method = clazz.getDeclaredMethod(route.getAction(), HttpServletRequest.class, Map.class);
-            } catch (NoSuchMethodException ignored) {
-                // No operations.
+            for (Method m : clazz.getDeclaredMethods()) {
+                if (m.getName().equals(route.getAction())) {
+                    method = m;
+                    break;
+                }
+            }
+//            method = clazz.getDeclaredMethod(route.getAction(), HttpServletRequest.class, Map.class);
+        }
+        if (method == null) {
+            for (Method m : pageClass.getMethods()) {
+                if (m.getName().equals(route.getAction()) && m.isDefault()) {
+                    method = m;
+                    break;
+                }
             }
         }
 
@@ -118,8 +135,19 @@ public class FrontServlet extends HttpServlet {
 
         Map<String, Object> view = new HashMap<>();
         method.setAccessible(true);
+
+        Class<?>[] parameterTypes = method.getParameterTypes();
+        Object[] args = new Object[parameterTypes.length];
+        for (int i = 0; i < parameterTypes.length; i++) {
+            if (parameterTypes[i] == Map.class) {
+                args[i] = view;
+            } else if (parameterTypes[i] == HttpServletRequest.class) {
+                args[i] = request;
+            }
+        }
+
         try {
-            method.invoke(page, request, view);
+            method.invoke(page, args);
         } catch (IllegalAccessException e) {
             throw new ServletException("Can't invoke action method [pageClass="
                     + pageClass + ", method=" + method + "]");
@@ -135,7 +163,15 @@ public class FrontServlet extends HttpServlet {
             }
         }
 
-        Template template = newTemplate(pageClass.getSimpleName() + ".ftlh");
+        HttpSession session = request.getSession();
+        String lang = (String) session.getAttribute("lang");
+        Template template = null;
+        if (lang != null && !lang.equals("en")) {
+            template = newTemplate(pageClass.getSimpleName() + "_" + lang + ".ftlh", false);
+        }
+        if (template == null) {
+            template = newTemplate(pageClass.getSimpleName() + ".ftlh", true);
+        }
         response.setContentType("text/html");
         response.setCharacterEncoding(StandardCharsets.UTF_8.name());
         try {
@@ -148,7 +184,7 @@ public class FrontServlet extends HttpServlet {
         }
     }
 
-    private Template newTemplate(String templateName) throws ServletException {
+    private Template newTemplate(String templateName, boolean throwException) throws ServletException {
         Template template = null;
 
         if (sourceConfiguration != null) {
@@ -171,7 +207,7 @@ public class FrontServlet extends HttpServlet {
             }
         }
 
-        if (template == null) {
+        if (template == null && throwException) {
             throw new ServletException("Can't find template [templateName=" + templateName + "]");
         }
 
