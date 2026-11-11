@@ -3,6 +3,11 @@
     --border-radius: 6px;
     --black-color: #333;
     --caption-color: #3B5998;
+    --header-color: #465e98;
+    --border:  1px solid var(--border-color);
+    --text-color: #9a9189;
+    --table-border-color: #DDD;
+    --background-color: #F5F5F5;
     color: var(--black-color);
     font-family: Verdana, sans-serif;
     font-size: 16px;
@@ -10,7 +15,7 @@
 
 html {
     padding: 1rem;
-    min-width: 600px;
+    min-width: 800px;
     max-width: 1280px;
     margin: 0 auto;
 }
@@ -44,10 +49,217 @@ header .enter-or-register-box {
 }
 
 header nav {
-    border: 1px solid var(--border-color);
+    position: relative;
+    border: var(--border);
     border-radius: var(--border-radius);
     padding: 0.75rem 0.25rem;
     margin-top: 1rem;
+}
+
+header .search {
+    position: absolute;
+    right: 0.25rem;
+    top: 0.75rem;
+    padding-right: 0.25rem;
+}
+
+header .search input {
+       width: 10rem;
+       height: 1rem;
+       padding-left: 1rem;
+       border: 1px solid #d4d4d4;
+       background-image: url("../img/search-16x16.png");
+       background-repeat: no-repeat;
+       background-size: 1rem 1rem;
+       background-color: var(--background-color);
+       font-family: inherit;
+       font-size: 0.75rem;
+}
+
+header .search input:focus {
+    outline: none;
+    border-color: #96A6ED;
+    box-shadow: 0 0 0.5px 1px rgba(80, 140, 255, 0.25);
+}
+
+.datatable .caption {
+    font-size: 0.80rem;
+    background-color: var(--table-border-color);
+    padding: 0.25rem 0.45rem;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.datatable table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.datatable th,
+.datatable td {
+    border: 1px solid var(--table-border-color);
+    padding: 0.25rem;
+    text-align: center;
+}
+
+.datatable th {
+    font-size: 0.8rem;
+}
+
+.datatable td {
+    font-size: 0.8rem;
+}
+
+.datatable tbody tr:nth-child(odd) {
+    background-color: var(--background-color);
+}
+
+article{
+    padding-bottom: 0.5rem;
+}
+article .title{
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--header-color);
+}
+
+article .information{
+    font-size: 0.75rem;
+    color: var(--text-color);
+}
+
+article .body{
+    border-left: 4px solid var(--border-color);
+    padding-left: 0.75rem;
+    font-size: 0.875rem;
+}
+
+article .attachment {
+    padding-left: 0;
+    margin-top: 0.75rem;
+}
+
+article .attachment li{
+    font-size: 0.75rem;
+    color: var(--text-color);
+    list-style-type: none;
+    padding-left: 1.25rem;
+    background-image: url("../img/paperclip-16x16.png");
+    background-repeat: no-repeat;
+    background-size: 0.875rem 0.875rem;
+    margin-bottom: 0.3rem;
+}
+
+article .footer{
+    border-radius: var(--border-radius);
+    border: var(--border);
+    position: relative;
+    height: 2.5rem;
+}
+
+article .footer .right,
+article .footer .left{
+    gap: 0.5rem;
+    align-items: center;
+    display: flex;
+    position: absolute;
+}
+
+article .footer .left{
+    top: 25%;
+    left: 0.25rem;
+}
+
+article .footer .left .positive-score{
+    font-weight: bold;
+    color: #068000;
+}
+article .footer .right{
+    top: 30%;
+    font-size: 0.8rem;
+    right: 0.5rem;
+}
+
+.login-form-box{
+    width: 30rem;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    border: var(--border);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.login-form-box .header{
+    font-size: 1.125rem;
+    font-weight: 550;
+    color: var(--header-color);
+    padding-top: 0.25rem;
+    padding-left: 0.5rem;
+    border-bottom: var(--border);
+}
+.login-form-box .body{
+    padding-top: 1.25rem;
+}
+
+.login-form-box .footer{
+    border-top: var(--border);
+}
+
+.login-form-box .field {
+    display: flex;
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.login-form-box .field .name {
+    width: 11.25rem;
+    text-align: right;
+    margin-right: 1rem;
+}
+
+.login-form-box .error {
+    position: absolute;
+    left: 12.25rem;
+    top: 1.5rem;
+    color: red;
+    font-size: 0.75rem;
+}
+
+.login-form-box .checkbox-field {
+    margin-top: 2.5rem;
+    margin-left: 12.25rem;
+    margin-bottom: 1.625rem;
+    font-size: 0.8rem;
+}
+
+.login-form-box .button-field {
+    margin-right: 14.375rem;
+    margin-left: 12.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.login-form-box .button-field input {
+    width: 6rem;
+    height: 1.625rem;
+    background-color: var(--background-color);
+    border: 1px solid #919191;
+}
+
+.login-form-box .field .value input {
+    width: 15rem;
+    height: 1.25rem;
+    background-color: white;
+    border: var(--border);
+}
+
+.login-form-box .links,
+.login-form-box .footer{
+    text-align: right;
+    font-size: 0.75rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-right: 0.25rem;
+    flex-direction: row-reverse;
+    display: flex;
+    gap: 0.75rem;
 }
 
 header nav ul {
@@ -84,19 +296,19 @@ main {
 
 footer {
     margin-top: 2rem;
-    border-top: 1px solid var(--border-color);
+    border-top: var(--border);
     padding-top: 0.5rem;
     text-align: center;
 }
 
 aside section {
-    border: 1px solid var(--border-color);
+    border: var(--border);
     border-top-left-radius: var(--border-radius);
     border-top-right-radius: var(--border-radius);
 }
 
 aside section .header {
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: var(--border);
     padding: 0.25rem;
     font-weight: bold;
     color: var(--caption-color);
@@ -111,7 +323,7 @@ aside section .body {
 }
 
 aside section .footer {
-    border-top: 1px solid var(--border-color);
+    border-top: var(--border);
     overflow: auto;
     padding: 0.25rem;
 }
