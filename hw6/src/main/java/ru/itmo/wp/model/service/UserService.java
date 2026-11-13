@@ -1,5 +1,6 @@
 package ru.itmo.wp.model.service;
 
+import com.google.common.base.CharMatcher;
 import com.google.common.base.Strings;
 import com.google.common.hash.Hashing;
 import ru.itmo.wp.model.domain.User;
@@ -15,7 +16,8 @@ public class UserService {
 
     private final UserRepository userRepository = new UserRepositoryImpl();
 
-    public void validateRegistration(User user, String password) throws ValidationException {
+    public void validateRegistration(User user, String password, String passwordConfirmation)
+        throws ValidationException {
         if (Strings.isNullOrEmpty(user.getLogin())) {
             throw new ValidationException("Login is required");
         }
@@ -29,6 +31,19 @@ public class UserService {
             throw new ValidationException("Login is already in use");
         }
 
+        if (Strings.isNullOrEmpty(user.getEmail())) {
+            throw new ValidationException("Email is required");
+        }
+        if (CharMatcher.is('@').countIn(user.getEmail()) != 1) {
+            throw new ValidationException("Email must contain exactly one '@'");
+        }
+        if (user.getEmail().length() > 255) {
+            throw new ValidationException("Email can't be longer than 255 characters");
+        }
+        if (userRepository.findByEmail(user.getEmail()) != null) {
+            throw new ValidationException("Email is already in use");
+        }
+
         if (Strings.isNullOrEmpty(password)) {
             throw new ValidationException("Password is required");
         }
@@ -38,30 +53,55 @@ public class UserService {
         if (password.length() > 64) {
             throw new ValidationException("Password can't be longer than 64 characters");
         }
+        if (!password.equals(passwordConfirmation)) {
+            throw new ValidationException("Passwords do not match");
+        }
     }
 
     public void register(User user, String password) {
         userRepository.save(user, getPasswordSha(password));
     }
 
-    public void validateEnter(String login, String password) throws ValidationException {
-        if (Strings.isNullOrEmpty(login)) {
-            throw new ValidationException("Login is required");
+    public void validateEnter(String loginOrEmail, String password) throws ValidationException {
+        if (Strings.isNullOrEmpty(loginOrEmail)) {
+            throw new ValidationException("Login or email is required");
         }
         if (Strings.isNullOrEmpty(password)) {
             throw new ValidationException("Password is required");
         }
-        if (findByLoginAndPassword(login, password) == null) {
-            throw new ValidationException("Invalid login or password");
+        if (findByLoginOrEmailAndPassword(loginOrEmail, password) == null) {
+            throw new ValidationException("Invalid login/email or password");
         }
     }
 
-    public User findByLoginAndPassword(String login, String password) {
-        return userRepository.findByLoginAndPasswordSha(login, getPasswordSha(password));
+    public User findByLoginOrEmailAndPassword(String loginOrEmail, String password) {
+        return userRepository.findByLoginOrEmailAndPasswordSha(loginOrEmail, getPasswordSha(password));
     }
 
     public List<User> findAll() {
         return userRepository.findAll();
+    }
+
+    public long findCount() {
+        return userRepository.findCount();
+    }
+
+    public boolean isAdmin(User user) {
+        if (user == null) {
+            return false;
+        }
+        User actualUser = userRepository.find(user.getId());
+        return actualUser != null && actualUser.isAdmin();
+    }
+
+    public void setAdmin(User currentUser, long userId, boolean admin) throws ValidationException {
+        if (!isAdmin(currentUser)) {
+            throw new ValidationException("Only administrators can change admin flag");
+        }
+        if (userRepository.find(userId) == null) {
+            throw new ValidationException("User not found");
+        }
+        userRepository.updateAdmin(userId, admin);
     }
 
     private String getPasswordSha(String password) {

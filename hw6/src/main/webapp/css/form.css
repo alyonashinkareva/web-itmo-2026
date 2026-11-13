@@ -31,7 +31,7 @@
     float: left;
 }
 
-.form-box .field input {
+.form-box .field input, .form-box .field select, .form-box .field textarea {
     width: 100%;
 }
 

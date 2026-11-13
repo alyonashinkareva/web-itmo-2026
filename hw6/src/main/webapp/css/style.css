@@ -8,6 +8,9 @@
     --datatable-dark-cell-color: #f8f8f8;
     --message-border-color: #1E88E5;
     --message-background-color: #E3F2FD;
+    --gray-color: #888;
+    --big-font-size: 1.25rem;
+    --medium-font-size: 0.875rem;
     color: var(--black-color);
     font-family: Verdana, sans-serif;
     font-size: 16px;
@@ -137,4 +140,35 @@ aside section .footer a:after {
     border: 1px solid var(--message-border-color);
     background-color: var(--message-background-color);
     text-align: center;
+}
+
+main > * + *,
+.articles > * + * {
+    margin-top: 2rem;
+}
+
+article .title {
+    font-size: var(--big-font-size);
+    font-weight: bold;
+    color: var(--caption-color);
+}
+
+article .information {
+    font-size: var(--medium-font-size);
+    color: var(--gray-color);
+}
+
+article .body {
+    margin-top: 1rem;
+    padding-left: 0.75rem;
+    border-left: 4px solid var(--border-color);
+    font-family: Arial, sans-serif;
+}
+
+article .body p {
+    margin: 0 0 1rem 0;
+}
+
+article .body p:last-child {
+    margin-bottom: 0;
 }
