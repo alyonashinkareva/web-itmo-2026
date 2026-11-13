@@ -49,6 +49,10 @@ header nav ul li {
     margin: 0;
 }
 
+header nav ul li .current {
+    text-decoration: underline blue;
+}
+
 header nav ul li a {
     text-decoration: none;
     font-weight: bold;
@@ -90,6 +94,36 @@ aside section .body {
     padding: 0.25rem;
 }
 
+.userDisplay > .ava > img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 113px;
+    height: auto;
+}
+
+.userDisplay  {
+    position: relative;
+    border: var(--boder);
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    margin-bottom: 1rem;
+}
+
+.arrays {
+    font-size: 30px;
+    display: flex;
+    gap: 10px;
+}
+
+.arrays > a {
+    text-decoration: none;
+}
+
+.disabled {
+    color: gray;
+}
+
 aside section .footer {
     border-top: var(--boder);
     padding: 0.25rem;
@@ -110,4 +144,64 @@ footer {
     padding-top: 1rem;
     border-top: var(--boder);
     text-align: center;
+}
+
+article {
+    margin-bottom: 1rem;
+}
+
+article .title {
+    color: var(--caption-color);
+    font-family: Verdana, sans-serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+article .information {
+    color: #888;
+    font-size: 0.85rem;
+}
+
+article .body {
+    border-left: 4px solid var(--border-color);
+    margin-top: 0.75rem;
+    padding-left: 0.75rem;
+}
+
+article .body p {
+    margin: 0 0 0.75rem;
+}
+
+article .body p:last-child {
+    margin-bottom: 0;
+}
+
+
+
+.datatable {
+    margin-bottom: 1rem;
+}
+
+.datatable .caption {
+    background: #ddd;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    color: rgb(34, 34, 34);
+    padding: 0.2rem 1rem;
+    font-weight: bold;
+}
+
+.datatable table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.datatable th,
+.datatable td {
+    border: 1px solid #ddd;
+    padding: 0.3rem;
+    text-align: center;
+}
+
+.datatable tbody tr:nth-child(2n-1) {
+    background: #f5f5f5;
 }

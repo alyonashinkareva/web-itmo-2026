@@ -1,2 +1,14 @@
 # macOS
 .DS_Store
+/.idea/
+/hw3/.idea/
+/hw3/target/
+/hw3/.smarttomcat/
+/.tmp-libs/
+/hw4/.idea/
+/hw4/.smarttomcat/
+/hw4/target/
+/hw5/.idea/
+/hw5/.smarttomcat/
+/hw5/target/
+/hw6/.idea/

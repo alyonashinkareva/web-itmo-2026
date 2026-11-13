@@ -42,20 +42,7 @@
                 <a href="/register">Register</a>
             </#if>
         </div>
-        <nav>
-            <#assign items=[
-            {"href": "/index", "name": "Home"},
-            {"href": "/misc/help", "name": "Help"},
-            {"href": "/contests", "name": "Contests"}
-            ]/>
-            <ul>
-                <#list items as item>
-                    <li>
-                        <a href="${item.href}">${item.name}</a>
-                    </li>
-                </#list>
-            </ul>
-        </nav>
+        <@nav/>
     </header>
 </#macro>
 
@@ -63,27 +50,21 @@
     <aside>
         <section>
             <div class="header">Information</div>
-            <div class="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores enim expedita facilis
-                fugiat ipsum iste nobis reprehenderit tempore ut voluptatibus?
-            </div>
+            <div class="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores enim expedita facilis fugiat ipsum iste nobis reprehenderit tempore ut voluptatibus?</div>
             <div class="footer">
                 <a href="#">View all</a>
             </div>
         </section>
         <section>
             <div class="header">Information</div>
-            <div class="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores enim expedita facilis
-                fugiat ipsum iste nobis reprehenderit tempore ut voluptatibus?
-            </div>
+            <div class="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores enim expedita facilis fugiat ipsum iste nobis reprehenderit tempore ut voluptatibus?</div>
             <div class="footer">
                 <a href="#">View all</a>
             </div>
         </section>
         <section>
             <div class="header">Information</div>
-            <div class="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores enim expedita facilis
-                fugiat ipsum iste nobis reprehenderit tempore ut voluptatibus?
-            </div>
+            <div class="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores enim expedita facilis fugiat ipsum iste nobis reprehenderit tempore ut voluptatibus?</div>
             <div class="footer">
                 <a href="#">View all</a>
             </div>
@@ -102,6 +83,21 @@
     <a href="/user?handle=${user.handle}">${user.name}</a>
 </#macro>
 
+<#macro post p shortened>
+<#-- @ftlvariable name="p" type="ru.itmo.web.hw4.model.Post" -->
+    <article>
+        <div class="title">${p.title}</div>
+        <div class="information">By <@userlink findBy(users, "id", p.userId)/></div>
+        <div class="body">
+            <#if shortened>
+                ${truncate(p.text, 350)}
+            <#else>
+                ${p.text}
+            </#if>
+        </div>
+    </article>
+</#macro>
+
 <#function findBy items key value>
     <#list items as item>
         <#if item[key] == value>
@@ -109,3 +105,34 @@
         </#if>
     </#list>
 </#function>
+
+<#function truncate text max>
+    <#if text?length gt max>
+        <#return text?substring(0, max) + "...">
+    <#else>
+        <#return text>
+    </#if>
+</#function>
+
+
+<#macro nav>
+    <nav>
+        <#assign items=[
+        {"href": "/index", "name": "Home"},
+        {"href": "/users", "name": "Users"},
+        {"href": "/misc/help", "name": "Help"},
+        {"href": "/contests", "name": "Contests"}
+        ]/>
+        <ul>
+            <#list items as item>
+                <li>
+                    <#if endpoint == item.href>
+                        <a class="current" href="${item.href}">${item.name}</a>
+                    <#else>
+                        <a href="${item.href}">${item.name}</a>
+                    </#if>
+                </li>
+            </#list>
+        </ul>
+    </nav>
+</#macro>
