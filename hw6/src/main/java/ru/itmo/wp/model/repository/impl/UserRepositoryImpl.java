@@ -9,25 +9,20 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("SqlNoDataSourceInspection")
 public class UserRepositoryImpl implements UserRepository {
-    private final DataSource DATA_SOURCE = DatabaseUtils.getDataSource();
+    private final DataSource dataSource = DatabaseUtils.getDataSource();
 
     @Override
     public User find(long id) {
-        try (Connection connection = DATA_SOURCE.getConnection()) {
-            try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM `User` WHERE `id`=?")) {
-                statement.setLong(1, id);
-                try (ResultSet resultSet = statement.executeQuery()) {
-                    return toUser(statement.getMetaData(), resultSet);
-                }
-            }
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM `User` WHERE id = ?")) {
+            statement.setLong(1, id);
+            return findOne(statement);
         } catch (SQLException e) {
             throw new RepositoryException("Can't find User.", e);
         }
@@ -35,29 +30,35 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User findByLogin(String login) {
-        try (Connection connection = DATA_SOURCE.getConnection()) {
-            try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM `User` WHERE `login`=?")) {
-                statement.setString(1, login);
-                try (ResultSet resultSet = statement.executeQuery()) {
-                    return toUser(statement.getMetaData(), resultSet);
-                }
-            }
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM `User` WHERE login = ?")) {
+            statement.setString(1, login);
+            return findOne(statement);
         } catch (SQLException e) {
             throw new RepositoryException("Can't find User.", e);
         }
     }
 
     @Override
-    public User findByLoginAndPasswordSha(String login, String passwordSha) {
-        try (Connection connection = DATA_SOURCE.getConnection()) {
-            try (PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM `User` WHERE `login`=? AND `passwordSha`=?")) {
-                statement.setString(1, login);
-                statement.setString(2, passwordSha);
-                try (ResultSet resultSet = statement.executeQuery()) {
-                    return toUser(statement.getMetaData(), resultSet);
-                }
-            }
+    public User findByEmail(String email) {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM `User` WHERE email = ?")) {
+            statement.setString(1, email);
+            return findOne(statement);
+        } catch (SQLException e) {
+            throw new RepositoryException("Can't find User.", e);
+        }
+    }
+
+    @Override
+    public User findByLoginOrEmailAndPasswordSha(String loginOrEmail, String passwordSha) {
+        String sql = "SELECT * FROM `User` WHERE (login = ? OR email = ?) AND passwordSha = ?";
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, loginOrEmail);
+            statement.setString(2, loginOrEmail);
+            statement.setString(3, passwordSha);
+            return findOne(statement);
         } catch (SQLException e) {
             throw new RepositoryException("Can't find User.", e);
         }
@@ -66,70 +67,79 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public List<User> findAll() {
         List<User> users = new ArrayList<>();
-        try (Connection connection = DATA_SOURCE.getConnection()) {
-            try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM `User` ORDER BY `id` DESC")) {
-                try (ResultSet resultSet = statement.executeQuery()) {
-                    User user;
-                    while ((user = toUser(statement.getMetaData(), resultSet)) != null) {
-                        users.add(user);
-                    }
-                }
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM `User` ORDER BY id DESC");
+             ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+                users.add(toUser(resultSet));
             }
         } catch (SQLException e) {
-            throw new RepositoryException("Can't find User.", e);
+            throw new RepositoryException("Can't find users.", e);
         }
         return users;
     }
 
-    private User toUser(ResultSetMetaData metaData, ResultSet resultSet) throws SQLException {
-        if (!resultSet.next()) {
-            return null;
+    @Override
+    public long findCount() {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT COUNT(*) FROM `User`");
+             ResultSet resultSet = statement.executeQuery()) {
+            resultSet.next();
+            return resultSet.getLong(1);
+        } catch (SQLException e) {
+            throw new RepositoryException("Can't count users.", e);
         }
-
-        User user = new User();
-        for (int i = 1; i <= metaData.getColumnCount(); i++) {
-            switch (metaData.getColumnName(i)) {
-                case "id":
-                    user.setId(resultSet.getLong(i));
-                    break;
-                case "login":
-                    user.setLogin(resultSet.getString(i));
-                    break;
-                case "creationTime":
-                    user.setCreationTime(resultSet.getTimestamp(i));
-                    break;
-                default:
-                    // No operations.
-            }
-        }
-
-        return user;
     }
 
     @Override
     public void save(User user, String passwordSha) {
-        try (Connection connection = DATA_SOURCE.getConnection()) {
-            try (PreparedStatement statement = connection.prepareStatement(
-                    "INSERT INTO `User` (`login`, `passwordSha`, `creationTime`) VALUES (?, ?, NOW())",
-                    Statement.RETURN_GENERATED_KEYS
-            )) {
-                statement.setString(1, user.getLogin());
-                statement.setString(2, passwordSha);
-                if (statement.executeUpdate() != 1) {
-                    throw new RepositoryException("Can't save User.");
-                } else {
-                    try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
-                        if (generatedKeys.next()) {
-                            user.setId(generatedKeys.getLong(1));
-                            user.setCreationTime(find(user.getId()).getCreationTime());
-                        } else {
-                            throw new RepositoryException("Can't save User [no autogenerated fields].");
-                        }
-                    }
+        String sql = "INSERT INTO `User` (login, email, passwordSha, creationTime) VALUES (?, ?, ?, NOW())";
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            statement.setString(1, user.getLogin());
+            statement.setString(2, user.getEmail());
+            statement.setString(3, passwordSha);
+            statement.executeUpdate();
+
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                if (!generatedKeys.next()) {
+                    throw new RepositoryException("Can't save User [no autogenerated fields].");
                 }
+                user.setId(generatedKeys.getLong(1));
             }
         } catch (SQLException e) {
             throw new RepositoryException("Can't save User.", e);
         }
+    }
+
+    @Override
+    public boolean updateAdmin(long actorId, long userId, boolean admin) {
+        String sql = "UPDATE `User` AS target JOIN `User` AS actor ON actor.id = ? AND actor.admin = TRUE "
+                + "SET target.admin = ? WHERE target.id = ?";
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setLong(1, actorId);
+            statement.setBoolean(2, admin);
+            statement.setLong(3, userId);
+            return statement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            throw new RepositoryException("Can't update admin status.", e);
+        }
+    }
+
+    private User findOne(PreparedStatement statement) throws SQLException {
+        try (ResultSet resultSet = statement.executeQuery()) {
+            return resultSet.next() ? toUser(resultSet) : null;
+        }
+    }
+
+    private User toUser(ResultSet resultSet) throws SQLException {
+        User user = new User();
+        user.setId(resultSet.getLong("id"));
+        user.setLogin(resultSet.getString("login"));
+        user.setEmail(resultSet.getString("email"));
+        user.setAdmin(resultSet.getBoolean("admin"));
+        user.setCreationTime(resultSet.getTimestamp("creationTime"));
+        return user;
     }
 }
