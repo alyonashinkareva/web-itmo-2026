@@ -33,7 +33,7 @@
         </div>
         <div class="enter-or-register-box">
             <#if user??>
-                <@userlink user/>
+                <@userlink user=user nameOnly=true/>
                 |
                 <a href="/logout">Logout</a>
             <#else>
@@ -45,13 +45,16 @@
         <nav>
             <#assign items=[
             {"href": "/index", "name": "Home"},
+            {"href": "/users", "name": "Users"},
             {"href": "/misc/help", "name": "Help"},
             {"href": "/contests", "name": "Contests"}
             ]/>
             <ul>
                 <#list items as item>
                     <li>
-                        <a href="${item.href}">${item.name}</a>
+                        <a href="${item.href}"<#if path == item.href> class="active"</#if>>
+                            ${item.name}
+                        </a>
                     </li>
                 </#list>
             </ul>
@@ -61,45 +64,55 @@
 
 <#macro sidebar>
     <aside>
-        <section>
-            <div class="header">Information</div>
-            <div class="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores enim expedita facilis
-                fugiat ipsum iste nobis reprehenderit tempore ut voluptatibus?
-            </div>
-            <div class="footer">
-                <a href="#">View all</a>
-            </div>
-        </section>
-        <section>
-            <div class="header">Information</div>
-            <div class="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores enim expedita facilis
-                fugiat ipsum iste nobis reprehenderit tempore ut voluptatibus?
-            </div>
-            <div class="footer">
-                <a href="#">View all</a>
-            </div>
-        </section>
-        <section>
-            <div class="header">Information</div>
-            <div class="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores enim expedita facilis
-                fugiat ipsum iste nobis reprehenderit tempore ut voluptatibus?
-            </div>
-            <div class="footer">
-                <a href="#">View all</a>
-            </div>
-        </section>
+        <#list posts?reverse as post>
+            <section>
+                <div class="header">Post #${post.id}</div>
+
+                <div class="body">
+                    <#if post.text?length gt 350>
+                        ${post.text?substring(0, 350)}...
+                    <#else>
+                        ${post.text}
+                    </#if>
+                </div>
+
+                <div class="footer">
+                    <a href="/post?post_id=${post.id}">View all</a>
+                </div>
+            </section>
+        </#list>
     </aside>
 </#macro>
 
 <#macro footer>
     <footer>
-        2010-2021 &copy; by Mike Mirzayanov
+        2010-2026 &copy; by Mike Mirzayanov
     </footer>
 </#macro>
 
-<#macro userlink user>
-<#-- @ftlvariable name="user" type="ru.itmo.web.hw4.model.User" -->
-    <a href="/user?handle=${user.handle}">${user.name}</a>
+<#macro userlink user nameOnly=false>
+    <#if nameOnly>
+        <a href="/user?handle=${user.handle}">${user.name}</a>
+    <#else>
+        <a href="/user?handle=${user.handle}"
+           class="user-link ${user.color?lower_case}">
+            ${user.handle}
+        </a>
+    </#if>
+</#macro>
+
+<#macro post post short=true>
+    <article>
+        <h2>${post.title}</h2>
+
+        <p>
+            <#if short && post.text?length gt 350>
+                ${post.text?substring(0, 350)}...
+            <#else>
+                ${post.text}
+            </#if>
+        </p>
+    </article>
 </#macro>
 
 <#function findBy items key value>
