@@ -10,20 +10,29 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.function.Predicate;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class FrontServlet extends HttpServlet {
     private static final String BASE_PACKAGE = FrontServlet.class.getPackage().getName() + ".page";
     private static final String DEFAULT_ACTION = "action";
+    private static final Predicate<Class<?>> CHECK_PARAMETERS_TYPE = type ->
+            type.isAssignableFrom(Map.class) || type.isAssignableFrom(HttpServletRequest.class);
+
+    private static final String LANG_PARAMETER = "lang";
+    private static final String LANG_SESSION_ATTRIBUTE = "lang";
+    private static final String DEFAULT_LANG = "en";
+    private static final Set<String> SUPPORTED_LANG_FORMATS = Set.of(
+            "en", "ru"
+    );
 
     private Configuration sourceConfiguration;
     private Configuration targetConfiguration;
@@ -43,6 +52,7 @@ public class FrontServlet extends HttpServlet {
                     + templateDir + "]");
         }
         configuration.setDefaultEncoding(StandardCharsets.UTF_8.name());
+        configuration.setLocalizedLookup(false); // Task 2: problem that freemarker has included localization
         configuration.setTemplateExceptionHandler(debug ? TemplateExceptionHandler.HTML_DEBUG_HANDLER :
                 TemplateExceptionHandler.RETHROW_HANDLER);
         configuration.setLogTemplateExceptions(false);
@@ -94,18 +104,18 @@ public class FrontServlet extends HttpServlet {
             throw new NotFoundException();
         }
 
-        Method method = null;
-        for (Class<?> clazz = pageClass; method == null && clazz != null; clazz = clazz.getSuperclass()) {
-            try {
-                method = clazz.getDeclaredMethod(route.getAction(), HttpServletRequest.class, Map.class);
-            } catch (NoSuchMethodException ignored) {
-                // No operations.
-            }
-        }
+        List<Method> methods = new ArrayList<>();
+        collectMethods(pageClass, route.getAction(), methods);
 
-        if (method == null) {
+        if (methods.size() > 1) {
+            throw new IllegalStateException("Ambiguous methods found for action: " +
+                    route.getAction() + " in class " + pageClass.getName());
+        }
+        if (methods.isEmpty()) {
             throw new NotFoundException();
         }
+
+        Method method = methods.get(0);
 
         Object page;
         try {
@@ -119,7 +129,23 @@ public class FrontServlet extends HttpServlet {
         Map<String, Object> view = new HashMap<>();
         method.setAccessible(true);
         try {
-            method.invoke(page, request, view);
+            Class<?>[] paramTypes = method.getParameterTypes();
+            Object[] args = new Object[paramTypes.length];
+
+            for (int i = 0; i < paramTypes.length; i++) {
+                Class<?> type = paramTypes[i];
+
+                if (type.isAssignableFrom(HttpServletRequest.class)) {
+                    args[i] = request;
+                } else if (type.isAssignableFrom(Map.class)) {
+                    args[i] = view;
+                } else {
+                    // unreachable
+                    args[i] = null;
+                }
+            }
+
+            method.invoke(page, args);
         } catch (IllegalAccessException e) {
             throw new ServletException("Can't invoke action method [pageClass="
                     + pageClass + ", method=" + method + "]");
@@ -135,7 +161,19 @@ public class FrontServlet extends HttpServlet {
             }
         }
 
-        Template template = newTemplate(pageClass.getSimpleName() + ".ftlh");
+        proceedSession(request);
+
+        HttpSession session = request.getSession();
+        String lang = (String) session.getAttribute(LANG_SESSION_ATTRIBUTE);
+        String pageName = pageClass.getSimpleName();
+
+        Template template = null;
+        if (lang != null && !DEFAULT_LANG.equals(lang)) {
+            template = tryNewTemplate(pageName + "_" + lang + ".ftlh");
+        }
+        if (template == null) {
+            template = newTemplate(pageName + ".ftlh");
+        }
         response.setContentType("text/html");
         response.setCharacterEncoding(StandardCharsets.UTF_8.name());
         try {
@@ -148,7 +186,45 @@ public class FrontServlet extends HttpServlet {
         }
     }
 
+    private static void proceedSession(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        String lang = request.getParameter(LANG_PARAMETER);
+        if (lang != null) {
+            if (SUPPORTED_LANG_FORMATS.contains(lang)) {
+                session.setAttribute(LANG_SESSION_ATTRIBUTE, lang);
+            } else {
+                session.setAttribute(LANG_SESSION_ATTRIBUTE, DEFAULT_LANG);
+            }
+        }
+    }
+
+    private void collectMethods(Class<?> clazz, String action, List<Method> methods) {
+        if (clazz == null) {
+            return;
+        }
+        Arrays.stream(clazz.getDeclaredMethods())
+                .filter(m -> m.getName().equals(action))
+                .filter(m ->
+                        Arrays.stream(m.getParameterTypes()).allMatch(CHECK_PARAMETERS_TYPE)
+                )
+                .forEach(methods::add);
+        collectMethods(clazz.getSuperclass(), action, methods);
+        for (Class<?> iface : clazz.getInterfaces()) {
+            collectMethods(iface, action, methods);
+        }
+    }
+
     private Template newTemplate(String templateName) throws ServletException {
+        Template template = tryNewTemplate(templateName);
+
+        if (template == null) {
+            throw new ServletException("Can't find template [templateName=" + templateName + "]");
+        }
+
+        return template;
+    }
+
+    private Template tryNewTemplate(String templateName) throws ServletException {
         Template template = null;
 
         if (sourceConfiguration != null) {
@@ -170,11 +246,6 @@ public class FrontServlet extends HttpServlet {
                 throw new ServletException("Can't load template [templateName=" + templateName + "]", e);
             }
         }
-
-        if (template == null) {
-            throw new ServletException("Can't find template [templateName=" + templateName + "]");
-        }
-
         return template;
     }
 

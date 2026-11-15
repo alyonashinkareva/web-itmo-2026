@@ -2,26 +2,24 @@
 <#import "commons.ftlh" as c>
 
 <@c.page>
-    <div class="users datatable">
+    <div class="datatable">
         <div class="caption">User</div>
         <table>
             <thead>
             <tr>
                 <th>Id</th>
                 <th>Login</th>
+                <th>Email</th>
                 <th>Created</th>
             </tr>
             </thead>
             <tbody>
-            <#list users as u>
+            <#list users as user>
                 <tr>
-                    <td>${u.id}</td>
-                    <td>${u.login}</td>
-                    <td>${u.creationTime?datetime}</td>
-                </tr>
-            <#else>
-                <tr class="noData">
-                    <td colspan="3">No data</td>
+                    <td>${user.id}</td>
+                    <td>${user.login}</td>
+                    <td>${user.email}</td>
+                    <td>${user.creationTime}</td>
                 </tr>
             </#list>
             </tbody>
