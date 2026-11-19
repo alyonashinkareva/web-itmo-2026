@@ -48,72 +48,43 @@ public class TicTacToePage {
         view.put("state", state);
     }
 
+    private String isWin(State state, int i, int j, int di, int dj) {
+        String cell = state.cells[i][j];
+        if(cell != null) {
+            for(int k = 1; k < state.size; k++) {
+                if(!(state.cells[i + k * di][j + k * dj] != null && state.cells[i + k * di][j + k * dj].equals(cell))) {
+                    return null;
+                }
+            }
+            return cell;
+        }
+        return null;
+    }
+
     private String getWinner(State state) {
         for(int row = 0; row < state.size; row++) {
-            String cell = state.cells[row][0];
-
-            if(cell != null) {
-                boolean isWin = true;
-                for(int col = 1; col < state.size; col++) {
-                    if(!(state.cells[row][col] != null && state.cells[row][col].equals(cell))) {
-                        isWin = false;
-                        break;
-                    }
-                }
-                if(isWin) {
-                    return cell;
-                }
+            String winner = isWin(state, row, 0, 0, 1);
+            if(winner != null) {
+                return winner;
             }
         }
 
         for(int col = 0; col < state.size; col++) {
-            String cell = state.cells[0][col];
-
-            if(cell != null) {
-                boolean isWin = true;
-                for(int row = 1; row < state.size; row++) {
-                    if(!(state.cells[row][col] != null && state.cells[row][col].equals(cell))) {
-                        isWin = false;
-                        break;
-                    }
-                }
-                if(isWin) {
-                    return cell;
-                }
+            String winner = isWin(state, 0, col, 1, 0);
+            if(winner != null) {
+                return winner;
             }
         }
 
-        String cell = state.cells[0][0];
-
-        if(cell != null) {
-            boolean isWin = true;
-            for(int row = 1; row < state.size; row++) {
-                if(!(state.cells[row][row] != null && state.cells[row][row].equals(cell))) {
-                    isWin = false;
-                    break;
-                }
-            }
-            if(isWin) {
-                return cell;
-            }
+        String winner = isWin(state, 0, 0, 1, 1);
+        if(winner != null) {
+            return winner;
         }
 
-        cell = state.cells[0][state.size - 1];
-
-        if(cell != null) {
-            boolean isWin = true;
-            for(int row = 1; row < state.size; row++) {
-                if(!(state.cells[row][state.size - 1 - row] != null && state.cells[row][state.size - 1 - row].equals(cell))) {
-                    isWin = false;
-                    break;
-                }
-            }
-            if(isWin) {
-                return cell;
-            }
+        winner = isWin(state, 0, state.size - 1, 1, -1);
+        if(winner != null) {
+            return winner;
         }
-
-
 
         return null;
     }

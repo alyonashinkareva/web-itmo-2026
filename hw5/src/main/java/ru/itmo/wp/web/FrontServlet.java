@@ -138,12 +138,12 @@ public class FrontServlet extends HttpServlet {
 
         Class<?>[] parameterTypes = method.getParameterTypes();
         Object[] args = new Object[parameterTypes.length];
+        Map<Class<?>, Object> mapParameterTypes = new HashMap<>();
+        mapParameterTypes.put(Map.class, view);
+        mapParameterTypes.put(HttpServletRequest.class, request);
+
         for (int i = 0; i < parameterTypes.length; i++) {
-            if (parameterTypes[i] == Map.class) {
-                args[i] = view;
-            } else if (parameterTypes[i] == HttpServletRequest.class) {
-                args[i] = request;
-            }
+            args[i] = mapParameterTypes.get(parameterTypes[i]);
         }
 
         try {
