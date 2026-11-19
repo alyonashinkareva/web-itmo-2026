@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 
-public class StaticServlet extends HttpServlet {
+public class    StaticServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         File file = new File(getServletContext().getRealPath(request.getRequestURI()));

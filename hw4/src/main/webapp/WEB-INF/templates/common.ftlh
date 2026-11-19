@@ -33,7 +33,7 @@
         </div>
         <div class="enter-or-register-box">
             <#if user??>
-                <@userlink user/>
+                <@userlink user true/>
                 |
                 <a href="/logout">Logout</a>
             <#else>
@@ -46,12 +46,13 @@
             <#assign items=[
             {"href": "/index", "name": "Home"},
             {"href": "/misc/help", "name": "Help"},
-            {"href": "/contests", "name": "Contests"}
+            {"href": "/contests", "name": "Contests"},
+            {"href": "/users", "name": "Users"}
             ]/>
             <ul>
                 <#list items as item>
                     <li>
-                        <a href="${item.href}">${item.name}</a>
+                        <a href="${item.href}" class="item<#if currentItem == item.href>_is_current</#if>">${item.name}</a>
                     </li>
                 </#list>
             </ul>
@@ -61,33 +62,13 @@
 
 <#macro sidebar>
     <aside>
-        <section>
-            <div class="header">Information</div>
-            <div class="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores enim expedita facilis
-                fugiat ipsum iste nobis reprehenderit tempore ut voluptatibus?
-            </div>
-            <div class="footer">
-                <a href="#">View all</a>
-            </div>
-        </section>
-        <section>
-            <div class="header">Information</div>
-            <div class="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores enim expedita facilis
-                fugiat ipsum iste nobis reprehenderit tempore ut voluptatibus?
-            </div>
-            <div class="footer">
-                <a href="#">View all</a>
-            </div>
-        </section>
-        <section>
-            <div class="header">Information</div>
-            <div class="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores enim expedita facilis
-                fugiat ipsum iste nobis reprehenderit tempore ut voluptatibus?
-            </div>
-            <div class="footer">
-                <a href="#">View all</a>
-            </div>
-        </section>
+        <#list posts?reverse as post>
+            <section>
+                <div class="header">Post #${post.id}</div>
+                <div class="body"><@postText text=post.text isFull=false/></div>
+                <div class="footer"><a href="/post?post_id=${post.id}">View all</a></div>
+            </section>
+        </#list>
     </aside>
 </#macro>
 
@@ -97,9 +78,15 @@
     </footer>
 </#macro>
 
-<#macro userlink user>
+<#macro userlink user nameOnly=false>
 <#-- @ftlvariable name="user" type="ru.itmo.web.hw4.model.User" -->
-    <a href="/user?handle=${user.handle}">${user.name}</a>
+    <a href="/user?handle=${user.handle}" class="<#if nameOnly>nameOnly<#else>${user.color}</#if>">
+        <#if nameOnly>
+            ${user.name}
+        <#else>
+            ${user.handle}
+        </#if>
+    </a>
 </#macro>
 
 <#function findBy items key value>
@@ -109,3 +96,36 @@
         </#if>
     </#list>
 </#function>
+
+<#macro postText text isFull>
+    <#if !isFull && (text?length >= 351)>
+        ${text[0..349]}...
+    <#else>
+        ${text}
+    </#if>
+</#macro>
+
+
+<#macro post currentPost isFull>
+    <article>
+        <div class="title">${currentPost.title}</div>
+        <#assign u = findBy(users, "id", currentPost.user_id)!/>
+        <div class="information">By <@userlink u/></div>
+        <div class="body">
+            <p><@postText text=currentPost.text isFull=isFull/></p>
+        </div>
+        <div class="footer">
+            <div class="left">
+                <img src="/img/voteup.png" title="Vote Up" alt="Vote Up"/>
+                <span class="positive-score">+173</span>
+                <img src="/img/votedown.png" title="Vote Down" alt="Vote Down"/>
+            </div>
+            <div class="right">
+                <img src="/img/date_16x16.png" title="Publish Time" alt="Publish Time"/>
+                2 days ago
+                <img src="/img/comments_16x16.png" title="Comments" alt="Comments"/>
+                <a href="#">68</a>
+            </div>
+        </div>
+    </article>
+</#macro>

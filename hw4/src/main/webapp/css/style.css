@@ -7,6 +7,11 @@
     --boder: 1px solid var(--border-color);
     --border-radius: 6px;
     --caption-color: #3B5998;
+    --background-color: rgb(248, 248, 248);
+    --background-caption-color: rgb(225, 225, 225);
+    --green-color: green;
+    --gray-color: gray;
+
 }
 
 html {
@@ -58,6 +63,10 @@ header nav ul li a {
     margin-right: 1rem;
 }
 
+header nav ul li .item_is_current {
+    text-decoration: underline var(--caption-color) 0.25rem;
+}
+
 .middle {
     display: flow-root;
 }
@@ -105,9 +114,144 @@ main {
     margin-right: 21rem;
 }
 
+main .profile {
+    padding: 0 1rem 0 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    position: relative;
+}
+
+main .profile img{
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+
+main .navigate{
+    font-size: 2rem;
+}
+main .navigate a {
+    text-decoration: none;
+}
+
+
+main .datatable {
+    border: 0;
+}
+
+main .caption {
+    padding: 0.25rem 0 0.25rem 0.75rem;
+    background-color: var(--background-caption-color);
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+
+}
+
+main .datatable table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+main .datatable td, main .datatable th {
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border: 1px solid var(--background-caption-color);
+    text-align: center;
+}
+
+main .datatable tbody tr:nth-child(2n-1) {
+    background-color: var(--background-color);
+}
+
+
+main article {
+    margin-bottom: 2rem;
+}
+
+main article .title {
+    font-size: 1.3rem;
+    color: var(--caption-color);
+    font-weight: bold;
+}
+
+main article .information {
+    color: var(--gray-color);
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+main article .body {
+    font-size: 0.85rem;
+    border-left: 5px solid var(--border-color);
+    margin-top: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 1.5rem;
+}
+
+main article .body p:last-child {
+    margin-bottom: 0;
+}
+
+main article .attachment {
+    color: var(--gray-color);
+    font-size: 0.8rem;
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+
+}
+
+main article .footer {
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    position: relative;
+    height: 2.2rem;
+}
+
+main article .footer .positive-score {
+    font-weight: bold;
+    color: var(--green-color);
+}
+
+main article .footer .left {
+    position: absolute;
+    left: 0.5rem;
+    top: 0.5rem;
+}
+main article .footer .right {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+}
+main article .footer img {
+    vertical-align: middle;
+}
+
+
+
+
+
+
 footer {
     margin-top: 3rem;
     padding-top: 1rem;
     border-top: var(--boder);
     text-align: center;
+}
+
+
+a.RED, a.GREEN, a.BLUE {
+    text-decoration: none;
+    font-family: Dubai, sans-serif;
+}
+
+a.RED {
+    color: red;
+}
+
+a.GREEN {
+    color: green;
+}
+
+a.BLUE {
+    color:blue;
 }
