@@ -15,7 +15,7 @@ public class UserService {
 
     private final UserRepository userRepository = new UserRepositoryImpl();
 
-    public void validateRegistration(User user, String password) throws ValidationException {
+    public void validateRegistration(User user, String password, String passwordConfirmation) throws ValidationException {
         if (Strings.isNullOrEmpty(user.getLogin())) {
             throw new ValidationException("Login is required");
         }
@@ -29,6 +29,16 @@ public class UserService {
             throw new ValidationException("Login is already in use");
         }
 
+        if (Strings.isNullOrEmpty(user.getEmail())) {
+            throw new ValidationException("Email is required");
+        }
+        if (user.getEmail().chars().filter(c -> c == '@').count() != 1) {
+            throw new ValidationException("Email must contain exactly one @");
+        }
+        if (userRepository.findByEmail(user.getEmail()) != null) {
+            throw new ValidationException("Email is already in use");
+        }
+
         if (Strings.isNullOrEmpty(password)) {
             throw new ValidationException("Password is required");
         }
@@ -38,26 +48,45 @@ public class UserService {
         if (password.length() > 64) {
             throw new ValidationException("Password can't be longer than 64 characters");
         }
+        if (!password.equals(passwordConfirmation)){
+            throw new ValidationException("Password confirmation must be equals password");
+        }
     }
 
     public void register(User user, String password) {
         userRepository.save(user, getPasswordSha(password));
     }
 
-    public void validateEnter(String login, String password) throws ValidationException {
-        if (Strings.isNullOrEmpty(login)) {
+    public void validateEnter(String loginOrEmail, String password) throws ValidationException {
+        if (Strings.isNullOrEmpty(loginOrEmail)) {
             throw new ValidationException("Login is required");
         }
         if (Strings.isNullOrEmpty(password)) {
             throw new ValidationException("Password is required");
         }
-        if (findByLoginAndPassword(login, password) == null) {
+        if (findByLoginOrEmailAndPassword(loginOrEmail, password) == null) {
             throw new ValidationException("Invalid login or password");
         }
     }
 
+    public User findByLoginOrEmailAndPassword(String loginOrEmail, String password) {
+        User user = findByLoginAndPassword(loginOrEmail, password);
+        if (user == null){
+            user = findByEmailAndPassword(loginOrEmail, password);
+        }
+        return user;
+    }
+
     public User findByLoginAndPassword(String login, String password) {
         return userRepository.findByLoginAndPasswordSha(login, getPasswordSha(password));
+    }
+
+    public User findByEmailAndPassword(String email, String password) {
+        return userRepository.findByEmailAndPasswordSha(email, getPasswordSha(password));
+    }
+
+    public long findCount() {
+        return userRepository.findCount();
     }
 
     public List<User> findAll() {

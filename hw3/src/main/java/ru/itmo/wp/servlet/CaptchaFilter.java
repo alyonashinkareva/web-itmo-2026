@@ -27,7 +27,8 @@ public class CaptchaFilter extends HttpFilter {
 
         if (uri.endsWith(".css")
                 || uri.endsWith(".png")
-                || uri.endsWith(".js")) {
+                || uri.endsWith(".js")
+                || uri.endsWith(".ico")) {
             chain.doFilter(request, response);
             return;
         }

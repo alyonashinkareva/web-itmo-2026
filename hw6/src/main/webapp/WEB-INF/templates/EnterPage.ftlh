@@ -10,10 +10,10 @@
                 <input type="hidden" name="action" value="enter"/>
                 <div class="field">
                     <div class="name">
-                        <label for="login">Login</label>
+                        <label for="loginOrEmail">Login or email</label>
                     </div>
                     <div class="value">
-                        <input id="login" name="login" value="${login!}"/>
+                        <input id="loginOrEmail" name="loginOrEmail"/>
                     </div>
                 </div>
                 <div class="field">
@@ -24,9 +24,7 @@
                         <input id="password" name="password" type="password"/>
                     </div>
                 </div>
-                <#if error??>
-                    <div class="error">${error}</div>
-                </#if>
+                <div class="error"></div>
                 <div class="button-field">
                     <input type="submit" value="Enter">
                 </div>
@@ -34,3 +32,22 @@
         </div>
     </div>
 </@c.page>
+<script>
+    $(function () {
+        $(".enter.form-box form").submit(function () {
+            let $form = $(this);
+
+            $form.find(".error").text("");
+
+            ajax({
+                action: "enter",
+                loginOrEmail: $form.find('[name="loginOrEmail"]').val(),
+                password: $form.find('[name="password"]').val(),
+            }, function (response) {
+                $form.find(".error").text(response["error"]);
+            });
+
+            return false;
+        });
+    });
+</script>

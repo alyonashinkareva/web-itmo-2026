@@ -2,7 +2,7 @@
 
 <@c.page>
     <div class="status_code">
-        404
+        ${status_code}
     </div>
-    No such page
+    ${error_message}
 </@c.page>

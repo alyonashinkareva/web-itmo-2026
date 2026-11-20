@@ -51,7 +51,7 @@
             <ul>
                 <#list items as item>
                     <li>
-                        <a <#if item.href == uri>
+                        <a <#if uri?? && item.href == uri>
                         class="active"
                         </#if><@logged_href "${item.href}"/>>${item.name}</a>
                     </li>
@@ -63,7 +63,7 @@
 
 <#macro sidebar>
     <aside>
-       <@show_aside_posts posts/>
+       <@show_posts posts users true/>
     </aside>
 </#macro>
 
@@ -79,8 +79,7 @@
 
 <#macro userlink user nameOnly=false>
 <#-- @ftlvariable name="user" type="ru.itmo.web.hw4.model.User" -->
-    
-    <a <@logged_href hrefuser(user)/> <#if !nameOnly>class="userlink" style="color: ${user.color?lower_case};"</#if>><#if nameOnly>${user.name}<#else>${user.handle}</#if></a>
+    <a <@logged_href hrefuser(user)/> <#if !nameOnly>class="userlink ${user.color?lower_case}"</#if>><#if nameOnly>${user.name}<#else>${user.handle}</#if></a>
 </#macro>
 
 <#function findBy items key value>
@@ -121,8 +120,8 @@
     </div>
 </#macro>
 
-<#macro to_short text length active>
-    <#if active && text?length gt length>
+<#macro to_short text length>
+    <#if text?length gt length>
                     ${text?substring(0, length)}...
                 <#else>
                     ${text}
@@ -130,35 +129,46 @@
 </#macro>
 
 <#macro show_post post users is_short=false is_short_title=false>
-    <article>
-            <div class="title"><@to_short post.title 100 is_short_title/></div>
+    <#if post?has_content>
+        <article>
+            <div class="title"><#if is_short_title><@to_short post.title 100/><#else>${post.title}</#if></div>
             <div class="information">By <@userlink findBy(users "id" post.user_id)/></div>
             <div class="body">
-                <@to_short post.text 350 is_short/>
+                <#if is_short>
+                    <@to_short post.text 350/>
+                <#else>
+                    ${post.text}
+                </#if>
+                
             </div>
         </article>
+    <#else>
+        No such post
+    </#if>
+    
 </#macro>
 
-<#macro show_posts posts users>
-    <#list posts?reverse as post>
-    <@show_post post, users true false/>
-    </#list>
+<#macro show_posts posts users is_aside>
+   <#if posts??>
+        <#list posts?reverse as post>
+            <#if is_aside>
+                <@show_aside_post post/>
+            <#else>
+                <@show_post post users true true/>
+            </#if>
+            
+        </#list>
+    </#if>
 </#macro>
 
 <#macro show_aside_post post>
     <section>
-            <div class="header"><@to_short post.title 100 true/></div>
-            <div class="body"><@to_short post.text 350 true/></div>
+            <div class="header"><@to_short post.title 100/></div>
+            <div class="body"><@to_short post.text 350/></div>
             <div class="footer">
                 <a <@logged_href "/posts?post_id=${post.id}"/>>View all</a>
             </div>
         </section>
-</#macro>
-
-<#macro show_aside_posts posts>
-    <#list posts?reverse as post>
-    <@show_aside_post post/>
-    </#list>
 </#macro>
 
 <#macro table_users users>

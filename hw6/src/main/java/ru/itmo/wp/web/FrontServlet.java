@@ -3,13 +3,13 @@ package ru.itmo.wp.web;
 import com.google.common.base.Strings;
 import com.google.gson.Gson;
 import freemarker.template.*;
-import ru.itmo.wp.model.domain.User;
 import ru.itmo.wp.model.exception.ValidationException;
 import ru.itmo.wp.web.annotation.Json;
 import ru.itmo.wp.web.exception.NotFoundException;
 import ru.itmo.wp.web.exception.RedirectException;
 import ru.itmo.wp.web.page.IndexPage;
 import ru.itmo.wp.web.page.NotFoundPage;
+import ru.itmo.wp.web.page.Page;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -120,10 +120,14 @@ public class FrontServlet extends HttpServlet {
     private void process(Route route,
                          HttpServletRequest request,
                          HttpServletResponse response) throws NotFoundException, ServletException, IOException {
-        Class<?> pageClass;
+        Class<? extends Page> pageClass;
         try {
-            pageClass = Class.forName(route.getClassName());
-        } catch (ClassNotFoundException e) {
+            pageClass = Class.forName(route.getClassName()).asSubclass(Page.class);
+        } catch (ClassNotFoundException | ClassCastException e) {
+            throw new NotFoundException();
+        }
+
+        if (pageClass == Page.class || "before".equals(route.getAction()) || "after".equals(route.getAction())) {
             throw new NotFoundException();
         }
 
@@ -145,7 +149,7 @@ public class FrontServlet extends HttpServlet {
         boolean json = method.getAnnotation(Json.class) != null
                 || (acceptRequestHeader != null && acceptRequestHeader.startsWith(APPLICATION_JSON_MIME_TYPE));
 
-        Object page;
+        Page page;
         try {
             //noinspection deprecation
             page = pageClass.newInstance();
@@ -155,11 +159,12 @@ public class FrontServlet extends HttpServlet {
 
         response.setCharacterEncoding(StandardCharsets.UTF_8.name());
         Map<String, Object> view = new HashMap<>();
-        putUser(request, view);
 
         try {
+            page.before(request, view);
             method.setAccessible(true);
             method.invoke(page, request, view);
+            page.after(request, view);
         } catch (IllegalAccessException e) {
             throw new ServletException("Unable to run action [pageClass=" + pageClass + ", method=" + method + "].", e);
         } catch (InvocationTargetException e) {
@@ -205,13 +210,6 @@ public class FrontServlet extends HttpServlet {
     private void writeJson(HttpServletResponse response, Map<String, Object> view) throws IOException {
         response.setContentType(APPLICATION_JSON_MIME_TYPE);
         response.getWriter().print(new Gson().toJson(view));
-    }
-
-    private void putUser(HttpServletRequest request, Map<String, Object> view) {
-        User user = (User) request.getSession().getAttribute("user");
-        if (user != null) {
-            view.put("user", user);
-        }
     }
 
     private static final class Route {

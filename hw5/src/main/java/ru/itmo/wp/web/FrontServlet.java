@@ -10,16 +10,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class FrontServlet extends HttpServlet {
     private static final String BASE_PACKAGE = FrontServlet.class.getPackage().getName() + ".page";
@@ -47,7 +47,7 @@ public class FrontServlet extends HttpServlet {
                 TemplateExceptionHandler.RETHROW_HANDLER);
         configuration.setLogTemplateExceptions(false);
         configuration.setWrapUncheckedExceptions(true);
-
+        configuration.setLocalizedLookup(false);
         return configuration;
     }
 
@@ -93,13 +93,28 @@ public class FrontServlet extends HttpServlet {
         } catch (ClassNotFoundException e) {
             throw new NotFoundException();
         }
-
+        Map<String, Object> view = new HashMap<>();
+        List<Object> args = null;
         Method method = null;
+        Map<Class<?>, Supplier<Object>> argsMapper = Map.ofEntries(
+                Map.entry(Map.class, () -> view),
+                Map.entry(HttpServletRequest.class, () -> request)
+        );
         for (Class<?> clazz = pageClass; method == null && clazz != null; clazz = clazz.getSuperclass()) {
-            try {
-                method = clazz.getDeclaredMethod(route.getAction(), HttpServletRequest.class, Map.class);
-            } catch (NoSuchMethodException ignored) {
-                // No operations.
+            method = Stream.concat(
+                            Arrays.stream(clazz.getDeclaredMethods()),
+                            Arrays.stream(clazz.getMethods())
+                    )
+                    .filter(m -> m.getName().equals(route.action))
+                    .findFirst()
+                    .orElse(null);
+            if (method != null){
+                args = Arrays.stream(method.getParameterTypes())
+                        .map(type -> argsMapper.getOrDefault(type, () -> null).get())
+                        .toList();
+                if (args.contains(null)){
+                    method = null;
+                }
             }
         }
 
@@ -116,10 +131,9 @@ public class FrontServlet extends HttpServlet {
                     + pageClass + "]");
         }
 
-        Map<String, Object> view = new HashMap<>();
         method.setAccessible(true);
         try {
-            method.invoke(page, request, view);
+            method.invoke(page, args.toArray());
         } catch (IllegalAccessException e) {
             throw new ServletException("Can't invoke action method [pageClass="
                     + pageClass + ", method=" + method + "]");
@@ -135,7 +149,7 @@ public class FrontServlet extends HttpServlet {
             }
         }
 
-        Template template = newTemplate(pageClass.getSimpleName() + ".ftlh");
+        Template template = newLocalizatedTemplate(pageClass.getSimpleName(), request);
         response.setContentType("text/html");
         response.setCharacterEncoding(StandardCharsets.UTF_8.name());
         try {
@@ -148,7 +162,15 @@ public class FrontServlet extends HttpServlet {
         }
     }
 
-    private Template newTemplate(String templateName) throws ServletException {
+    private Template newLocalizatedTemplate(String simpleName, HttpServletRequest request) throws ServletException, NotFoundException {
+        try {
+            return newTemplate(simpleName + getLangExtension(request) + ".ftlh");
+        }catch (ServletException ignored){
+            return newTemplate(simpleName + ".ftlh");
+        }
+    }
+
+    private Template newTemplate(String templateName) throws ServletException, NotFoundException {
         Template template = null;
 
         if (sourceConfiguration != null) {
@@ -176,6 +198,24 @@ public class FrontServlet extends HttpServlet {
         }
 
         return template;
+    }
+
+    private String getLangExtension(HttpServletRequest request){
+        String lang = request.getParameter("lang");
+        HttpSession session = request.getSession();
+        if (lang != null &&
+                lang.length() == 2 &&
+                lang.chars().allMatch(c -> c >= 'a' && c <= 'z')){
+            session.setAttribute("lang", lang);
+        }else {
+            lang = (String) session.getAttribute("lang");
+        }
+
+        if (lang == null || lang.equals("en")){
+            return "";
+        }
+
+        return "_" + lang;
     }
 
     private static class Route {

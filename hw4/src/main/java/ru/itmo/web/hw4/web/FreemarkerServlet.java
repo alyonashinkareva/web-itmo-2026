@@ -51,14 +51,16 @@ public class FreemarkerServlet extends HttpServlet {
         response.setCharacterEncoding(UTF_8);
 
         Template template;
+        Map<String, Object> data = new HashMap<>();
         try {
+            getData(request, data);
             template = freemarkerConfiguration.getTemplate(URLDecoder.decode(request.getRequestURI(), UTF_8) + ".ftlh");
         } catch (TemplateNotFoundException ignored) {
-            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            template = freemarkerConfiguration.getTemplate("/not_found.ftlh");
+            template = getErrorTemplate(HttpServletResponse.SC_NOT_FOUND, "No such page.", response, data);
+        } catch (IllegalArgumentException e) {
+            template = getErrorTemplate(HttpServletResponse.SC_BAD_REQUEST, e.getMessage(), response, data);
         }
 
-        Map<String, Object> data = getData(request);
         response.setContentType("text/html");
         try {
             template.process(data, response.getWriter());
@@ -68,14 +70,13 @@ public class FreemarkerServlet extends HttpServlet {
         }
     }
 
-    private Map<String, Object> getData(HttpServletRequest request) {
-        Map<String, Object> data = new HashMap<>();
-
+    private void getData(HttpServletRequest request, Map<String, Object> data) {
+        DataUtil.addData(request, data);
         for (Map.Entry<String, String[]> e : request.getParameterMap().entrySet()) {
             if (e.getValue() != null && e.getValue().length == 1) {
                 String key = e.getKey();
                 String value = e.getValue()[0];
-                if (key.endsWith("_id") && isCorrectId(value)){
+                if (key.endsWith("_id") && isCorrectId(key, value)){
                     data.put(key, Long.valueOf(value));
                 }else{
                     data.put(key, value);
@@ -84,20 +85,30 @@ public class FreemarkerServlet extends HttpServlet {
         }
 
         data.put("uri", request.getRequestURI());
-
-        DataUtil.addData(request, data);
-        return data;
     }
 
-    private boolean isCorrectId(String value) {
+    private boolean isCorrectId(String name, String value) {
         if (value == null) {
-            return false;
+            throw new IllegalArgumentException(name + " must be not null");
         }
 
         try {
-            return Long.parseLong(value) >= 0;
+            if (Long.parseLong(value) >= 0){
+                return true;
+            }else{
+                throw new IllegalArgumentException(name + " can't be " + value +
+                        ", correct id must be non-negative.");
+            }
         } catch (NumberFormatException e) {
-            return false;
+            throw new IllegalArgumentException(name + " can't be " + value +
+                    ", correct id must be number less " + Long.MAX_VALUE + ".");
         }
+    }
+
+    private Template getErrorTemplate(int statusCode, String message, HttpServletResponse response, Map<String, Object> data) throws IOException {
+        response.setStatus(statusCode);
+        data.put("status_code", statusCode);
+        data.put("error_message", message);
+        return freemarkerConfiguration.getTemplate("/error.ftlh");
     }
 }

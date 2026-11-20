@@ -6,6 +6,7 @@ import java.util.Date;
 public class User implements Serializable {
     private long id;
     private String login;
+    private String email;
     private Date creationTime;
 
     public long getId() {
@@ -31,4 +32,8 @@ public class User implements Serializable {
     public void setCreationTime(Date creationTime) {
         this.creationTime = creationTime;
     }
+
+    public String getEmail() { return email; }
+
+    public void setEmail(String email) { this.email = email; }
 }

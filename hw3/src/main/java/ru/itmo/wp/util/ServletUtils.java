@@ -18,7 +18,7 @@ public class ServletUtils {
         if (!file.isFile()) {
             file = new File(context.getRealPath("/static" + uri));
         }
-        Path path = file.toPath();
+        Path path = file.toPath().normalize();
         if (!path.startsWith(appRoot) && !path.startsWith(context.getRealPath("/static"))){
             return null;
         }

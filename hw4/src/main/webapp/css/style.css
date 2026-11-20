@@ -272,3 +272,15 @@ main .datatable table tbody tr:nth-child(odd){
     font-weight: bold; 
     text-decoration: none;
 }
+
+.userlink.red{
+    color: red;
+}
+
+.userlink.green{
+    color: green;
+}
+
+.userlink.blue{
+    color: blue;
+}

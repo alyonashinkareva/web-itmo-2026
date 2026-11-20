@@ -5,3 +5,21 @@ window.notify = function (message, isError) {
         className: isError ? "error" : "success"
     });
 };
+
+window.ajax = function (data, success_fun) {
+    return $.ajax({
+        data,
+        method: "POST",
+        dataType: "json",
+        success: function (response) {
+            if (response["redirect"]) {
+                location.href = response["redirect"];
+                return;
+            }
+
+            if (success_fun) {
+                success_fun(response);
+            }
+        }
+    });
+};

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context docBase="/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/target/hw3">
+  <Resources cacheMaxSize="10240">
+    <PreResources base="/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/target/classes" className="org.apache.catalina.webresources.DirResourceSet" webAppMount="/WEB-INF/classes"/>
+    <PostResources base="/Users/aleksandralaev/.m2/repository/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/javax.servlet-api-4.0.1.jar"/>
+    <PostResources base="/Users/aleksandralaev/.m2/repository/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/httpclient-4.5.13.jar"/>
+    <PostResources base="/Users/aleksandralaev/.m2/repository/org/apache/httpcomponents/httpcore/4.4.13/httpcore-4.4.13.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/httpcore-4.4.13.jar"/>
+    <PostResources base="/Users/aleksandralaev/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/commons-logging-1.2.jar"/>
+    <PostResources base="/Users/aleksandralaev/.m2/repository/commons-codec/commons-codec/1.11/commons-codec-1.11.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/commons-codec-1.11.jar"/>
+    <PostResources base="/Users/aleksandralaev/.m2/repository/com/google/code/gson/gson/2.9.1/gson-2.9.1.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/gson-2.9.1.jar"/>
+  </Resources>
+</Context>

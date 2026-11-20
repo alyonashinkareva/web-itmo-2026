@@ -1,0 +1,817 @@
+17-Oct-2026 13:47:16.683 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/9.0.122
+17-Oct-2026 13:47:16.686 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Sep 10 2026 06:55:33 UTC
+17-Oct-2026 13:47:16.686 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  9.0.122.0
+17-Oct-2026 13:47:16.686 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+17-Oct-2026 13:47:16.686 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             26.7
+17-Oct-2026 13:47:16.686 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           aarch64
+17-Oct-2026 13:47:16.687 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Users/aleksandralaev/Library/Java/JavaVirtualMachines/openjdk-26.0.2.1/Contents/Home
+17-Oct-2026 13:47:16.687 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            26.0.2.1+1-7
+17-Oct-2026 13:47:16.687 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+17-Oct-2026 13:47:16.687 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 13:47:16.687 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 13:47:16.699 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+17-Oct-2026 13:47:16.699 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+17-Oct-2026 13:47:16.699 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+17-Oct-2026 13:47:16.699 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+17-Oct-2026 13:47:16.699 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+17-Oct-2026 13:47:16.699 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 13:47:16.700 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 13:47:16.700 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/temp
+17-Oct-2026 13:47:16.700 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/logging.properties
+17-Oct-2026 13:47:16.700 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+17-Oct-2026 13:47:16.700 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=49698
+17-Oct-2026 13:47:16.700 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+17-Oct-2026 13:47:16.700 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stdout.encoding=UTF-8
+17-Oct-2026 13:47:16.700 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stderr.encoding=UTF-8
+17-Oct-2026 13:47:16.714 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/Users/aleksandralaev/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+17-Oct-2026 13:47:16.982 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8080"]
+17-Oct-2026 13:47:16.990 SEVERE [main] org.apache.catalina.util.LifecycleBase.handleSubClassException Ошибка инициализации компонента [Connector["http-nio-8080"]]
+	org.apache.catalina.LifecycleException: Protocol handler initialization failed
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1273)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:128)
+		at org.apache.catalina.core.StandardService.initInternal(StandardService.java:543)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:128)
+		at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:991)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:128)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:810)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:835)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:305)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+	Caused by: java.net.BindException: Address already in use
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:525)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:333)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:296)
+		at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:525)
+		at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:409)
+		at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1992)
+		at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:2010)
+		at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:992)
+		at org.apache.coyote.http11.AbstractHttp11Protocol.init(AbstractHttp11Protocol.java:93)
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1271)
+		... 11 more
+17-Oct-2026 13:47:16.991 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [486] milliseconds
+17-Oct-2026 13:47:17.032 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+17-Oct-2026 13:47:17.032 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.122]
+17-Oct-2026 13:47:17.039 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml]
+17-Oct-2026 13:47:17.344 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+17-Oct-2026 13:47:17.367 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml] has finished in [324] ms
+17-Oct-2026 13:47:17.368 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [375] milliseconds
+17-Oct-2026 13:47:41.418 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+17-Oct-2026 13:47:41.418 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+17-Oct-2026 13:47:41.431 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+17-Oct-2026 13:47:41.431 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+17-Oct-2026 13:48:16.806 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/9.0.122
+17-Oct-2026 13:48:16.809 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Sep 10 2026 06:55:33 UTC
+17-Oct-2026 13:48:16.809 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  9.0.122.0
+17-Oct-2026 13:48:16.809 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+17-Oct-2026 13:48:16.809 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             26.7
+17-Oct-2026 13:48:16.809 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           aarch64
+17-Oct-2026 13:48:16.809 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Users/aleksandralaev/Library/Java/JavaVirtualMachines/openjdk-26.0.2.1/Contents/Home
+17-Oct-2026 13:48:16.810 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            26.0.2.1+1-7
+17-Oct-2026 13:48:16.810 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+17-Oct-2026 13:48:16.810 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 13:48:16.810 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 13:48:16.817 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+17-Oct-2026 13:48:16.818 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+17-Oct-2026 13:48:16.818 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+17-Oct-2026 13:48:16.818 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+17-Oct-2026 13:48:16.818 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+17-Oct-2026 13:48:16.818 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 13:48:16.818 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 13:48:16.818 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/temp
+17-Oct-2026 13:48:16.818 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/logging.properties
+17-Oct-2026 13:48:16.818 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+17-Oct-2026 13:48:16.818 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=49753
+17-Oct-2026 13:48:16.818 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+17-Oct-2026 13:48:16.818 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stdout.encoding=UTF-8
+17-Oct-2026 13:48:16.819 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stderr.encoding=UTF-8
+17-Oct-2026 13:48:16.828 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/Users/aleksandralaev/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+17-Oct-2026 13:48:17.042 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8080"]
+17-Oct-2026 13:48:17.049 SEVERE [main] org.apache.catalina.util.LifecycleBase.handleSubClassException Ошибка инициализации компонента [Connector["http-nio-8080"]]
+	org.apache.catalina.LifecycleException: Protocol handler initialization failed
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1273)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:128)
+		at org.apache.catalina.core.StandardService.initInternal(StandardService.java:543)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:128)
+		at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:991)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:128)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:810)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:835)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:305)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+	Caused by: java.net.BindException: Address already in use
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:525)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:333)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:296)
+		at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:525)
+		at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:409)
+		at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1992)
+		at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:2010)
+		at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:992)
+		at org.apache.coyote.http11.AbstractHttp11Protocol.init(AbstractHttp11Protocol.java:93)
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1271)
+		... 11 more
+17-Oct-2026 13:48:17.051 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [382] milliseconds
+17-Oct-2026 13:48:17.086 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+17-Oct-2026 13:48:17.086 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.122]
+17-Oct-2026 13:48:17.093 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml]
+17-Oct-2026 13:48:17.407 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+17-Oct-2026 13:48:17.427 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml] has finished in [331] ms
+17-Oct-2026 13:48:17.429 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [377] milliseconds
+17-Oct-2026 13:48:32.119 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+17-Oct-2026 13:48:32.120 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+17-Oct-2026 13:48:32.127 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+17-Oct-2026 13:48:32.127 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+17-Oct-2026 13:48:48.832 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/9.0.122
+17-Oct-2026 13:48:48.835 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Sep 10 2026 06:55:33 UTC
+17-Oct-2026 13:48:48.835 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  9.0.122.0
+17-Oct-2026 13:48:48.835 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+17-Oct-2026 13:48:48.835 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             26.7
+17-Oct-2026 13:48:48.835 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           aarch64
+17-Oct-2026 13:48:48.835 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Users/aleksandralaev/Library/Java/JavaVirtualMachines/openjdk-26.0.2.1/Contents/Home
+17-Oct-2026 13:48:48.835 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            26.0.2.1+1-7
+17-Oct-2026 13:48:48.835 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+17-Oct-2026 13:48:48.836 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 13:48:48.836 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 13:48:48.842 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+17-Oct-2026 13:48:48.843 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+17-Oct-2026 13:48:48.843 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+17-Oct-2026 13:48:48.843 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+17-Oct-2026 13:48:48.843 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+17-Oct-2026 13:48:48.843 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 13:48:48.843 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 13:48:48.843 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/temp
+17-Oct-2026 13:48:48.843 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/logging.properties
+17-Oct-2026 13:48:48.843 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+17-Oct-2026 13:48:48.843 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=49765
+17-Oct-2026 13:48:48.843 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+17-Oct-2026 13:48:48.844 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stdout.encoding=UTF-8
+17-Oct-2026 13:48:48.844 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stderr.encoding=UTF-8
+17-Oct-2026 13:48:48.852 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/Users/aleksandralaev/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+17-Oct-2026 13:48:49.084 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8080"]
+17-Oct-2026 13:48:49.091 SEVERE [main] org.apache.catalina.util.LifecycleBase.handleSubClassException Ошибка инициализации компонента [Connector["http-nio-8080"]]
+	org.apache.catalina.LifecycleException: Protocol handler initialization failed
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1273)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:128)
+		at org.apache.catalina.core.StandardService.initInternal(StandardService.java:543)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:128)
+		at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:991)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:128)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:810)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:835)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:305)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+	Caused by: java.net.BindException: Address already in use
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:525)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:333)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:296)
+		at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:525)
+		at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:409)
+		at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1992)
+		at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:2010)
+		at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:992)
+		at org.apache.coyote.http11.AbstractHttp11Protocol.init(AbstractHttp11Protocol.java:93)
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1271)
+		... 11 more
+17-Oct-2026 13:48:49.092 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [419] milliseconds
+17-Oct-2026 13:48:49.127 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+17-Oct-2026 13:48:49.127 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.122]
+17-Oct-2026 13:48:49.134 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml]
+17-Oct-2026 13:48:49.427 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+17-Oct-2026 13:48:49.446 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml] has finished in [309] ms
+17-Oct-2026 13:48:49.448 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [354] milliseconds
+17-Oct-2026 13:49:32.512 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+17-Oct-2026 13:49:32.512 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+17-Oct-2026 13:49:32.520 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+17-Oct-2026 13:49:32.520 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+17-Oct-2026 13:49:36.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/9.0.122
+17-Oct-2026 13:49:36.553 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Sep 10 2026 06:55:33 UTC
+17-Oct-2026 13:49:36.553 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  9.0.122.0
+17-Oct-2026 13:49:36.553 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+17-Oct-2026 13:49:36.553 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             26.7
+17-Oct-2026 13:49:36.553 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           aarch64
+17-Oct-2026 13:49:36.554 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Users/aleksandralaev/Library/Java/JavaVirtualMachines/openjdk-26.0.2.1/Contents/Home
+17-Oct-2026 13:49:36.554 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            26.0.2.1+1-7
+17-Oct-2026 13:49:36.554 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+17-Oct-2026 13:49:36.554 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 13:49:36.554 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 13:49:36.562 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+17-Oct-2026 13:49:36.562 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+17-Oct-2026 13:49:36.562 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+17-Oct-2026 13:49:36.562 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+17-Oct-2026 13:49:36.562 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+17-Oct-2026 13:49:36.562 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 13:49:36.562 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 13:49:36.562 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/temp
+17-Oct-2026 13:49:36.562 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/logging.properties
+17-Oct-2026 13:49:36.563 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+17-Oct-2026 13:49:36.563 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=49825
+17-Oct-2026 13:49:36.563 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+17-Oct-2026 13:49:36.563 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stdout.encoding=UTF-8
+17-Oct-2026 13:49:36.563 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stderr.encoding=UTF-8
+17-Oct-2026 13:49:36.577 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/Users/aleksandralaev/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+17-Oct-2026 13:49:36.815 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8080"]
+17-Oct-2026 13:49:36.822 SEVERE [main] org.apache.catalina.util.LifecycleBase.handleSubClassException Ошибка инициализации компонента [Connector["http-nio-8080"]]
+	org.apache.catalina.LifecycleException: Protocol handler initialization failed
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1273)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:128)
+		at org.apache.catalina.core.StandardService.initInternal(StandardService.java:543)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:128)
+		at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:991)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:128)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:810)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:835)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:305)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+	Caused by: java.net.BindException: Address already in use
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:525)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:333)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:296)
+		at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:525)
+		at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:409)
+		at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1992)
+		at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:2010)
+		at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:992)
+		at org.apache.coyote.http11.AbstractHttp11Protocol.init(AbstractHttp11Protocol.java:93)
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1271)
+		... 11 more
+17-Oct-2026 13:49:36.823 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [454] milliseconds
+17-Oct-2026 13:49:36.856 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+17-Oct-2026 13:49:36.856 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.122]
+17-Oct-2026 13:49:36.863 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml]
+17-Oct-2026 13:49:37.202 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+17-Oct-2026 13:49:37.227 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml] has finished in [360] ms
+17-Oct-2026 13:49:37.229 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [405] milliseconds
+17-Oct-2026 13:49:56.637 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+17-Oct-2026 13:49:56.638 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+17-Oct-2026 13:49:56.646 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+17-Oct-2026 13:49:56.646 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+17-Oct-2026 13:49:58.703 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/9.0.122
+17-Oct-2026 13:49:58.705 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Sep 10 2026 06:55:33 UTC
+17-Oct-2026 13:49:58.705 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  9.0.122.0
+17-Oct-2026 13:49:58.706 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+17-Oct-2026 13:49:58.706 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             26.7
+17-Oct-2026 13:49:58.706 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           aarch64
+17-Oct-2026 13:49:58.706 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Users/aleksandralaev/Library/Java/JavaVirtualMachines/openjdk-26.0.2.1/Contents/Home
+17-Oct-2026 13:49:58.706 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            26.0.2.1+1-7
+17-Oct-2026 13:49:58.706 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+17-Oct-2026 13:49:58.706 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 13:49:58.706 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 13:49:58.713 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+17-Oct-2026 13:49:58.713 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+17-Oct-2026 13:49:58.713 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+17-Oct-2026 13:49:58.714 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+17-Oct-2026 13:49:58.714 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+17-Oct-2026 13:49:58.714 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 13:49:58.714 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 13:49:58.714 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/temp
+17-Oct-2026 13:49:58.714 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/logging.properties
+17-Oct-2026 13:49:58.714 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+17-Oct-2026 13:49:58.714 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=49840
+17-Oct-2026 13:49:58.714 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+17-Oct-2026 13:49:58.714 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stdout.encoding=UTF-8
+17-Oct-2026 13:49:58.714 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stderr.encoding=UTF-8
+17-Oct-2026 13:49:58.723 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/Users/aleksandralaev/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+17-Oct-2026 13:49:58.933 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8081"]
+17-Oct-2026 13:49:58.946 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [369] milliseconds
+17-Oct-2026 13:49:58.978 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+17-Oct-2026 13:49:58.979 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.122]
+17-Oct-2026 13:49:58.985 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml]
+17-Oct-2026 13:49:59.277 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+17-Oct-2026 13:49:59.301 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml] has finished in [313] ms
+17-Oct-2026 13:49:59.303 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8081"]
+17-Oct-2026 13:49:59.310 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [362] milliseconds
+17-Oct-2026 13:50:24.707 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8081"]
+17-Oct-2026 13:50:24.711 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+17-Oct-2026 13:50:24.722 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8081"]
+17-Oct-2026 13:50:24.736 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8081"]
+17-Oct-2026 14:23:50.425 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/9.0.122
+17-Oct-2026 14:23:50.430 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Sep 10 2026 06:55:33 UTC
+17-Oct-2026 14:23:50.430 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  9.0.122.0
+17-Oct-2026 14:23:50.430 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+17-Oct-2026 14:23:50.430 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             26.7
+17-Oct-2026 14:23:50.430 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           aarch64
+17-Oct-2026 14:23:50.430 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Users/aleksandralaev/Library/Java/JavaVirtualMachines/openjdk-26.0.2.1/Contents/Home
+17-Oct-2026 14:23:50.430 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            26.0.2.1+1-7
+17-Oct-2026 14:23:50.431 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+17-Oct-2026 14:23:50.431 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:23:50.431 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:23:50.441 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+17-Oct-2026 14:23:50.441 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+17-Oct-2026 14:23:50.441 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+17-Oct-2026 14:23:50.442 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+17-Oct-2026 14:23:50.442 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+17-Oct-2026 14:23:50.442 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:23:50.442 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:23:50.442 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/temp
+17-Oct-2026 14:23:50.442 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/logging.properties
+17-Oct-2026 14:23:50.442 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+17-Oct-2026 14:23:50.442 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=50436
+17-Oct-2026 14:23:50.442 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+17-Oct-2026 14:23:50.443 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stdout.encoding=UTF-8
+17-Oct-2026 14:23:50.443 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stderr.encoding=UTF-8
+17-Oct-2026 14:23:50.456 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/Users/aleksandralaev/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+17-Oct-2026 14:23:50.888 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8081"]
+17-Oct-2026 14:23:50.900 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [727] milliseconds
+17-Oct-2026 14:23:50.933 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+17-Oct-2026 14:23:50.934 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.122]
+17-Oct-2026 14:23:50.946 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml]
+17-Oct-2026 14:23:51.404 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+17-Oct-2026 14:23:51.443 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml] has finished in [492] ms
+17-Oct-2026 14:23:51.450 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8081"]
+17-Oct-2026 14:23:51.476 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [573] milliseconds
+17-Oct-2026 14:24:07.922 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8081"]
+17-Oct-2026 14:24:07.924 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+17-Oct-2026 14:24:07.931 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8081"]
+17-Oct-2026 14:24:07.933 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8081"]
+17-Oct-2026 14:24:20.663 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/9.0.122
+17-Oct-2026 14:24:20.665 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Sep 10 2026 06:55:33 UTC
+17-Oct-2026 14:24:20.665 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  9.0.122.0
+17-Oct-2026 14:24:20.665 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+17-Oct-2026 14:24:20.665 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             26.7
+17-Oct-2026 14:24:20.666 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           aarch64
+17-Oct-2026 14:24:20.666 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Users/aleksandralaev/Library/Java/JavaVirtualMachines/openjdk-26.0.2.1/Contents/Home
+17-Oct-2026 14:24:20.666 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            26.0.2.1+1-7
+17-Oct-2026 14:24:20.666 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+17-Oct-2026 14:24:20.666 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:24:20.666 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:24:20.675 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+17-Oct-2026 14:24:20.675 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+17-Oct-2026 14:24:20.676 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+17-Oct-2026 14:24:20.676 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+17-Oct-2026 14:24:20.676 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+17-Oct-2026 14:24:20.676 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:24:20.676 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:24:20.676 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/temp
+17-Oct-2026 14:24:20.676 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/logging.properties
+17-Oct-2026 14:24:20.677 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+17-Oct-2026 14:24:20.677 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=50482
+17-Oct-2026 14:24:20.677 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+17-Oct-2026 14:24:20.677 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stdout.encoding=UTF-8
+17-Oct-2026 14:24:20.677 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stderr.encoding=UTF-8
+17-Oct-2026 14:24:20.690 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/Users/aleksandralaev/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+17-Oct-2026 14:24:20.927 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8080"]
+17-Oct-2026 14:24:20.936 SEVERE [main] org.apache.catalina.util.LifecycleBase.handleSubClassException Ошибка инициализации компонента [Connector["http-nio-8080"]]
+	org.apache.catalina.LifecycleException: Protocol handler initialization failed
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1273)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:128)
+		at org.apache.catalina.core.StandardService.initInternal(StandardService.java:543)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:128)
+		at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:991)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:128)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:810)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:835)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:305)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+	Caused by: java.net.BindException: Address already in use
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:525)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:333)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:296)
+		at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:525)
+		at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:409)
+		at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1992)
+		at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:2010)
+		at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:992)
+		at org.apache.coyote.http11.AbstractHttp11Protocol.init(AbstractHttp11Protocol.java:93)
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1271)
+		... 11 more
+17-Oct-2026 14:24:20.937 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [454] milliseconds
+17-Oct-2026 14:24:20.983 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+17-Oct-2026 14:24:20.983 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.122]
+17-Oct-2026 14:24:20.989 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml]
+17-Oct-2026 14:24:21.319 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+17-Oct-2026 14:24:21.348 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml] has finished in [356] ms
+17-Oct-2026 14:24:21.350 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [410] milliseconds
+17-Oct-2026 14:24:44.589 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+17-Oct-2026 14:24:44.589 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+17-Oct-2026 14:24:44.599 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+17-Oct-2026 14:24:44.599 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+17-Oct-2026 14:24:54.297 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/9.0.122
+17-Oct-2026 14:24:54.299 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Sep 10 2026 06:55:33 UTC
+17-Oct-2026 14:24:54.299 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  9.0.122.0
+17-Oct-2026 14:24:54.299 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+17-Oct-2026 14:24:54.299 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             26.7
+17-Oct-2026 14:24:54.299 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           aarch64
+17-Oct-2026 14:24:54.300 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Users/aleksandralaev/Library/Java/JavaVirtualMachines/openjdk-26.0.2.1/Contents/Home
+17-Oct-2026 14:24:54.300 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            26.0.2.1+1-7
+17-Oct-2026 14:24:54.300 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+17-Oct-2026 14:24:54.300 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:24:54.300 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:24:54.308 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+17-Oct-2026 14:24:54.308 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+17-Oct-2026 14:24:54.308 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+17-Oct-2026 14:24:54.308 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+17-Oct-2026 14:24:54.308 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+17-Oct-2026 14:24:54.308 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:24:54.308 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:24:54.308 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/temp
+17-Oct-2026 14:24:54.308 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/logging.properties
+17-Oct-2026 14:24:54.308 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+17-Oct-2026 14:24:54.309 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=50501
+17-Oct-2026 14:24:54.309 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+17-Oct-2026 14:24:54.309 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stdout.encoding=UTF-8
+17-Oct-2026 14:24:54.309 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stderr.encoding=UTF-8
+17-Oct-2026 14:24:54.321 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/Users/aleksandralaev/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+17-Oct-2026 14:24:54.646 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:24:54.667 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [513] milliseconds
+17-Oct-2026 14:24:54.702 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+17-Oct-2026 14:24:54.702 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.122]
+17-Oct-2026 14:24:54.708 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml]
+17-Oct-2026 14:24:55.095 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+17-Oct-2026 14:24:55.125 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml] has finished in [414] ms
+17-Oct-2026 14:24:55.127 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:24:55.134 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [464] milliseconds
+17-Oct-2026 14:25:18.841 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:25:18.844 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+17-Oct-2026 14:25:18.851 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:25:18.854 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:25:31.668 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/9.0.122
+17-Oct-2026 14:25:31.673 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Sep 10 2026 06:55:33 UTC
+17-Oct-2026 14:25:31.673 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  9.0.122.0
+17-Oct-2026 14:25:31.673 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+17-Oct-2026 14:25:31.674 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             26.7
+17-Oct-2026 14:25:31.674 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           aarch64
+17-Oct-2026 14:25:31.674 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Users/aleksandralaev/Library/Java/JavaVirtualMachines/openjdk-26.0.2.1/Contents/Home
+17-Oct-2026 14:25:31.674 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            26.0.2.1+1-7
+17-Oct-2026 14:25:31.675 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+17-Oct-2026 14:25:31.675 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:25:31.675 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:25:31.689 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+17-Oct-2026 14:25:31.689 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+17-Oct-2026 14:25:31.689 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+17-Oct-2026 14:25:31.689 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+17-Oct-2026 14:25:31.689 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+17-Oct-2026 14:25:31.689 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:50526,suspend=y,server=n
+17-Oct-2026 14:25:31.690 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:/Users/aleksandralaev/Library/Caches/JetBrains/IntelliJIdea2026.2/captureAgent/debugger-agent.jar=file:///var/folders/6b/yj05_6j12wb7wls__jg3h8f40000gn/T/capture16787709871807358249.props
+17-Oct-2026 14:25:31.690 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:25:31.690 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:25:31.690 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/temp
+17-Oct-2026 14:25:31.690 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/logging.properties
+17-Oct-2026 14:25:31.691 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+17-Oct-2026 14:25:31.691 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dkotlinx.coroutines.debug.enable.creation.stack.trace=false
+17-Oct-2026 14:25:31.691 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Ddebugger.agent.enable.coroutines=true
+17-Oct-2026 14:25:31.691 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dkotlinx.coroutines.debug.enable.flows.stack.trace=true
+17-Oct-2026 14:25:31.691 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dkotlinx.coroutines.debug.enable.mutable.state.flows.stack.trace=true
+17-Oct-2026 14:25:31.692 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Ddebugger.async.stack.trace.for.all.threads=true
+17-Oct-2026 14:25:31.692 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Ddebugger.agent.enable.log.capture=true
+17-Oct-2026 14:25:31.692 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+17-Oct-2026 14:25:31.692 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stdout.encoding=UTF-8
+17-Oct-2026 14:25:31.692 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stderr.encoding=UTF-8
+17-Oct-2026 14:25:31.708 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/Users/aleksandralaev/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+17-Oct-2026 14:25:32.020 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:25:32.054 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [573] milliseconds
+17-Oct-2026 14:25:32.089 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+17-Oct-2026 14:25:32.089 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.122]
+17-Oct-2026 14:25:32.094 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml]
+17-Oct-2026 14:25:32.358 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+17-Oct-2026 14:25:32.398 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml] has finished in [296] ms
+17-Oct-2026 14:25:32.401 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:25:32.412 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [356] milliseconds
+17-Oct-2026 14:26:13.815 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:26:13.821 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+17-Oct-2026 14:26:13.831 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:26:13.833 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:26:15.799 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/9.0.122
+17-Oct-2026 14:26:15.803 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Sep 10 2026 06:55:33 UTC
+17-Oct-2026 14:26:15.803 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  9.0.122.0
+17-Oct-2026 14:26:15.803 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+17-Oct-2026 14:26:15.803 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             26.7
+17-Oct-2026 14:26:15.804 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           aarch64
+17-Oct-2026 14:26:15.804 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Users/aleksandralaev/Library/Java/JavaVirtualMachines/openjdk-26.0.2.1/Contents/Home
+17-Oct-2026 14:26:15.804 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            26.0.2.1+1-7
+17-Oct-2026 14:26:15.804 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+17-Oct-2026 14:26:15.804 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:26:15.805 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:26:15.820 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+17-Oct-2026 14:26:15.820 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+17-Oct-2026 14:26:15.820 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+17-Oct-2026 14:26:15.820 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+17-Oct-2026 14:26:15.821 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+17-Oct-2026 14:26:15.821 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:50591,suspend=y,server=n
+17-Oct-2026 14:26:15.821 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:/Users/aleksandralaev/Library/Caches/JetBrains/IntelliJIdea2026.2/captureAgent/debugger-agent.jar=file:///var/folders/6b/yj05_6j12wb7wls__jg3h8f40000gn/T/capture17151560478972907069.props
+17-Oct-2026 14:26:15.821 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:26:15.821 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:26:15.821 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/temp
+17-Oct-2026 14:26:15.822 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/logging.properties
+17-Oct-2026 14:26:15.822 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+17-Oct-2026 14:26:15.822 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dkotlinx.coroutines.debug.enable.creation.stack.trace=false
+17-Oct-2026 14:26:15.822 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Ddebugger.agent.enable.coroutines=true
+17-Oct-2026 14:26:15.822 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dkotlinx.coroutines.debug.enable.flows.stack.trace=true
+17-Oct-2026 14:26:15.822 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dkotlinx.coroutines.debug.enable.mutable.state.flows.stack.trace=true
+17-Oct-2026 14:26:15.823 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Ddebugger.async.stack.trace.for.all.threads=true
+17-Oct-2026 14:26:15.823 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Ddebugger.agent.enable.log.capture=true
+17-Oct-2026 14:26:15.823 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+17-Oct-2026 14:26:15.823 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stdout.encoding=UTF-8
+17-Oct-2026 14:26:15.823 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stderr.encoding=UTF-8
+17-Oct-2026 14:26:15.838 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/Users/aleksandralaev/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+17-Oct-2026 14:26:16.128 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:26:16.162 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [520] milliseconds
+17-Oct-2026 14:26:16.195 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+17-Oct-2026 14:26:16.195 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.122]
+17-Oct-2026 14:26:16.202 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml]
+17-Oct-2026 14:26:16.474 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+17-Oct-2026 14:26:16.508 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml] has finished in [301] ms
+17-Oct-2026 14:26:16.510 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:26:16.516 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [352] milliseconds
+17-Oct-2026 14:27:24.178 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:27:24.184 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+17-Oct-2026 14:27:24.197 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:27:24.207 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:27:26.208 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/9.0.122
+17-Oct-2026 14:27:26.212 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Sep 10 2026 06:55:33 UTC
+17-Oct-2026 14:27:26.212 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  9.0.122.0
+17-Oct-2026 14:27:26.213 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+17-Oct-2026 14:27:26.213 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             26.7
+17-Oct-2026 14:27:26.213 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           aarch64
+17-Oct-2026 14:27:26.213 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Users/aleksandralaev/Library/Java/JavaVirtualMachines/openjdk-26.0.2.1/Contents/Home
+17-Oct-2026 14:27:26.213 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            26.0.2.1+1-7
+17-Oct-2026 14:27:26.214 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+17-Oct-2026 14:27:26.214 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:27:26.214 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:27:26.226 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+17-Oct-2026 14:27:26.226 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+17-Oct-2026 14:27:26.226 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+17-Oct-2026 14:27:26.226 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+17-Oct-2026 14:27:26.227 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+17-Oct-2026 14:27:26.227 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:50734,suspend=y,server=n
+17-Oct-2026 14:27:26.227 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:/Users/aleksandralaev/Library/Caches/JetBrains/IntelliJIdea2026.2/captureAgent/debugger-agent.jar=file:///var/folders/6b/yj05_6j12wb7wls__jg3h8f40000gn/T/capture6915898781217827001.props
+17-Oct-2026 14:27:26.227 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:27:26.227 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:27:26.227 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/temp
+17-Oct-2026 14:27:26.228 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/logging.properties
+17-Oct-2026 14:27:26.228 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+17-Oct-2026 14:27:26.228 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dkotlinx.coroutines.debug.enable.creation.stack.trace=false
+17-Oct-2026 14:27:26.228 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Ddebugger.agent.enable.coroutines=true
+17-Oct-2026 14:27:26.228 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dkotlinx.coroutines.debug.enable.flows.stack.trace=true
+17-Oct-2026 14:27:26.228 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dkotlinx.coroutines.debug.enable.mutable.state.flows.stack.trace=true
+17-Oct-2026 14:27:26.229 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Ddebugger.async.stack.trace.for.all.threads=true
+17-Oct-2026 14:27:26.229 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Ddebugger.agent.enable.log.capture=true
+17-Oct-2026 14:27:26.229 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+17-Oct-2026 14:27:26.229 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stdout.encoding=UTF-8
+17-Oct-2026 14:27:26.229 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stderr.encoding=UTF-8
+17-Oct-2026 14:27:26.240 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/Users/aleksandralaev/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+17-Oct-2026 14:27:26.522 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:27:26.571 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [555] milliseconds
+17-Oct-2026 14:27:26.609 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+17-Oct-2026 14:27:26.609 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.122]
+17-Oct-2026 14:27:26.618 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml]
+17-Oct-2026 14:27:26.911 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+17-Oct-2026 14:27:26.947 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml] has finished in [324] ms
+17-Oct-2026 14:27:26.949 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:27:26.959 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [386] milliseconds
+17-Oct-2026 14:30:22.010 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:30:22.015 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+17-Oct-2026 14:30:22.028 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:30:22.037 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:30:40.868 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/9.0.122
+17-Oct-2026 14:30:40.871 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Sep 10 2026 06:55:33 UTC
+17-Oct-2026 14:30:40.871 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  9.0.122.0
+17-Oct-2026 14:30:40.871 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+17-Oct-2026 14:30:40.871 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             26.7
+17-Oct-2026 14:30:40.871 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           aarch64
+17-Oct-2026 14:30:40.871 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Users/aleksandralaev/Library/Java/JavaVirtualMachines/openjdk-26.0.2.1/Contents/Home
+17-Oct-2026 14:30:40.871 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            26.0.2.1+1-7
+17-Oct-2026 14:30:40.871 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+17-Oct-2026 14:30:40.872 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:30:40.872 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:30:40.880 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+17-Oct-2026 14:30:40.880 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+17-Oct-2026 14:30:40.880 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+17-Oct-2026 14:30:40.880 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+17-Oct-2026 14:30:40.880 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+17-Oct-2026 14:30:40.880 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:30:40.881 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:30:40.881 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/temp
+17-Oct-2026 14:30:40.881 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/logging.properties
+17-Oct-2026 14:30:40.881 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+17-Oct-2026 14:30:40.881 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=50785
+17-Oct-2026 14:30:40.881 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+17-Oct-2026 14:30:40.881 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stdout.encoding=UTF-8
+17-Oct-2026 14:30:40.881 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stderr.encoding=UTF-8
+17-Oct-2026 14:30:40.895 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/Users/aleksandralaev/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+17-Oct-2026 14:30:41.154 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:30:41.174 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [488] milliseconds
+17-Oct-2026 14:30:41.216 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+17-Oct-2026 14:30:41.216 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.122]
+17-Oct-2026 14:30:41.225 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml]
+17-Oct-2026 14:30:41.547 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+17-Oct-2026 14:30:41.573 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml] has finished in [345] ms
+17-Oct-2026 14:30:41.575 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:30:41.580 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [405] milliseconds
+17-Oct-2026 14:30:53.675 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:30:53.682 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+17-Oct-2026 14:30:53.690 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:30:53.693 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:31:09.724 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/9.0.122
+17-Oct-2026 14:31:09.727 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Sep 10 2026 06:55:33 UTC
+17-Oct-2026 14:31:09.727 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  9.0.122.0
+17-Oct-2026 14:31:09.727 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+17-Oct-2026 14:31:09.728 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             26.7
+17-Oct-2026 14:31:09.728 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           aarch64
+17-Oct-2026 14:31:09.728 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Users/aleksandralaev/Library/Java/JavaVirtualMachines/openjdk-26.0.2.1/Contents/Home
+17-Oct-2026 14:31:09.728 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            26.0.2.1+1-7
+17-Oct-2026 14:31:09.728 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+17-Oct-2026 14:31:09.728 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:31:09.728 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:31:09.736 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+17-Oct-2026 14:31:09.736 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+17-Oct-2026 14:31:09.736 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+17-Oct-2026 14:31:09.736 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+17-Oct-2026 14:31:09.736 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+17-Oct-2026 14:31:09.737 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:31:09.737 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:31:09.737 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/temp
+17-Oct-2026 14:31:09.737 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/logging.properties
+17-Oct-2026 14:31:09.737 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+17-Oct-2026 14:31:09.737 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=50809
+17-Oct-2026 14:31:09.737 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+17-Oct-2026 14:31:09.737 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stdout.encoding=UTF-8
+17-Oct-2026 14:31:09.737 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stderr.encoding=UTF-8
+17-Oct-2026 14:31:09.746 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/Users/aleksandralaev/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+17-Oct-2026 14:31:09.961 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:31:09.978 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [462] milliseconds
+17-Oct-2026 14:31:10.012 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+17-Oct-2026 14:31:10.012 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.122]
+17-Oct-2026 14:31:10.020 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml]
+17-Oct-2026 14:31:10.296 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+17-Oct-2026 14:31:10.322 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml] has finished in [299] ms
+17-Oct-2026 14:31:10.324 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:31:10.330 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [349] milliseconds
+17-Oct-2026 14:31:48.110 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:31:48.113 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+17-Oct-2026 14:31:48.124 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:31:48.137 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:32:04.777 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/9.0.122
+17-Oct-2026 14:32:04.780 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Sep 10 2026 06:55:33 UTC
+17-Oct-2026 14:32:04.781 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  9.0.122.0
+17-Oct-2026 14:32:04.781 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+17-Oct-2026 14:32:04.781 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             26.7
+17-Oct-2026 14:32:04.781 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           aarch64
+17-Oct-2026 14:32:04.781 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Users/aleksandralaev/Library/Java/JavaVirtualMachines/openjdk-26.0.2.1/Contents/Home
+17-Oct-2026 14:32:04.781 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            26.0.2.1+1-7
+17-Oct-2026 14:32:04.782 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+17-Oct-2026 14:32:04.782 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:32:04.782 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:32:04.790 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+17-Oct-2026 14:32:04.791 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+17-Oct-2026 14:32:04.791 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+17-Oct-2026 14:32:04.791 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+17-Oct-2026 14:32:04.791 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+17-Oct-2026 14:32:04.792 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:50865,suspend=y,server=n
+17-Oct-2026 14:32:04.792 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:/Users/aleksandralaev/Library/Caches/JetBrains/IntelliJIdea2026.2/captureAgent/debugger-agent.jar=file:///var/folders/6b/yj05_6j12wb7wls__jg3h8f40000gn/T/capture17310520779824486166.props
+17-Oct-2026 14:32:04.792 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:32:04.792 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:32:04.792 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/temp
+17-Oct-2026 14:32:04.792 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/logging.properties
+17-Oct-2026 14:32:04.793 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+17-Oct-2026 14:32:04.793 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dkotlinx.coroutines.debug.enable.creation.stack.trace=false
+17-Oct-2026 14:32:04.793 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Ddebugger.agent.enable.coroutines=true
+17-Oct-2026 14:32:04.793 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dkotlinx.coroutines.debug.enable.flows.stack.trace=true
+17-Oct-2026 14:32:04.793 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dkotlinx.coroutines.debug.enable.mutable.state.flows.stack.trace=true
+17-Oct-2026 14:32:04.793 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Ddebugger.async.stack.trace.for.all.threads=true
+17-Oct-2026 14:32:04.793 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Ddebugger.agent.enable.log.capture=true
+17-Oct-2026 14:32:04.793 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+17-Oct-2026 14:32:04.794 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stdout.encoding=UTF-8
+17-Oct-2026 14:32:04.794 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stderr.encoding=UTF-8
+17-Oct-2026 14:32:04.807 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/Users/aleksandralaev/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+17-Oct-2026 14:32:05.089 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:32:05.121 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [532] milliseconds
+17-Oct-2026 14:32:05.159 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+17-Oct-2026 14:32:05.159 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.122]
+17-Oct-2026 14:32:05.167 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml]
+17-Oct-2026 14:32:05.486 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+17-Oct-2026 14:32:05.525 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml] has finished in [352] ms
+17-Oct-2026 14:32:05.527 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:32:05.534 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [411] milliseconds
+17-Oct-2026 14:32:38.353 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:32:38.357 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+17-Oct-2026 14:32:38.366 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:32:38.368 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:32:49.650 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/9.0.122
+17-Oct-2026 14:32:49.653 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Sep 10 2026 06:55:33 UTC
+17-Oct-2026 14:32:49.653 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  9.0.122.0
+17-Oct-2026 14:32:49.653 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+17-Oct-2026 14:32:49.654 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             26.7
+17-Oct-2026 14:32:49.654 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           aarch64
+17-Oct-2026 14:32:49.654 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Users/aleksandralaev/Library/Java/JavaVirtualMachines/openjdk-26.0.2.1/Contents/Home
+17-Oct-2026 14:32:49.654 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            26.0.2.1+1-7
+17-Oct-2026 14:32:49.654 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+17-Oct-2026 14:32:49.654 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:32:49.654 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:32:49.664 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+17-Oct-2026 14:32:49.664 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+17-Oct-2026 14:32:49.664 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+17-Oct-2026 14:32:49.664 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+17-Oct-2026 14:32:49.664 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+17-Oct-2026 14:32:49.664 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:32:49.664 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:32:49.664 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/temp
+17-Oct-2026 14:32:49.664 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/logging.properties
+17-Oct-2026 14:32:49.665 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+17-Oct-2026 14:32:49.665 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=50886
+17-Oct-2026 14:32:49.665 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+17-Oct-2026 14:32:49.665 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stdout.encoding=UTF-8
+17-Oct-2026 14:32:49.665 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stderr.encoding=UTF-8
+17-Oct-2026 14:32:49.678 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/Users/aleksandralaev/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+17-Oct-2026 14:32:49.928 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:32:49.944 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [511] milliseconds
+17-Oct-2026 14:32:49.979 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+17-Oct-2026 14:32:49.979 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.122]
+17-Oct-2026 14:32:49.989 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml]
+17-Oct-2026 14:32:50.297 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+17-Oct-2026 14:32:50.323 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml] has finished in [332] ms
+17-Oct-2026 14:32:50.326 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:32:50.332 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [385] milliseconds
+17-Oct-2026 14:33:46.518 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:33:46.520 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+17-Oct-2026 14:33:46.536 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:33:46.549 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:33:57.720 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/9.0.122
+17-Oct-2026 14:33:57.722 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Sep 10 2026 06:55:33 UTC
+17-Oct-2026 14:33:57.722 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  9.0.122.0
+17-Oct-2026 14:33:57.723 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+17-Oct-2026 14:33:57.723 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             26.7
+17-Oct-2026 14:33:57.723 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           aarch64
+17-Oct-2026 14:33:57.723 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Users/aleksandralaev/Library/Java/JavaVirtualMachines/openjdk-26.0.2.1/Contents/Home
+17-Oct-2026 14:33:57.723 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            26.0.2.1+1-7
+17-Oct-2026 14:33:57.723 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+17-Oct-2026 14:33:57.723 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:33:57.723 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:33:57.733 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+17-Oct-2026 14:33:57.733 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+17-Oct-2026 14:33:57.733 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+17-Oct-2026 14:33:57.733 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+17-Oct-2026 14:33:57.733 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+17-Oct-2026 14:33:57.733 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:33:57.733 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:33:57.734 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/temp
+17-Oct-2026 14:33:57.734 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/logging.properties
+17-Oct-2026 14:33:57.734 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+17-Oct-2026 14:33:57.734 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=50960
+17-Oct-2026 14:33:57.735 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+17-Oct-2026 14:33:57.735 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stdout.encoding=UTF-8
+17-Oct-2026 14:33:57.735 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stderr.encoding=UTF-8
+17-Oct-2026 14:33:57.752 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/Users/aleksandralaev/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+17-Oct-2026 14:33:58.003 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:33:58.017 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [442] milliseconds
+17-Oct-2026 14:33:58.050 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+17-Oct-2026 14:33:58.050 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.122]
+17-Oct-2026 14:33:58.056 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml]
+17-Oct-2026 14:33:58.341 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+17-Oct-2026 14:33:58.365 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml] has finished in [307] ms
+17-Oct-2026 14:33:58.367 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:33:58.372 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [352] milliseconds
+17-Oct-2026 14:34:21.266 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:34:21.268 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+17-Oct-2026 14:34:21.277 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:34:21.280 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:38:43.055 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/9.0.122
+17-Oct-2026 14:38:43.056 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Sep 10 2026 06:55:33 UTC
+17-Oct-2026 14:38:43.056 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  9.0.122.0
+17-Oct-2026 14:38:43.056 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+17-Oct-2026 14:38:43.056 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             26.7
+17-Oct-2026 14:38:43.057 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           aarch64
+17-Oct-2026 14:38:43.057 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Users/aleksandralaev/Library/Java/JavaVirtualMachines/openjdk-26.0.2.1/Contents/Home
+17-Oct-2026 14:38:43.057 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            26.0.2.1+1-7
+17-Oct-2026 14:38:43.057 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+17-Oct-2026 14:38:43.057 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:38:43.057 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:38:43.063 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+17-Oct-2026 14:38:43.063 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+17-Oct-2026 14:38:43.063 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+17-Oct-2026 14:38:43.063 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+17-Oct-2026 14:38:43.063 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+17-Oct-2026 14:38:43.063 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/aleksandralaev/apache-tomcat-9.0.122
+17-Oct-2026 14:38:43.063 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3
+17-Oct-2026 14:38:43.063 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/temp
+17-Oct-2026 14:38:43.063 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/logging.properties
+17-Oct-2026 14:38:43.063 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+17-Oct-2026 14:38:43.063 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=51646
+17-Oct-2026 14:38:43.063 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+17-Oct-2026 14:38:43.063 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stdout.encoding=UTF-8
+17-Oct-2026 14:38:43.063 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stderr.encoding=UTF-8
+17-Oct-2026 14:38:43.071 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/Users/aleksandralaev/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+17-Oct-2026 14:38:43.253 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:38:43.262 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [310] milliseconds
+17-Oct-2026 14:38:43.288 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+17-Oct-2026 14:38:43.288 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.122]
+17-Oct-2026 14:38:43.292 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml]
+17-Oct-2026 14:38:43.515 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+17-Oct-2026 14:38:43.542 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw3/conf/Catalina/localhost/ROOT.xml] has finished in [247] ms
+17-Oct-2026 14:38:43.544 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8082"]
+17-Oct-2026 14:38:43.550 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [286] milliseconds

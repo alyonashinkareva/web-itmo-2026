@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context docBase="/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw4/target/hw4">
+  <Resources cacheMaxSize="10240">
+    <PreResources base="/Users/aleksandralaev/itmo/5sem/web/my-repo/web-itmo-2026/hw4/target/classes" className="org.apache.catalina.webresources.DirResourceSet" webAppMount="/WEB-INF/classes"/>
+    <PostResources base="/Users/aleksandralaev/.m2/repository/org/freemarker/freemarker/2.3.31/freemarker-2.3.31.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/freemarker-2.3.31.jar"/>
+  </Resources>
+</Context>
