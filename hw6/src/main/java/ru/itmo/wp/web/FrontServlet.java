@@ -1,13 +1,12 @@
 package ru.itmo.wp.web;
 
 import com.google.common.base.Strings;
-import com.google.gson.Gson;
 import freemarker.template.*;
 import ru.itmo.wp.model.domain.User;
 import ru.itmo.wp.model.exception.ValidationException;
-import ru.itmo.wp.web.annotation.Json;
 import ru.itmo.wp.web.exception.NotFoundException;
 import ru.itmo.wp.web.exception.RedirectException;
+import ru.itmo.wp.web.page.BasePage;
 import ru.itmo.wp.web.page.IndexPage;
 import ru.itmo.wp.web.page.NotFoundPage;
 
@@ -25,10 +24,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FrontServlet extends HttpServlet {
-    private static final String BASE_PAGE_PACKAGE = FrontServlet.class.getName().substring(0,
-            FrontServlet.class.getName().length() - FrontServlet.class.getSimpleName().length()) + "page";
-
-    private static final String APPLICATION_JSON_MIME_TYPE = "application/json";
+    private static final String BASE_PAGE_PACKAGE = FrontServlet.class.getName().substring(
+            0, FrontServlet.class.getName().length() - FrontServlet.class.getSimpleName().length()
+    ) + "page";
 
     private Configuration sourceFreemarkerConfiguration;
     private Configuration targetFreemarkerConfiguration;
@@ -40,7 +38,7 @@ public class FrontServlet extends HttpServlet {
             return null;
         }
 
-        Configuration configuration = new Configuration(Configuration.VERSION_2_3_30);
+        Configuration configuration = new Configuration(Configuration.VERSION_2_3_31);
         try {
             configuration.setDirectoryForTemplateLoading(templateDir);
         } catch (IOException e) {
@@ -66,17 +64,15 @@ public class FrontServlet extends HttpServlet {
 
     private Template newTemplate(String name) throws ServletException {
         Template template = null;
-        if (sourceFreemarkerConfiguration != null) {
-            try {
-                template = sourceFreemarkerConfiguration.getTemplate(name);
-            } catch (TemplateNotFoundException ignored) {
-                // No operations.
-            } catch (IOException e) {
-                throw new ServletException("Can't load template [name=" + name + "].", e);
-            }
+        try {
+            template = sourceFreemarkerConfiguration.getTemplate(name);
+        } catch (TemplateNotFoundException ignored) {
+            // No operations.
+        } catch (IOException e) {
+            throw new ServletException("Can't load template [name=" + name + "].", e);
         }
 
-        if (template == null && targetFreemarkerConfiguration != null) {
+        if (template == null) {
             try {
                 template = targetFreemarkerConfiguration.getTemplate(name);
             } catch (TemplateNotFoundException ignored) {
@@ -140,11 +136,6 @@ public class FrontServlet extends HttpServlet {
             throw new NotFoundException();
         }
 
-        String acceptRequestHeader = request.getHeader("Accept");
-        // Ответ в JSON, если метод помечен @Json или клиент прислал Accept: application/json.
-        boolean json = method.getAnnotation(Json.class) != null
-                || (acceptRequestHeader != null && acceptRequestHeader.startsWith(APPLICATION_JSON_MIME_TYPE));
-
         Object page;
         try {
             //noinspection deprecation
@@ -153,9 +144,14 @@ public class FrontServlet extends HttpServlet {
             throw new ServletException("Can't create page [pageClass=" + pageClass + "].", e);
         }
 
-        response.setCharacterEncoding(StandardCharsets.UTF_8.name());
         Map<String, Object> view = new HashMap<>();
-        putUser(request, view);
+
+        try {
+            ((BasePage) page).before(request, view);
+        } catch (RedirectException e) {
+            response.sendRedirect(e.getLocation());
+            return;
+        }
 
         try {
             method.setAccessible(true);
@@ -166,12 +162,7 @@ public class FrontServlet extends HttpServlet {
             Throwable cause = e.getCause();
             if (cause instanceof RedirectException) {
                 RedirectException redirectException = (RedirectException) cause;
-                if (json) {
-                    view.put("redirect", redirectException.getLocation());
-                    writeJson(response, view);
-                } else {
-                    response.sendRedirect(redirectException.getLocation());
-                }
+                response.sendRedirect(redirectException.getLocation());
                 return;
             } else if (cause instanceof ValidationException) {
                 ValidationException validationException = (ValidationException) cause;
@@ -188,29 +179,16 @@ public class FrontServlet extends HttpServlet {
                 throw new ServletException("Unable to run action [pageClass=" + pageClass + ", method=" + method + "].", e);
             }
         }
+        ((BasePage) page).after(request, view);
 
-        if (json) {
-            writeJson(response, view);
-        } else {
-            Template template = newTemplate(pageClass.getSimpleName() + ".ftlh");
-            response.setContentType("text/html");
-            try {
-                template.process(view, response.getWriter());
-            } catch (TemplateException e) {
-                throw new ServletException("Can't render template [pageClass=" + pageClass + ", method=" + method + "].", e);
-            }
-        }
-    }
+        Template template = newTemplate(pageClass.getSimpleName() + ".ftlh");
 
-    private void writeJson(HttpServletResponse response, Map<String, Object> view) throws IOException {
-        response.setContentType(APPLICATION_JSON_MIME_TYPE);
-        response.getWriter().print(new Gson().toJson(view));
-    }
-
-    private void putUser(HttpServletRequest request, Map<String, Object> view) {
-        User user = (User) request.getSession().getAttribute("user");
-        if (user != null) {
-            view.put("user", user);
+        response.setContentType("text/html");
+        response.setCharacterEncoding(StandardCharsets.UTF_8.name());
+        try {
+            template.process(view, response.getWriter());
+        } catch (TemplateException e) {
+            throw new ServletException("Can't render template [pageClass=" + pageClass + ", method=" + method + "].", e);
         }
     }
 
