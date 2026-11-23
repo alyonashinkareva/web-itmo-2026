@@ -15,7 +15,10 @@ public class UserService {
 
     private final UserRepository userRepository = new UserRepositoryImpl();
 
-    public void validateRegistration(User user, String password) throws ValidationException {
+    public void validateRegistration(User user, String password, String passwordConfirmation) throws ValidationException {
+        if (!password.equals(passwordConfirmation)) {
+            throw new ValidationException("Password and password confirmation are different");
+        }
         if (Strings.isNullOrEmpty(user.getLogin())) {
             throw new ValidationException("Login is required");
         }
@@ -27,6 +30,17 @@ public class UserService {
         }
         if (userRepository.findByLogin(user.getLogin()) != null) {
             throw new ValidationException("Login is already in use");
+        }
+
+
+        if (Strings.isNullOrEmpty(user.getEmail())) {
+            throw new ValidationException("Email is required");
+        }
+        if (!user.getEmail().matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
+            throw new ValidationException("Incorrect email");
+        }
+        if (userRepository.findByEmail(user.getEmail()) != null) {
+            throw new ValidationException("Email is already in use");
         }
 
         if (Strings.isNullOrEmpty(password)) {

@@ -10,3 +10,9 @@ CREATE TABLE `User` (
     PRIMARY KEY (`id`),
     UNIQUE KEY `uk_User_login` (`login`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+
+ALTER TABLE `User`
+ADD `email` varchar(255) COLLATE 'utf8mb4_uca1400_ai_ci' NOT NULL AFTER `id`;
+
+ALTER TABLE `User`
+ADD UNIQUE `email` (`email`);

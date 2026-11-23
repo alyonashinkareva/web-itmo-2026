@@ -18,10 +18,26 @@
                 </div>
                 <div class="field">
                     <div class="name">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="value">
+                        <input id="email" name="email" type="email"/>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="name">
                         <label for="password">Password</label>
                     </div>
                     <div class="value">
                         <input id="password" name="password" type="password"/>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="name">
+                        <label for="passwordConfirmation">Password confirmation</label>
+                    </div>
+                    <div class="value">
+                        <input id="passwordConfirmation" name="passwordConfirmation" type="password"/>
                     </div>
                 </div>
                 <#if error??>
