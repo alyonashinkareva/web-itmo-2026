@@ -16,14 +16,14 @@
     </head>
     <body>
     <header>
-        <a href="/"><img src="<@spring.url 'img/logo.png'/>" alt="Codeforces" title="Codeforces"/></a>
+        <a href="/"><img src="<@spring.url '/img/logo.png'/>" alt="Codeforces" title="Codeforces"/></a>
         <div class="languages">
-            <a href="#"><img src="<@spring.url 'img/gb.png'/>" alt="In English" title="In English"/></a>
-            <a href="#"><img src="<@spring.url 'img/ru.png'/>" alt="In Russian" title="In Russian"/></a>
+            <a href="#"><img src="<@spring.url '/img/gb.png'/>" alt="In English" title="In English"/></a>
+            <a href="#"><img src="<@spring.url '/img/ru.png'/>" alt="In Russian" title="In Russian"/></a>
         </div>
         <div class="enter-or-register-box">
             <#if user??>
-                ${user.login}
+                <a href="<@spring.url '/user/${user.id?c}'/>">${user.login}</a>
                 |
                 <a href="<@spring.url '/logout'/>">Logout</a>
             <#else>
@@ -36,23 +36,17 @@
             <ul>
                 <li><a href="<@spring.url '/'/>">Home</a></li>
                 <li><a href="<@spring.url '/users/all'/>">Users</a></li>
+                <li><a href="<@spring.url '/notice/add'/>">Add notice</a></li>
             </ul>
         </nav>
     </header>
     <div class="middle">
         <aside>
-            <section>
-                <div class="header">
-                    Pay attention
-                </div>
-                <div class="body">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ducimus enim facere impedit nobis,
-                    nulla placeat quam suscipit unde voluptatibus.
-                </div>
-                <div class="footer">
-                    <a href="#">View all</a>
-                </div>
-            </section>
+            <#list notices as notice>
+                <section>
+                    <div class="body">${notice.content}</div>
+                </section>
+            </#list>
         </aside>
         <main>
             <#nested/>

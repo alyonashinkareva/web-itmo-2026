@@ -35,6 +35,10 @@ public class UserService {
         return id == null ? null : userRepository.findById(id).orElse(null);
     }
 
+    public void setDisabled(long id, boolean disabled) {
+        userRepository.updateDisabled(id, disabled);
+    }
+
     public List<User> findAll() {
         return userRepository.findAllByOrderByIdDesc();
     }

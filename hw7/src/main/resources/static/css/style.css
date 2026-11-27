@@ -100,6 +100,10 @@ aside section {
     border-top-right-radius: var(--border-radius);
 }
 
+aside section + section {
+    margin-top: 1rem;
+}
+
 aside section .header {
     border-bottom: 1px solid var(--border-color);
     padding: 0.25rem;

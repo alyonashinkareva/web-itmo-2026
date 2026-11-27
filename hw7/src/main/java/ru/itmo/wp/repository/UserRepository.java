@@ -27,5 +27,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
     )
     User findByLoginAndPassword(String login, String password);
 
+    @Transactional
+    @Modifying
+    @Query("UPDATE User u SET u.disabled=?2 WHERE u.id=?1")
+    void updateDisabled(long id, boolean disabled);
+
     List<User> findAllByOrderByIdDesc();
 }
