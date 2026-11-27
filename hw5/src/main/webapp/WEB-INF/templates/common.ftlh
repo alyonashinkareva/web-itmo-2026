@@ -38,19 +38,21 @@
             <#if user??>
                 <@userlink user/>
                 |
-                <a href="/logout">Logout</a>
+                <a href="/logout">${(lang == "ru")?then("Выйти", "Logout")}</a>
             <#else>
-                <a href="/enter">Enter</a>
+                <a href="/enter">${(lang == "ru")?then("Войти", "Enter")}</a>
                 |
-                <a href="/register">Register</a>
+                <a href="/register">${(lang == "ru")?then("Регистрация", "Register")}</a>
             </#if>
         </div>
         <nav>
+            <#assign russian = lang == "ru"/>
+
             <#assign items=[
-            {"href": "/index", "name": "Home"},
-            {"href": "/misc/help", "name": "Help"},
-            {"href": "/contests", "name": "Contests"},
-            {"href": "/ticTacToe", "name": "Tic-Tac-Toe"}
+            {"href": "/index", "name": russian?then("Главная", "Home")},
+            {"href": "/misc/help", "name": russian?then("Помощь", "Help")},
+            {"href": "/contests", "name": russian?then("Соревнования", "Contests")},
+            {"href": "/ticTacToe", "name": russian?then("Крестики-нолики", "Tic-Tac-Toe")}
             ]/>
             <ul>
                 <#list items as item>

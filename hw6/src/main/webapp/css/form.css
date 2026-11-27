@@ -31,7 +31,10 @@
     float: left;
 }
 
-.form-box .field input {
+.form-box .field input,
+.form-box .field select,
+.form-box .field textarea {
+    box-sizing: border-box;
     width: 100%;
 }
 
@@ -47,4 +50,12 @@
     color: var(--error-color);
     font-size: 0.75rem;
     margin-left: 12rem;
+}
+
+.form-box .error:not(:empty) {
+    margin-bottom: 1rem;
+}
+
+.form-box + .datatable {
+    margin-top: 1rem;
 }

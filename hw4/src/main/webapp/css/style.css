@@ -111,3 +111,59 @@ footer {
     border-top: var(--boder);
     text-align: center;
 }
+
+.profile {
+    border: 1px solid silver;
+    border-radius: 6px;
+    padding: 16px;
+    min-height: 150px;
+}
+
+.profile h1 {
+    margin-top: 0;
+}
+
+.profile .avatar {
+    float: right;
+    width: 130px;
+    height: 150px;
+    object-fit: contain;
+}
+
+header nav ul li a.active {
+    border-bottom: 3px solid #3B5998;
+    padding-bottom: 4px;
+}
+
+.users {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.users th, .users td {
+    border: 1px solid silver;
+    padding: 8px;
+    text-align: left;
+}
+
+.users th {
+    background: #eee;
+}
+
+.user-link {
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+.user-link.red {
+    color: red;
+}
+
+.user-link.green {
+    color: green;
+}
+
+.user-link.blue {
+    color: blue;
+}

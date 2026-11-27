@@ -3,13 +3,13 @@ package ru.itmo.wp.web;
 import com.google.common.base.Strings;
 import com.google.gson.Gson;
 import freemarker.template.*;
-import ru.itmo.wp.model.domain.User;
 import ru.itmo.wp.model.exception.ValidationException;
 import ru.itmo.wp.web.annotation.Json;
 import ru.itmo.wp.web.exception.NotFoundException;
 import ru.itmo.wp.web.exception.RedirectException;
 import ru.itmo.wp.web.page.IndexPage;
 import ru.itmo.wp.web.page.NotFoundPage;
+import ru.itmo.wp.web.page.Page;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -110,6 +110,7 @@ public class FrontServlet extends HttpServlet {
             process(route, request, response);
         } catch (NotFoundException e) {
             try {
+                response.setStatus(HttpServletResponse.SC_NOT_FOUND);
                 process(Route.newNotFoundRoute(), request, response);
             } catch (NotFoundException e1) {
                 throw new ServletException(e1);
@@ -120,10 +121,14 @@ public class FrontServlet extends HttpServlet {
     private void process(Route route,
                          HttpServletRequest request,
                          HttpServletResponse response) throws NotFoundException, ServletException, IOException {
-        Class<?> pageClass;
+        Class<? extends Page> pageClass;
         try {
-            pageClass = Class.forName(route.getClassName());
-        } catch (ClassNotFoundException e) {
+            pageClass = Class.forName(route.getClassName()).asSubclass(Page.class);
+        } catch (ClassNotFoundException | ClassCastException e) {
+            throw new NotFoundException();
+        }
+
+        if (pageClass == Page.class || "before".equals(route.getAction()) || "after".equals(route.getAction())) {
             throw new NotFoundException();
         }
 
@@ -140,22 +145,19 @@ public class FrontServlet extends HttpServlet {
             throw new NotFoundException();
         }
 
-        String acceptRequestHeader = request.getHeader("Accept");
-        // Ответ в JSON, если метод помечен @Json или клиент прислал Accept: application/json.
-        boolean json = method.getAnnotation(Json.class) != null
-                || (acceptRequestHeader != null && acceptRequestHeader.startsWith(APPLICATION_JSON_MIME_TYPE));
+        boolean json = method.getAnnotation(Json.class) != null;
 
-        Object page;
+        Page page;
         try {
-            //noinspection deprecation
-            page = pageClass.newInstance();
-        } catch (InstantiationException | IllegalAccessException e) {
+            page = pageClass.getDeclaredConstructor().newInstance();
+        } catch (ReflectiveOperationException e) {
             throw new ServletException("Can't create page [pageClass=" + pageClass + "].", e);
         }
 
         response.setCharacterEncoding(StandardCharsets.UTF_8.name());
         Map<String, Object> view = new HashMap<>();
-        putUser(request, view);
+        request.setAttribute("jsonResponse", json);
+        page.before(request, view);
 
         try {
             method.setAccessible(true);
@@ -177,18 +179,12 @@ public class FrontServlet extends HttpServlet {
                 ValidationException validationException = (ValidationException) cause;
 
                 view.put("error", validationException.getMessage());
-                for (Map.Entry<String, String[]> param : request.getParameterMap().entrySet()) {
-                    String key = param.getKey();
-                    if (param.getValue() != null && param.getValue().length == 1) {
-                        String value = param.getValue()[0];
-                        view.put(key, value);
-                    }
-                }
             } else {
                 throw new ServletException("Unable to run action [pageClass=" + pageClass + ", method=" + method + "].", e);
             }
         }
 
+        page.after(request, view);
         if (json) {
             writeJson(response, view);
         } else {
@@ -205,13 +201,6 @@ public class FrontServlet extends HttpServlet {
     private void writeJson(HttpServletResponse response, Map<String, Object> view) throws IOException {
         response.setContentType(APPLICATION_JSON_MIME_TYPE);
         response.getWriter().print(new Gson().toJson(view));
-    }
-
-    private void putUser(HttpServletRequest request, Map<String, Object> view) {
-        User user = (User) request.getSession().getAttribute("user");
-        if (user != null) {
-            view.put("user", user);
-        }
     }
 
     private static final class Route {
@@ -232,10 +221,10 @@ public class FrontServlet extends HttpServlet {
             );
         }
 
-        private static Route newIndexRoute() {
+        private static Route newIndexRoute(String action) {
             return new Route(
                     IndexPage.class.getName(),
-                    DEFAULT_ACTION
+                    action
             );
         }
 
@@ -256,18 +245,18 @@ public class FrontServlet extends HttpServlet {
                 className.append(s);
             });
 
+            String action = request.getParameter("action");
+            if (Strings.isNullOrEmpty(action)) {
+                action = DEFAULT_ACTION;
+            }
+
             if (className.toString().equals(BASE_PAGE_PACKAGE)) {
-                return newIndexRoute();
+                return newIndexRoute(action);
             }
 
             int lastPeriodPos = className.lastIndexOf(".");
             className.setCharAt(lastPeriodPos + 1, Character.toUpperCase(className.charAt(lastPeriodPos + 1)));
             className.append("Page");
-
-            String action = request.getParameter("action");
-            if (Strings.isNullOrEmpty(action)) {
-                action = DEFAULT_ACTION;
-            }
 
             return new Route(className.toString(), action);
         }

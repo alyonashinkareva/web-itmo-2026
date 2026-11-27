@@ -36,6 +36,11 @@
         <ul>
             <li><a href="/index">Home</a></li>
             <li><a href="/users">Users</a></li>
+            <#if user??>
+                <li><a href="/talks">Talks</a></li>
+                <li><a href="/article">New article</a></li>
+                <li><a href="/myArticles">My articles</a></li>
+            </#if>
         </ul>
     </nav>
 </header>
@@ -59,7 +64,7 @@
     </main>
 </div>
 <footer>
-    <a href="/index">Codeforces</a> &copy; by Mike Mirzayanov
+    <a href="/index">Not a Codeforces</a> &copy; by Maksim Gromov · Users: ${userCount}
 </footer>
 <#if message??>
 <script>
