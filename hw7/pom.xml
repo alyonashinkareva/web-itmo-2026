@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ru.itmo.wp</groupId>
-	<artifactId>hw8</artifactId>
+	<artifactId>hw7</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>hw8</name>
-	<description>HW 8</description>
+	<name>hw7</name>
+	<description>HW 7</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
