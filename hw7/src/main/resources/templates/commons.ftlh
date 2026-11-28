@@ -48,8 +48,7 @@
                         Pay attention
                         <span class="notice-id">Id: ${notice.id}</span>
                     </div>
-                    <div class="body">
-                        ${notice.content}
+                    <div class="body notice">${notice.content}
                     </div>
                     <div class="footer">
                         <a href="#">View all</a>

@@ -121,6 +121,10 @@ aside section .footer {
     padding: 0.25rem;
 }
 
+.notice {
+    white-space: pre-wrap;
+}
+
 aside section .footer a {
     float: right;
     font-size: 0.75rem;
