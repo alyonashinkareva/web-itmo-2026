@@ -9,6 +9,9 @@
                 <th>Id</th>
                 <th>Login</th>
                 <th>Created</th>
+                <#if user?? && user.admin>
+                    <th>Active</th>
+                </#if>
             </tr>
             </thead>
             <tbody>
@@ -19,12 +22,24 @@
                     </td>
                 </tr>
             <#else>
-                <#list users as user>
-                <tr>
-                    <td class="id">${user.id}</td>
-                    <td class="login">${user.login}</td>
-                    <td class="creationTime">${user.creationTime}</td>
-                </tr>
+                <#list users as u>
+                    <tr>
+                        <td class="id">${u.id}</td>
+                        <td class="login">${u.login}</td>
+                        <td class="creationTime">${u.creationTime}</td>
+                        <#if user?? && user.admin>
+                            <td>
+                                <form method="post">
+                                    <input type="hidden" name="id" value="${u.id?c}">
+                                    <#if u.disabled>
+                                        <button name="disabled" value="false">Enable</button>
+                                    <#else>
+                                        <button name="disabled" value="true">Disable</button>
+                                    </#if>
+                                </form>
+                            </td>
+                        </#if>
+                    </tr>
                 </#list>
             </#if>
             </tbody>

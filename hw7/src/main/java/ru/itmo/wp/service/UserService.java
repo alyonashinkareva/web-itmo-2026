@@ -27,6 +27,14 @@ public class UserService {
         return userRepository.countByLogin(login) == 0;
     }
 
+    public void setDisabled(long id, boolean disabled){
+        User user = findById(id);
+        if (user != null){
+            user.setDisabled(disabled);
+            userRepository.save(user);
+        }
+    }
+
     public User findByLoginAndPassword(String login, String password) {
         return login == null || password == null ? null : userRepository.findByLoginAndPassword(login, password);
     }
