@@ -36,6 +36,7 @@
             <ul>
                 <li><a href="<@spring.url '/'/>">Home</a></li>
                 <li><a href="<@spring.url '/users/all'/>">Users</a></li>
+                <li><a href="<@spring.url '/noticeCreate'/>">Create Notice</a></li>
             </ul>
         </nav>
     </header>
@@ -45,6 +46,7 @@
                 <section>
                     <div class="header">
                         Pay attention
+                        <span class="notice-id">Id: ${notice.id}</span>
                     </div>
                     <div class="body">
                         ${notice.content}
