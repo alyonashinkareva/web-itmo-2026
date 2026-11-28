@@ -3,6 +3,11 @@
     --border-radius: 6px;
     --black-color: #333;
     --caption-color: #3B5998;
+    --article-information-color: #888;
+    --datatable-caption-color: #e2e2e2;
+    --datatable-border-color: #ddd;
+    --datatable-row-color: #f7f7f7;
+    --login-title-color: #3f5f9b;
     color: var(--black-color);
     font-family: Verdana, sans-serif;
     font-size: 16px;
@@ -48,6 +53,9 @@ header nav {
     border-radius: var(--border-radius);
     padding: 0.75rem 0.25rem;
     margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 header nav ul {
@@ -68,6 +76,11 @@ header nav ul li a {
     text-transform: uppercase;
 }
 
+header nav input {
+    background: url("../img/search-16x16.png") no-repeat 0.25rem center;
+    padding-left: 1.5rem;
+}
+
 .middle {
     margin-top: 1rem;
     overflow: auto;
@@ -80,6 +93,152 @@ aside {
 
 main {
     margin-right: 21rem;
+    display: none;
+}
+
+main.active {
+    display: block;
+}
+
+article .title {
+    color: var(--caption-color);
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.4rem;
+}
+
+article .information {
+    color: var(--article-information-color);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+article .body {
+    border-left: 0.25rem solid var(--border-color);
+    padding-left: 0.75rem;
+}
+
+article .attachment {
+    margin: 0;
+    padding: 0;
+}
+
+article .attachment li {
+    background: url("../img/paperclip-16x16.png") no-repeat 0.25rem center;
+        padding-left: 1.5rem;
+}
+
+article .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border: 0.1rem solid var(--border-color);
+    border-radius: 0.3rem;
+    padding: 0.4rem 0.6rem;
+    margin-top: 0.5rem;
+}
+
+article .positive-score {
+    color: green;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.datatable {
+    flex: 1;
+}
+
+.datatable .caption {
+    background: var(--datatable-caption-color);
+    padding: 0.4rem 0.5rem;
+    border-radius: 0.3rem 0.3rem 0 0;
+}
+
+.datatable table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.datatable th,
+.datatable td {
+    border: 0.1rem solid var(--datatable-border-color);
+    padding: 0.3rem 0.5rem;
+    text-align: center;
+}
+
+.datatable tbody tr:nth-child(odd) {
+    background: var(--datatable-row-color);
+}
+
+.login-form-box {
+    width: 30rem;
+    margin: 0 auto;
+    border: 0.1rem solid var(--border-color);
+    border-radius: 0.3rem;
+}
+
+.login-form-box .header {
+    padding: 0.3rem 0.6rem;
+    border-bottom: 0.1rem solid var(--border-color);
+    color: var(--login-title-color);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.login-form-box .body {
+    padding: 1.5rem;
+    padding-bottom: 0.3rem;
+}
+
+.login-form-box .field {
+    position: relative;
+    min-height: 3rem;
+}
+
+.login-form-box .name {
+    position: absolute;
+    width: 11rem;
+    text-align: right;
+    box-sizing: border-box;
+    padding-right: 1rem;
+}
+
+.login-form-box .value {
+    margin-left: 11rem;
+}
+
+.login-form-box .error {
+    position: absolute;
+    left: 11rem;
+    color: red;
+    font-size: 0.8rem;
+}
+
+.login-form-box .checkbox-field {
+    margin-left: 11rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.login-form-box .button-field {
+    margin-left: 11rem;
+}
+
+.login-form-box .links {
+    margin-left: 13rem;
+    width: 15rem;
+    text-align: right;
+    margin-top: 0.3rem;
+}
+
+.login-form-box .footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+
+    border-top: 0.1rem solid var(--border-color);
+    padding: 0.3rem 0.5rem;
 }
 
 footer {

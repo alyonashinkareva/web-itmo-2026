@@ -23,7 +23,14 @@ public class User {
     @NotEmpty
     @Size(min = 2, max = 16)
     @Pattern(regexp = "[a-z]+", message = "Only lowercase latin letters expected")
+    @Column(nullable = false)
     private String login;
+
+    @Column(nullable = false)
+    private boolean disabled = false;
+
+    @Column(nullable = false)
+    private boolean admin = false;
 
     @CreationTimestamp
     private Date creationTime;
@@ -50,6 +57,22 @@ public class User {
 
     public void setCreationTime(Date creationTime) {
         this.creationTime = creationTime;
+    }
+
+    public boolean isDisabled() {
+        return disabled;
+    }
+
+    public void setDisabled(boolean disabled) {
+        this.disabled = disabled;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 }
 

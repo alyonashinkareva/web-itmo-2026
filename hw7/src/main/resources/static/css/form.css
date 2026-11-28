@@ -5,6 +5,7 @@
     border-top-left-radius: var(--border-radius);
     width: 30rem;
     margin: 0 auto;
+    display: flow-root;
 }
 
 .form-box .header {
@@ -48,4 +49,42 @@
     color: var(--error-color);
     font-size: 0.75rem;
     margin-left: 12rem;
+}
+
+.add-notice {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.add-notice .field {
+    margin: 1.5rem;
+}
+
+.add-notice .field .name {
+    float: none;
+    width: auto;
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
+.add-notice .field .value {
+    float: none;
+    width: 100%;
+}
+
+.add-notice textarea {
+    width: 100%;
+    min-height: 8rem;
+    box-sizing: border-box;
+    resize: vertical;
+    font: inherit;
+    padding: 0.5rem;
+}
+
+.add-notice .button-field {
+    margin: 1.5rem;
+}
+
+.add-notice .error {
+    margin-left: 1.5rem;
 }
