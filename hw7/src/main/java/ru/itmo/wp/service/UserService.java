@@ -1,6 +1,7 @@
 package ru.itmo.wp.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.itmo.wp.domain.User;
 import ru.itmo.wp.form.UserCredentials;
 import ru.itmo.wp.repository.UserRepository;
@@ -15,10 +16,11 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    @Transactional
     public User register(UserCredentials userCredentials) {
         User user = new User();
         user.setLogin(userCredentials.getLogin());
-        userRepository.save(user);
+        userRepository.saveAndFlush(user);
         userRepository.updatePassword(user.getId(), userCredentials.getLogin(), userCredentials.getPassword());
         return user;
     }
@@ -33,6 +35,14 @@ public class UserService {
 
     public User findById(Long id) {
         return id == null ? null : userRepository.findById(id).orElse(null);
+    }
+
+    @Transactional
+    public void setDisabled(long id, boolean disabled) {
+        User user = findById(id);
+        if (user != null) {
+            user.setDisabled(disabled);
+        }
     }
 
     public List<User> findAll() {

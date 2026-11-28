@@ -138,3 +138,12 @@ aside section .footer a:after {
     background-color: var(--message-background-color);
     text-align: center;
 }
+
+aside section + section {
+    margin-top: 1rem;
+}
+
+.notice-content {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}

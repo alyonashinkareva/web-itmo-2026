@@ -49,3 +49,8 @@
     font-size: 0.75rem;
     margin-left: 12rem;
 }
+
+.form-box .field textarea {
+    box-sizing: border-box;
+    width: 100%;
+}

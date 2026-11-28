@@ -16,10 +16,10 @@
     </head>
     <body>
     <header>
-        <a href="/"><img src="<@spring.url 'img/logo.png'/>" alt="Codeforces" title="Codeforces"/></a>
+        <a href="<@spring.url '/'/>"><img src="<@spring.url '/img/logo.png'/>" alt="Codeforces" title="Codeforces"/></a>
         <div class="languages">
-            <a href="#"><img src="<@spring.url 'img/gb.png'/>" alt="In English" title="In English"/></a>
-            <a href="#"><img src="<@spring.url 'img/ru.png'/>" alt="In Russian" title="In Russian"/></a>
+            <a href="#"><img src="<@spring.url '/img/gb.png'/>" alt="In English" title="In English"/></a>
+            <a href="#"><img src="<@spring.url '/img/ru.png'/>" alt="In Russian" title="In Russian"/></a>
         </div>
         <div class="enter-or-register-box">
             <#if user??>
@@ -35,31 +35,26 @@
         <nav>
             <ul>
                 <li><a href="<@spring.url '/'/>">Home</a></li>
-                <li><a href="<@spring.url '/users/all'/>">Users</a></li>
+                <li><a href="<@spring.url '/users'/>">Users</a></li>
+                <li><a href="<@spring.url '/addNotice'/>">Add Notice</a></li>
             </ul>
         </nav>
     </header>
     <div class="middle">
         <aside>
-            <section>
-                <div class="header">
-                    Pay attention
-                </div>
-                <div class="body">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ducimus enim facere impedit nobis,
-                    nulla placeat quam suscipit unde voluptatibus.
-                </div>
-                <div class="footer">
-                    <a href="#">View all</a>
-                </div>
-            </section>
+            <#list notices as notice>
+                <section>
+                    <div class="header">Notice</div>
+                    <div class="body notice-content">${notice.content}</div>
+                </section>
+            </#list>
         </aside>
         <main>
             <#nested/>
         </main>
     </div>
     <footer>
-        <a href="/">Ejudge</a> &copy; 2077 by Mike Mirzayanov
+        <a href="<@spring.url '/'/>">Ejudge</a> &copy; 2077 by Mike Mirzayanov
     </footer>
     <script>
         $(function () {

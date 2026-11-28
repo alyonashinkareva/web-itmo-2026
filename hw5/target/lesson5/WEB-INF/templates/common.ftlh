@@ -38,11 +38,11 @@
             <#if user??>
                 <@userlink user/>
                 |
-                <a href="/logout">Logout</a>
+                <a href="/logout">${(lang == "ru")?then("Выйти", "Logout")}</a>
             <#else>
-                <a href="/enter">Enter</a>
+                <a href="/enter">${(lang == "ru")?then("Войти", "Enter")}</a>
                 |
-                <a href="/register">Register</a>
+                <a href="/register">${(lang == "ru")?then("Регистрация", "Register")}</a>
             </#if>
         </div>
         <nav>

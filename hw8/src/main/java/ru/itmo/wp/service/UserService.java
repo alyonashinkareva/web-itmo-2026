@@ -1,7 +1,7 @@
 package ru.itmo.wp.service;
 
 import org.springframework.stereotype.Service;
-import ru.itmo.wp.domain.Post;
+import org.springframework.transaction.annotation.Transactional;
 import ru.itmo.wp.domain.Role;
 import ru.itmo.wp.domain.User;
 import ru.itmo.wp.form.UserCredentials;
@@ -30,10 +30,11 @@ public class UserService {
         }
     }
 
+    @Transactional
     public User register(UserCredentials userCredentials) {
         User user = new User();
         user.setLogin(userCredentials.getLogin());
-        userRepository.save(user);
+        userRepository.saveAndFlush(user);
         userRepository.updatePasswordSha(user.getId(), userCredentials.getLogin(), userCredentials.getPassword());
         return user;
     }
@@ -52,11 +53,5 @@ public class UserService {
 
     public List<User> findAll() {
         return userRepository.findAllByOrderByIdDesc();
-    }
-
-    public void writePost(User user, Post post) {
-        user.addPost(post);
-        post.setUser(user);
-        userRepository.save(user);
     }
 }

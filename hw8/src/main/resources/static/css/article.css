@@ -75,3 +75,12 @@ main article .footer .positive-score {
     font-weight: bold;
     line-height: 1.75rem;
 }
+
+main article .body {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+main article .title a {
+    color: inherit;
+}

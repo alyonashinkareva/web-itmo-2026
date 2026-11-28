@@ -2,7 +2,7 @@
 <#import "./common.ftlh" as c>
 
 <@c.page>
-    <h1>Tic-Tac-Toe</h1>
+    <h1>Крестики-нолики</h1>
 
     <#list 0..state.size-1 as row>
         <div class="tictactoe-row">

@@ -1,4 +1,4 @@
-<#-- @ftlvariable name="post" type="ru.itmo.wp.domain.Post" -->
+<#-- @ftlvariable name="postForm" type="ru.itmo.wp.form.WritePostForm" -->
 
 <#import "/spring.ftl" as spring>
 <#import "commons.ftlh" as c>
@@ -7,25 +7,31 @@
     <div class="form">
         <div class="header">Write Post</div>
         <div class="body">
-            <form method="post" action="">
-                <input type="hidden" name="action" value="writePost"/>
+            <form method="post" action="<@spring.url '/writePost'/>">
                 <div class="field">
                     <div class="name">
                         <label for="title">Title</label>
                     </div>
                     <div class="value">
-                        <input autofocus id="title" name="title" value="${post.title!}"/>
+                        <input autofocus id="title" name="title" value="${postForm.title!}"/>
                     </div>
-                    <@c.error "post.title"/>
+                    <@c.error "postForm.title"/>
                 </div>
                 <div class="field">
                     <div class="name">
                         <label for="text">Text</label>
                     </div>
                     <div class="value">
-                        <textarea id="text" name="text">${post.text!}</textarea>
+                        <textarea id="text" name="text">${postForm.text!}</textarea>
                     </div>
-                    <@c.error "post.text"/>
+                    <@c.error "postForm.text"/>
+                </div>
+                <div class="field">
+                    <div class="name"><label for="tags">Tags</label></div>
+                    <div class="value">
+                        <input id="tags" name="tags" value="${postForm.tags!}"/>
+                    </div>
+                    <@c.error "postForm.tags"/>
                 </div>
                 <div class="button-field">
                     <input type="submit" value="Write">

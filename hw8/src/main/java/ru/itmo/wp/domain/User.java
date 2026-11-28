@@ -23,6 +23,9 @@ public class User {
     @NotEmpty
     private String login;
 
+    @Column(name = "passwordsha", insertable = false, updatable = false)
+    private String passwordSha;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @OrderBy("creationTime desc")
     private List<Post> posts;
